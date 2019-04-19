@@ -1,0 +1,4 @@
+<section #mainsection *ngFor="let post of posts | async">
+  <h1>{{ post.title.rendered }}</h1>
+  <p>{{ post.date_gmt | date }}</p>
+</section>

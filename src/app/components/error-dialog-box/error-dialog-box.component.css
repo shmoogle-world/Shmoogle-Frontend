@@ -1,0 +1,25 @@
+.title{
+    text-align: center;
+    font-family: Assistant;
+    font-size: 30px;
+    padding-top: 2rem;
+}
+
+.content{
+    margin-top: 150px;
+    text-align: center;
+    font-family: Assistant;
+    font-size: 27px;
+}
+
+.button{
+    margin-top: 100px;
+    text-align: center;
+    font-family: Assistant;
+    display: flex;
+    justify-content: center;
+}
+
+.but{
+    font-size: 20px;
+}
