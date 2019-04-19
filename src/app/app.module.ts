@@ -19,14 +19,12 @@ import { MatMenuModule, MatButtonModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
-import { TestblogComponent } from './components/testblog/testblog.component';
 
 
 const appRoutes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'results', component:  ResultComponent},
-  {path: 'aboutus', component: AboutUsComponent},
-  { path: 'blog', component: TestblogComponent},
+  { path: 'results', component:  ResultComponent },
+  { path: 'aboutus', component: AboutUsComponent },
   { path: '**', component: LandingComponent }
 ];
 
@@ -39,7 +37,6 @@ const appRoutes: Routes = [
     ErrorDialogBoxComponent,
     AboutUsComponent,
     HamburgerNavComponent,
-    TestblogComponent
     ],
   imports: [
     BrowserModule,
