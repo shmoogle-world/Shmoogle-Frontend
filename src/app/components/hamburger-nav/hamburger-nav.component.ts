@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-nav',
   templateUrl: './hamburger-nav.component.html',
   styleUrls: ['./hamburger-nav.component.css']
 })
+
 export class HamburgerNavComponent implements OnInit {
 
   constructor() { }
