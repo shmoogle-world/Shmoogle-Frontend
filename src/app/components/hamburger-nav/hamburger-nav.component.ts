@@ -14,6 +14,10 @@ export class HamburgerNavComponent implements OnInit {
   }
 
   public blog(): void{
-    window.location.href = 'http://shmoogle.world/blog/sample-page/'
+    window.location.href = 'http://shmoogle.world/blog/sample-page/';
+  }
+
+  public whatIs(): void{
+    window.location.href = 'http://shmoogle.world/blog/what-is-shmoogle/';
   }
 }
