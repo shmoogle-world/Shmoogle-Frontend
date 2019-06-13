@@ -1,10 +1,11 @@
 
 .load-bar {
     position: relative;
-    width: 442px;
-    height: 3px;
+    width: 401px;
+    height: 2px;
     bottom: 2px;
     background-color: #ffcb04;
+    margin-left:18px;
   }
   .bar {
     content: "";
@@ -174,7 +175,7 @@
         width: 148px;
       }
       .load-bar {
-        width: 178px;
+        width: 154px;
       }
 }
 

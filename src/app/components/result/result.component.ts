@@ -62,13 +62,13 @@ export class ResultComponent implements OnInit, OnDestroy {
             (response: ResultModel[]) => {
                 this.results = response;
                 this.counter = response.length;
+                this.loadingAnimation = false;
             },
             error => {
                 console.log(error);
             })
 
         this.resultservice.text = this.text;
-        this.loadingAnimation = false;
 
         //add epalsed time for search
     }
