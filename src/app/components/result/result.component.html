@@ -20,7 +20,7 @@
 </div>
 
 <main class="results-container">
-  <div class="counter">Showing {{counter}} results</div>
+  <div class="counter">Showing {{counter}} results ({{elapsed}} seconds)</div>
   <div class="result-div" *ngFor="let res of results; let i = index">
       <div class="original-position">Original Position: {{res.originalResultIndex + 1}}</div>
       <a href="{{res.url}}" class="title">{{res.name}}</a>

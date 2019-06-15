@@ -28,6 +28,7 @@ export class ResultComponent implements OnInit, OnDestroy {
   public text: string;
   public counter: number = 0;
   public loadingAnimation: boolean = false;
+  public elapsed: number;
   //#endregion
 
   //#region Constructor & Lifecycle Hooks
@@ -41,11 +42,10 @@ export class ResultComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    let storage = sessionStorage.getItem("search");
-    if (storage !== 'undefined') {
-      this.text = storage;
-      this.search();
+    if (!(this.text = sessionStorage.search)) {
+      this.text = 'Never Gonna Give You Up';
     }
+    this.search();
   }
 
   public ngOnDestroy(): void {
@@ -63,12 +63,13 @@ export class ResultComponent implements OnInit, OnDestroy {
 
     if (this.text === "") this.text = "never gonna give you up - rick astley";
 
-    let storage = sessionStorage.getItem("cache");
-    if (storage !== 'undefined') {
-      let search = sessionStorage.getItem("search");
-      if (search !== 'undefined') {
-        if (this.text == search) {
+    if (sessionStorage.cache) {
+      if (sessionStorage.search) {
+        if (this.text == sessionStorage.search) {
+          let storage = sessionStorage.getItem("cache");
           this.results = JSON.parse(storage);
+          this.counter = this.results.length;
+          this.elapsed = parseFloat(sessionStorage.getItem('elapsed'));
           return;
         }
       }
@@ -77,6 +78,7 @@ export class ResultComponent implements OnInit, OnDestroy {
     this.loadingAnimation = true;
     this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
 
+    const initTime = new Date().getTime();
     this.httpservice
       .get(
         "https://bingsearchapiv1.azurewebsites.net/shmoogleShuffle/" + this.text
@@ -89,6 +91,9 @@ export class ResultComponent implements OnInit, OnDestroy {
           sessionStorage.setItem('search',this.text);
           sessionStorage.setItem("cache", JSON.stringify(this.results));
           this.resultservice.text = this.text;
+          let time = ((new Date().getTime()) - initTime) / 1000;
+          this.elapsed = parseFloat(time.toPrecision(3));
+          sessionStorage.setItem('elapsed',time.toPrecision(3));
         },
         error => {
           console.log(error);

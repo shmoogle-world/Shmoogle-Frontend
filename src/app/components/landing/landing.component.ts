@@ -54,6 +54,8 @@ export class LandingComponent implements OnInit {
 
     public ngOnInit(): void {
 
+      sessionStorage.clear();
+
         if (!this.comp.cookieService.check('Subscribed')) {
             this.comp.cookieService.set('Subscribed', 'NewVisitor---' + formatDate(new Date(), "dd-mm-yyyy---h-MM-ss", 'en-US'));
         }
