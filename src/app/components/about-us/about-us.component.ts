@@ -18,7 +18,7 @@ export class AboutUsComponent implements OnInit {
   /**
    * Goes back
    */
-  public GoBack():void{
+  public GoBack(): void {
     this.resultservice.aboutUs = false;
   }
 

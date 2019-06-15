@@ -27,49 +27,56 @@
   animation: loading 3s linear 2s infinite;
 }
 @keyframes loading {
-    from {left: 50%; width: 0;z-index:100;}
-    33.3333% {left: 0; width: 100%;z-index: 10;}
-    to {left: 0; width: 100%;}
+  from {
+    left: 50%;
+    width: 0;
+    z-index: 100;
+  }
+  33.3333% {
+    left: 0;
+    width: 100%;
+    z-index: 10;
+  }
+  to {
+    left: 0;
+    width: 100%;
+  }
 }
 
-
-
-
-
-header{
+header {
   padding-top: 58px;
   padding-left: 57px;
   display: flex;
   justify-content: space-between;
 }
 
-.about-us{
-    position: relative;
-    right: 2rem;
-    font-size: 1rem;
-    border: none;
-    font-family: open sans-serif;
-    cursor: pointer;
-    background: lightgray;
-    border-radius: 5px;
+.about-us {
+  position: relative;
+  right: 2rem;
+  font-size: 1rem;
+  border: none;
+  font-family: open sans-serif;
+  cursor: pointer;
+  background: lightgray;
+  border-radius: 5px;
 }
 
-.small-logo{
+.small-logo {
   width: 52px;
   height: 32px;
 }
 
-.main-logo-div{
+.main-logo-div {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.main-logo{
+.main-logo {
   margin-top: 130px;
 }
 
-.input{
+.input {
   width: 495px;
   margin-top: 19px;
   height: 52px;
@@ -83,7 +90,6 @@ header{
   font-family: "Open Sans";
   letter-spacing: 2px;
   padding-left: 5px;
-
 }
 input:focus {
   border: none;
@@ -91,13 +97,13 @@ input:focus {
   outline: none;
 }
 
-.sentances-div{
-  font-family: 'Open Sans', sans-serif;
+.sentances-div {
+  font-family: "Open Sans", sans-serif;
   text-align: center;
   margin-top: 50px;
 }
 
-.think{
+.think {
   font-size: 15px;
   font-weight: lighter;
   text-align: center;
@@ -106,7 +112,7 @@ input:focus {
   opacity: 0.8;
 }
 
-.about{
+.about {
   font-size: 12px;
   text-align: center;
   color: #757575;
@@ -114,13 +120,12 @@ input:focus {
   margin-top: 19px;
 }
 
-.about-us-gr{
+.about-us-gr {
   color: #3ec4ba;
   cursor: pointer;
 }
 
-
-.search-icon{
+.search-icon {
   width: 18px;
   height: 23px;
   position: relative;
@@ -129,10 +134,11 @@ input:focus {
   cursor: pointer;
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
   height: 18px;
   width: 206px;
-  color: #4C4C4C;
+  color: #4c4c4c;
   font-family: "Open Sans";
   font-size: 18px;
   font-weight: 300;
@@ -141,10 +147,11 @@ input:focus {
   letter-spacing: 2px;
   padding-left: 5px;
 }
-::-moz-placeholder { /* Firefox 19+ */
+::-moz-placeholder {
+  /* Firefox 19+ */
   height: 18px;
   width: 206px;
-  color: #4C4C4C;
+  color: #4c4c4c;
   font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;
@@ -152,10 +159,11 @@ input:focus {
   letter-spacing: 2px;
   padding-left: 5px;
 }
-:-ms-input-placeholder { /* IE 10+ */
+:-ms-input-placeholder {
+  /* IE 10+ */
   height: 18px;
   width: 206px;
-  color: #4C4C4C;
+  color: #4c4c4c;
   font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;
@@ -164,10 +172,11 @@ input:focus {
   letter-spacing: 2px;
   padding-left: 5px;
 }
-:-moz-placeholder { /* Firefox 18- */
+:-moz-placeholder {
+  /* Firefox 18- */
   height: 18px;
   width: 206px;
-  color: #4C4C4C;
+  color: #4c4c4c;
   font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;
@@ -178,109 +187,107 @@ input:focus {
 ::-webkit-input-placeholder {
   height: 18px;
   width: 206px;
-  color: #4C4C4C;
+  color: #4c4c4c;
   font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;
   letter-spacing: 2px;
   padding-left: 5px;
-
- }
- ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+}
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
   font-size: 16px !important;
 }
 
- footer{
-   visibility: hidden;
-   position: fixed;
-   bottom: 0;
-   background: #ffcb04;
-   color: #212121;
-   font-size: 18px;
-   font-family: "Open Sans";
-   text-align: center;
-   width: 100%;
-   -webkit-transition: width 2s; /* Safari */
-   transition: width 2s;
-   padding-top: 0.5rem !important;
-   padding-bottom: 0.5rem !important;
- }
+footer {
+  visibility: hidden;
+  position: fixed;
+  bottom: 0;
+  background: #ffcb04;
+  color: #212121;
+  font-size: 18px;
+  font-family: "Open Sans";
+  text-align: center;
+  width: 100%;
+  -webkit-transition: width 2s; /* Safari */
+  transition: width 2s;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
 
- .sentance{
-  color: #4C4C4C;
+.sentance {
+  color: #4c4c4c;
   font-family: "Open Sans";
   font-size: 18px;
   font-weight: 300;
- }
+}
 
- .send{
+.send {
   border: none;
   border-radius: 5px;
   margin-left: 1rem;
   padding: 1rem;
   cursor: pointer;
   font-size: 1rem;
-  color: #4C4C4C;
+  color: #4c4c4c;
   font-family: "Open Sans";
- }
+}
 
- .div-close{
-    text-align: right;
-    padding-right: 3rem;
- }
- .close{
-   width: 20px;
-   cursor: pointer;
-   position: relative;
-    top: 32px;
- }
+.div-close {
+  text-align: right;
+  padding-right: 3rem;
+}
+.close {
+  width: 20px;
+  cursor: pointer;
+  position: relative;
+  top: 32px;
+}
 
- .visible{
-   opacity: 1 !important;
- }
+.visible {
+  opacity: 1 !important;
+}
 
- .error{
-   opacity: 0;
-   color: red;
-   font-family: "Open Sans";
- }
+.error {
+  opacity: 0;
+  color: red;
+  font-family: "Open Sans";
+}
 
- .input-div2{
-   text-align: center;
-   margin: auto;
- }
- .input-div{
+.input-div2 {
+  text-align: center;
+  margin: auto;
+}
+.input-div {
   display: flex;
   flex-direction: row;
   width: 495px;
   margin-left: 18px;
- }
+}
 
- .error-div{
-   text-align: center;
-   margin: auto;
-   padding-top: 0.8rem;
- }
+.error-div {
+  text-align: center;
+  margin: auto;
+  padding-top: 0.8rem;
+}
 @media only screen and (max-width: 600px) {
-  .input-div{
+  .input-div {
     width: 260px;
   }
-  .input{
+  .input {
     width: 248px;
   }
-  .logomain{
+  .logomain {
     width: 55% !important;
   }
   .load-bar {
     width: 260px;
   }
-  .close{
+  .close {
     top: 3px;
     left: 29px;
   }
 }
-
-
 
 /*
 

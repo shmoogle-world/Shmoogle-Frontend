@@ -1,10 +1,12 @@
-<button mat-button [matMenuTriggerFor] = "menu" id="hamburgerBtn"><mat-icon>menu</mat-icon></button>
-<mat-menu #menu = "matMenu" yPosition="below">
-   <button mat-menu-item (click)='whatIs()'>what is Shmoogle</button>
-   <button mat-menu-item>How does it work</button>
-   <button mat-menu-item>What is it good for</button>
-   <button mat-menu-item routerLink="/aboutus">About Us</button>
-   <button mat-menu-item disabled class="line"></button>
-   <button mat-menu-item>News</button>
-   <button mat-menu-item (click)='blog()'>Blog</button>
+<button mat-button [matMenuTriggerFor]="menu" id="hamburgerBtn">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu #menu="matMenu" yPosition="below">
+  <button mat-menu-item (click)="whatIs()">what is Shmoogle</button>
+  <button mat-menu-item>How does it work</button>
+  <button mat-menu-item>What is it good for</button>
+  <button mat-menu-item routerLink="/aboutus">About Us</button>
+  <button mat-menu-item disabled class="line"></button>
+  <button mat-menu-item>News</button>
+  <button mat-menu-item (click)="blog()">Blog</button>
 </mat-menu>

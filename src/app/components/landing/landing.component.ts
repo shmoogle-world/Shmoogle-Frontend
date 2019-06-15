@@ -12,9 +12,8 @@ import { PlatformLocation } from "@angular/common";
 import { EmailModel } from "../../Models/EmailModel";
 import { AppComponent } from "../../app.component";
 import { compileBaseDefFromMetadata } from "@angular/compiler";
-import { LocalStorage, SessionStorage } from 'ngx-webstorage';
-import { formatDate } from '@angular/common';
-
+import { LocalStorage, SessionStorage } from "ngx-webstorage";
+import { formatDate } from "@angular/common";
 
 @Component({
     selector: "app-landing",
@@ -22,7 +21,6 @@ import { formatDate } from '@angular/common';
     styleUrls: ["./landing.component.css"]
 })
 export class LandingComponent implements OnInit {
-
     //#region Public Members
     @Input() numberResult: number = 3434;
     public text: string = "";
@@ -53,14 +51,17 @@ export class LandingComponent implements OnInit {
     }
 
     public ngOnInit(): void {
+        sessionStorage.clear();
 
-      sessionStorage.clear();
-
-        if (!this.comp.cookieService.check('Subscribed')) {
-            this.comp.cookieService.set('Subscribed', 'NewVisitor---' + formatDate(new Date(), "dd-mm-yyyy---h-MM-ss", 'en-US'));
+        if (!this.comp.cookieService.check("Subscribed")) {
+            this.comp.cookieService.set(
+                "Subscribed",
+                "NewVisitor---" +
+                formatDate(new Date(), "dd-mm-yyyy---h-MM-ss", "en-US")
+            );
         }
 
-        if (this.comp.cookieService.get('Subscribed').includes('NewVisitor')) {
+        if (this.comp.cookieService.get("Subscribed").includes("NewVisitor")) {
             setTimeout(() => {
                 var element = document.getElementById("footer");
                 if (element !== null) {
@@ -122,12 +123,14 @@ export class LandingComponent implements OnInit {
      * Send the email
      */
     public Send(): void {
-
         if (this.validateEmail(this.email)) {
-
-            if (this.comp.cookieService.check('Subscribed'))
-                this.comp.cookieService.delete('Subscribed');
-            this.comp.cookieService.set('Subscribed', 'SubscribedVisitor---' + formatDate(new Date(), "dd-mm-yyyy---h-MM-ss", 'en-US'));
+            if (this.comp.cookieService.check("Subscribed"))
+                this.comp.cookieService.delete("Subscribed");
+            this.comp.cookieService.set(
+                "Subscribed",
+                "SubscribedVisitor---" +
+                formatDate(new Date(), "dd-mm-yyyy---h-MM-ss", "en-US")
+            );
 
             this.loadingAnimation = true;
             var request = {
