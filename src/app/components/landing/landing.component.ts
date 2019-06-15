@@ -48,7 +48,7 @@ export class LandingComponent implements OnInit {
         private location: PlatformLocation
     ) {
         location.onPopState(() => {
-            console.log("pressed back!");
+            //console.log("pressed back!");
         });
     }
 
@@ -140,7 +140,7 @@ export class LandingComponent implements OnInit {
                 )
                 .subscribe(
                     res => {
-                        console.log("email " + this.EmailModel);
+                        //console.log("email " + this.EmailModel);
                         this.afterMail = true;
                         this.loadingAnimation = false;
                         setTimeout(() => {
