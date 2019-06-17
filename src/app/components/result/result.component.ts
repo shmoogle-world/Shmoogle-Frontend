@@ -45,7 +45,8 @@ export class ResultComponent implements OnInit, OnDestroy {
         if (!(this.text = sessionStorage.search)) {
             this.text = "Never Gonna Give You Up";
         }
-        this.requestSearch();
+
+        this.search();
     }
 
     public ngOnDestroy(): void {

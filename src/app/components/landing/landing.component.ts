@@ -85,6 +85,7 @@ export class LandingComponent implements OnInit {
             if a woodchuck could chuck wood?";
             sessionStorage.setItem("search", text2);
         }
+        sessionStorage.removeItem('cache');
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
         this.navservice.navigateByUrl("results");
     }
