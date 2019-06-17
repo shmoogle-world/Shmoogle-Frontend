@@ -25,7 +25,7 @@
         [(ngModel)]="text"
         (keyup)="CheckEnterKey($event)"
       />
-      <img class="search-icon" src="/assets/search.svg" (click)="search()" />
+      <img class="search-icon" src="/assets/search.svg" (click)="requestSearch()" />
     </div>
     <div *ngIf="loadingAnimation" class="load-bar">
       <div class="bar"></div>
