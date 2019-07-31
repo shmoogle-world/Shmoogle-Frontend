@@ -45,6 +45,7 @@ export class ResultComponent implements OnInit, OnDestroy {
         if (!(this.text = sessionStorage.search)) {
             this.text = "Never Gonna Give You Up";
         }
+
         this.search();
     }
 
@@ -54,6 +55,11 @@ export class ResultComponent implements OnInit, OnDestroy {
     //#endregion
 
     //#region Public Members
+
+    public requestSearch(){
+      sessionStorage.clear();
+      this.search();
+    }
     /*
      * Searches in bing motor
      */
@@ -88,7 +94,7 @@ export class ResultComponent implements OnInit, OnDestroy {
                     this.results = response;
                     this.counter = response.length;
                     this.loadingAnimation = false;
-                    sessionStorage.setItem("search", this.text);
+                    sessionStorage.setItem("search", this.text );
                     sessionStorage.setItem("cache", JSON.stringify(this.results));
                     this.resultservice.text = this.text;
                     let time = (new Date().getTime() - initTime) / 1000;
