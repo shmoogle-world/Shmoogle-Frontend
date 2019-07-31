@@ -33,18 +33,33 @@
       <div class="bar"></div>
     </div>
   </div>
+  <button id="resBtn" mat-button (click)="hideRes()">Show Unshuffled</button>
 </div>
 
-<main class="results-container">
-  <div class="counter">
-    Showing {{ counter }} results ({{ elapsed }} seconds)
-  </div>
-  <div class="result-div" *ngFor="let res of results; let i = index">
-    <div class="original-position">
-      Original Position: {{ res.originalResultIndex + 1 }}
+<main>
+  <section class="results-container">
+    <div class="counter">
+      Showing {{ counter }} results ({{ elapsed }} seconds)
     </div>
-    <a href="{{ res.url }}" class="title">{{ res.name }}</a>
-    <a href="{{ res.url }}" class="url">{{ res.url }}</a>
-    <div class="content">{{ res.snippet }}</div>
-  </div>
+    <div class="result-div" *ngFor="let res of results; let i = index">
+      <div class="original-position">
+        Original Position: {{ res.originalResultIndex + 1 }}
+      </div>
+      <a href="{{ res.url }}" class="title">{{ res.name }}</a>
+      <a href="{{ res.url }}" class="url">{{ res.url }}</a>
+      <div class="content">{{ res.snippet }}</div>
+    </div>
+  </section>
+
+  <section id ="unshuffled" class="results-container hidden">
+    <div class="padding"></div>
+    <div class="result-div" *ngFor="let res of unshuffled; let i = index">
+      <div class="original-position">
+        Original Position: {{ res.originalResultIndex + 1 }}
+      </div>
+      <a href="{{ res.url }}" class="title">{{ res.name }}</a>
+      <a href="{{ res.url }}" class="url">{{ res.url }}</a>
+      <div class="content">{{ res.snippet }}</div>
+    </div>
+  </section>
 </main>

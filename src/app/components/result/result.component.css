@@ -129,6 +129,15 @@ input:focus {
 .results-container {
   width: 436px;
   padding-left: 6rem;
+  float: left;
+}
+
+#unshuffled {
+  margin-left: 5vw;
+}
+
+#unshuffled .padding {
+  height: 33px;
 }
 
 .counter {
@@ -180,7 +189,20 @@ input:focus {
   padding-right: 2rem;
 }
 
-@media only screen and (max-width: 768px) {
+
+#resBtn {
+  height: 50px;
+  margin-top: 3vh;
+}
+
+@media only screen and (max-width: 1399px) {
+  .results-container {
+    width: 300px;
+    padding-left: 2rem;
+  }
+}
+
+@media only screen and (max-width: 765px) {
   .results-container {
     width: 260px;
     padding-left: 2rem;
@@ -197,6 +219,10 @@ input:focus {
   .load-bar {
     width: 154px;
   }
+
+  #unshuffled {
+    display: none;
+  }
 }
 
 .sticky {
@@ -212,6 +238,11 @@ input:focus {
   background-color: #ffffffbd;
   size: 50%;
 }
+
+.hidden {
+  display: none !important;
+}
+
 
 /*
     .envelop{

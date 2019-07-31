@@ -86,6 +86,7 @@ export class LandingComponent implements OnInit {
             sessionStorage.setItem("search", text2);
         }
         sessionStorage.removeItem('cache');
+        sessionStorage.removeItem('cache_unshuf');
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
         this.navservice.navigateByUrl("results");
     }
@@ -141,7 +142,7 @@ export class LandingComponent implements OnInit {
             //send to backend
             this.httpservice
                 .post(
-                    "https://bingsearchapiv1.azurewebsites.net/shmoogleAddUser",
+                    "https://bingsearchapi.azurewebsites.net/shmoogleAddUser",
                     request
                 )
                 .subscribe(

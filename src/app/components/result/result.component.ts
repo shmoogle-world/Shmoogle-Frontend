@@ -25,6 +25,7 @@ import { LandingComponent } from "../landing/landing.component";
 export class ResultComponent implements OnInit, OnDestroy {
     //#region Public Members
     @Input() results: ResultModel[];
+    @Input() unshuffled: ResultModel[];
     public text: string;
     public counter: number = 0;
     public loadingAnimation: boolean = false;
@@ -54,11 +55,21 @@ export class ResultComponent implements OnInit, OnDestroy {
     }
     //#endregion
 
+    public hideRes(): void {
+        document.querySelector('#unshuffled').classList.toggle('hidden');
+        const elem = document.querySelector('#resBtn .mat-button-wrapper');
+
+        if (elem.innerHTML == 'Show Unshuffled')
+            elem.innerHTML = 'Hide Unshuffled';
+        else
+            elem.innerHTML = 'Show Unshuffled';
+    }
+
     //#region Public Members
 
-    public requestSearch(){
-      sessionStorage.clear();
-      this.search();
+    public requestSearch() {
+        sessionStorage.clear();
+        this.search();
     }
     /*
      * Searches in bing motor
@@ -66,14 +77,19 @@ export class ResultComponent implements OnInit, OnDestroy {
     public search(): void {
         //moves to top of the page
         window.scrollTo(0, 0);
-
+        if (!document.querySelector('#unshuffled').classList.contains('hidden') && document.querySelector('#resBtn .mat-button-wrapper').innerHTML == 'Hide Unshuffled' ){
+            document.querySelector('#unshuffled').classList.add('hidden');
+            document.querySelector('#resBtn .mat-button-wrapper').innerHTML = 'Show Unshuffled';
+        }
         if (this.text === "") this.text = "never gonna give you up - rick astley";
 
         if (sessionStorage.cache) {
             if (sessionStorage.search) {
                 if (this.text == sessionStorage.search) {
                     let storage = sessionStorage.getItem("cache");
+                    let unshuff = sessionStorage.getItem("cache_unshuf");
                     this.results = JSON.parse(storage);
+                    this.unshuffled = JSON.parse(unshuff);
                     this.counter = this.results.length;
                     this.elapsed = parseFloat(sessionStorage.getItem("elapsed"));
                     return;
@@ -87,15 +103,24 @@ export class ResultComponent implements OnInit, OnDestroy {
         const initTime = new Date().getTime();
         this.httpservice
             .get(
-                "https://bingsearchapiv1.azurewebsites.net/shmoogleShuffle/" + this.text
+                "https://bingsearchapi.azurewebsites.net/shmoogleShuffle/" + this.text
             )
             .subscribe(
-                (response: ResultModel[]) => {
-                    this.results = response;
-                    this.counter = response.length;
+                (response) => {
+                    this.results = response[1];
+                    this.unshuffled = response[0];
+                    this.counter = this.results.length;
+
+                    //this.results = response;
+                    //this.unshuffled = response;
+                    //this.counter = response.length;
+
                     this.loadingAnimation = false;
-                    sessionStorage.setItem("search", this.text );
-                    sessionStorage.setItem("cache", JSON.stringify(this.results));
+
+                    sessionStorage.setItem("search", this.text);
+                    sessionStorage.setItem("cache_res", JSON.stringify(this.results));
+                    sessionStorage.setItem("cache_unshuf", JSON.stringify(this.unshuffled));
+
                     this.resultservice.text = this.text;
                     let time = (new Date().getTime() - initTime) / 1000;
                     this.elapsed = parseFloat(time.toPrecision(3));
