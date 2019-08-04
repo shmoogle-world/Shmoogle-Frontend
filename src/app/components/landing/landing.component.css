@@ -205,14 +205,13 @@ footer {
   bottom: 0;
   background: #ffcb04;
   color: #212121;
-  font-size: 18px;
+  font-size: 10px;
   font-family: "Open Sans";
   text-align: center;
   width: 100%;
   -webkit-transition: width 2s; /* Safari */
   transition: width 2s;
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
+  padding-bottom: 30px !important;
 }
 
 .sentance {
@@ -287,6 +286,15 @@ footer {
     top: 3px;
     left: 29px;
   }
+}
+
+span.error {
+  left: 44vw;
+  font-size: 15px;
+  padding-top: 0px;
+  margin-top: 0px;
+  position: absolute;
+  bottom: 5px;
 }
 
 /*

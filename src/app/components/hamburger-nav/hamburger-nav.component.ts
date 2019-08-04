@@ -20,4 +20,8 @@ export class HamburgerNavComponent implements OnInit {
     public whatIs(): void {
         window.location.href = 'http://shmoogle.world/blog/what-is-shmoogle/';
     }
+
+    public goodFor(): void {
+        window.location.href = 'http://shmoogle.world/blog/what-is-shmoogle#whatisitgoodfor';
+    }
 }
