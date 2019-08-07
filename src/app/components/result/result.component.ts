@@ -47,6 +47,10 @@ export class ResultComponent implements OnInit, OnDestroy {
             this.text = "Never Gonna Give You Up";
         }
 
+        const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        if (width <= 425) {
+            document.querySelector('#resBtn .mat-button-wrapper').innerHTML = 'Show';
+        }
         this.search();
     }
 
@@ -56,13 +60,47 @@ export class ResultComponent implements OnInit, OnDestroy {
     //#endregion
 
     public hideRes(): void {
-        document.querySelector('#unshuffled').classList.toggle('hidden');
-        const elem = document.querySelector('#resBtn .mat-button-wrapper');
+        const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        const btn = document.querySelector('#resBtn .mat-button-wrapper');
+        const shuffled = document.querySelector('#shuffled');
+        const unshuffled = document.querySelector('#unshuffled');
 
-        if (elem.innerHTML == 'Show Unshuffled')
-            elem.innerHTML = 'Hide Unshuffled';
-        else
-            elem.innerHTML = 'Show Unshuffled';
+        if (width <= 425) {
+            if (btn.innerHTML == 'Show') {
+                if (unshuffled.classList.contains('hidden'))
+                    unshuffled.classList.remove('hidden');
+
+                if (!shuffled.classList.contains('hidden'))
+                    shuffled.classList.add('hidden');
+
+                btn.innerHTML = 'Hide';
+            }
+            else {
+                if (!unshuffled.classList.contains('hidden'))
+                    unshuffled.classList.add('hidden');
+
+                if (shuffled.classList.contains('hidden'))
+                    shuffled.classList.remove('hidden');
+                btn.innerHTML = 'Show';
+            }
+        } else {
+            if (btn.innerHTML == 'Show Unshuffled') {
+                if (shuffled.classList.contains('hidden'))
+                    shuffled.classList.remove('hidden');
+
+                if (unshuffled.classList.contains('hidden'))
+                    unshuffled.classList.remove('hidden');
+
+                btn.innerHTML = 'Hide Unshuffled';
+            }
+            else {
+                if (!unshuffled.classList.contains('hidden'))
+                    unshuffled.classList.add('hidden');
+
+                btn.innerHTML = 'Show Unshuffled';
+            }
+        }
+
     }
 
     //#region Public Members
@@ -77,9 +115,15 @@ export class ResultComponent implements OnInit, OnDestroy {
     public search(): void {
         //moves to top of the page
         window.scrollTo(0, 0);
-        if (!document.querySelector('#unshuffled').classList.contains('hidden') && document.querySelector('#resBtn .mat-button-wrapper').innerHTML == 'Hide Unshuffled' ){
-            document.querySelector('#unshuffled').classList.add('hidden');
-            document.querySelector('#resBtn .mat-button-wrapper').innerHTML = 'Show Unshuffled';
+        const btn = document.querySelector('#resBtn .mat-button-wrapper');
+        const shuffled = document.querySelector('#shuffled');
+        const unshuffled = document.querySelector('#unshuffled');
+
+        if (!unshuffled.classList.contains('hidden') && btn.innerHTML == 'Hide Unshuffled') {
+            if (shuffled.classList.contains('hidden'))
+                shuffled.classList.remove('hidden');
+            unshuffled.classList.add('hidden');
+            btn.innerHTML = 'Show Unshuffled';
         }
         if (this.text === "") this.text = "never gonna give you up - rick astley";
 
