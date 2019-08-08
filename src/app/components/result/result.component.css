@@ -1,3 +1,25 @@
+
+/* Scrollbar design*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 /* Loading Bar Animation */
 
 .load-bar {
@@ -227,17 +249,10 @@ input:focus {
 /* Media Queries */
 
 @media only screen and (max-width: 1399px) {
-  .results-container {
-    width: 300px;
-    padding-left: 2rem;
-  }
+
 }
 
 @media only screen and (max-width: 765px) {
-  .results-container {
-    width: 260px;
-    padding-left: 2rem;
-  }
 
   .input-div {
     width: 160px;
