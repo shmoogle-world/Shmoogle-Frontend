@@ -1,4 +1,3 @@
-
 /* Scrollbar design*/
 /* width */
 ::-webkit-scrollbar {
@@ -7,17 +6,17 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 /* Loading Bar Animation */
@@ -160,12 +159,11 @@ input:focus {
   padding-right: 2rem;
 }
 
-
-#resBtn {
-  height: 10vh;
+#shuffleBtn {
+  height: 5vh;
   margin-top: 3vh;
+  margin-left: 10px;
 }
-
 
 .sticky {
   position: fixed;
@@ -181,30 +179,17 @@ input:focus {
   size: 50%;
 }
 
-.hidden {
-  display: none !important;
-}
-
 /* Results containers */
 
 .results-container {
-  width: 35vw;
-  padding-left: 6rem;
-  float: left;
-  height: 83.2vh;
+  width: 88%;
+  height: 85vh;
   overflow: scroll;
-}
-
-#unshuffled {
-  margin-left: 5vw;
-}
-
-#unshuffled .padding {
-  height: 33px;
 }
 
 .counter {
   margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 13px;
   color: rgb(128, 128, 128);
   margin-left: 6vw;
@@ -242,16 +227,11 @@ input:focus {
 
 .result-div {
   margin-top: 30px;
-  margin-right: 5vw;
   font-family: Arial, sans-serif;
 }
 
 
 /* Media Queries */
-
-@media only screen and (max-width: 1399px) {
-
-}
 
 @media only screen and (max-width: 765px) {
 
@@ -275,13 +255,9 @@ input:focus {
     margin-left: 4vw;
   }
 
-  #unshuffled {
-    margin-left: 0px;
-  }
-
-  .results-container{
+  .results-container {
     height: 100%;
-    width: 100%;
+    width: 150%;
     overflow: auto;
   }
 

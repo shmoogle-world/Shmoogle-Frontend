@@ -16,6 +16,7 @@ import { MatDialogConfig, MatDialog } from "@angular/material";
 import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.component";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import { LandingComponent } from "../landing/landing.component";
+import { decode } from '@angular/router/src/url_tree';
 
 @Component({
     selector: "app-result",
@@ -30,6 +31,8 @@ export class ResultComponent implements OnInit, OnDestroy {
     public counter: number = 0;
     public loadingAnimation: boolean = false;
     public elapsed: number;
+    private mobile: boolean;
+    private shuffled: boolean = true;
     //#endregion
 
     //#region Constructor & Lifecycle Hooks
@@ -42,16 +45,12 @@ export class ResultComponent implements OnInit, OnDestroy {
         private spinerservice: Ng4LoadingSpinnerService
     ) { }
 
-
     ngOnInit() {
         if (!(this.text = sessionStorage.search)) {
             this.text = "Never Gonna Give You Up";
         }
-
-        // const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        // if (width <= 425) {
-        //     document.querySelector('#resBtn .mat-button-wrapper').innerHTML = 'Show';
-        // }
+        this.mobile = this.detectmob();
+        console.log(this.mobile);
         this.search();
     }
 
@@ -59,50 +58,6 @@ export class ResultComponent implements OnInit, OnDestroy {
     }
 
     //#endregion
-
-    // public hideRes(): void {
-    //     const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    //     const btn = document.querySelector('#resBtn .mat-button-wrapper');
-    //     const shuffled = document.querySelector('#shuffled');
-    //     const unshuffled = document.querySelector('#unshuffled');
-
-    //     if (width <= 425) {
-    //         if (btn.innerHTML == 'Show') {
-    //             if (unshuffled.classList.contains('hidden'))
-    //                 unshuffled.classList.remove('hidden');
-
-    //             if (!shuffled.classList.contains('hidden'))
-    //                 shuffled.classList.add('hidden');
-
-    //             btn.innerHTML = 'Hide';
-    //         }
-    //         else {
-    //             if (!unshuffled.classList.contains('hidden'))
-    //                 unshuffled.classList.add('hidden');
-
-    //             if (shuffled.classList.contains('hidden'))
-    //                 shuffled.classList.remove('hidden');
-    //             btn.innerHTML = 'Show';
-    //         }
-    //     } else {
-    //         if (btn.innerHTML == 'Show Unshuffled') {
-    //             if (shuffled.classList.contains('hidden'))
-    //                 shuffled.classList.remove('hidden');
-
-    //             if (unshuffled.classList.contains('hidden'))
-    //                 unshuffled.classList.remove('hidden');
-
-    //             btn.innerHTML = 'Hide Unshuffled';
-    //         }
-    //         else {
-    //             if (!unshuffled.classList.contains('hidden'))
-    //                 unshuffled.classList.add('hidden');
-
-    //             btn.innerHTML = 'Show Unshuffled';
-    //         }
-    //     }
-
-    // }
 
     //#region Public Members
 
@@ -114,18 +69,7 @@ export class ResultComponent implements OnInit, OnDestroy {
      * Searches in bing motor
      */
     public search(): void {
-        //moves to top of the page
         window.scrollTo(0, 0);
-        // const btn = document.querySelector('#resBtn .mat-button-wrapper');
-        // const shuffled = document.querySelector('#shuffled');
-        // const unshuffled = document.querySelector('#unshuffled');
-
-        // if (!unshuffled.classList.contains('hidden') && btn.innerHTML == 'Hide Unshuffled') {
-        //     if (shuffled.classList.contains('hidden'))
-        //         shuffled.classList.remove('hidden');
-        //     unshuffled.classList.add('hidden');
-        //     btn.innerHTML = 'Show Unshuffled';
-        // }
         if (this.text === "") this.text = "never gonna give you up - rick astley";
 
         if (sessionStorage.cache) {
@@ -152,7 +96,6 @@ export class ResultComponent implements OnInit, OnDestroy {
             )
             .subscribe(
                 (response: any) => {
-                    console.log(response);
                     this.results = response[1];
                     this.unshuffled = response[0];
                     this.counter = this.results.length;
@@ -167,13 +110,13 @@ export class ResultComponent implements OnInit, OnDestroy {
                     let time = (new Date().getTime() - initTime) / 1000;
                     this.elapsed = parseFloat(time.toPrecision(3));
                     sessionStorage.setItem("elapsed", time.toPrecision(3));
+
+                    this.decode();
                 },
                 error => {
                     console.log(error);
                 }
             );
-
-        //add epalsed time for search
     }
 
     /**
@@ -227,6 +170,45 @@ export class ResultComponent implements OnInit, OnDestroy {
         } else {
             this.sticky = false;
         }
+    }
+
+    //#endregion
+
+    //#region private methods
+
+    /**
+     * detects if we are in mobile view or not
+     */
+    private detectmob() {
+        console.log(window.innerWidth);
+        if (window.innerWidth <= 540) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //need to figure out a better way of decoding the urls
+    private decode(): void {
+        for (let i = 0; i < this.results.length; ++i) {
+            let tmp1: ResultModel = this.results[i];
+            let tmp2: ResultModel = this.unshuffled[i];
+
+            tmp1.url = decodeURI(tmp1.url);
+            tmp2.url = decodeURI(tmp2.url);
+        }
+    }
+
+    /**
+     * swappes variables and changes text of button
+     */
+    private swap(): void {
+        this.shuffled = !this.shuffled;
+        const btn = document.querySelector('#shuffleBtn .mat-button-wrapper');
+        if (btn.innerHTML == "Shuffled")
+            btn.innerHTML = "Unshuffled";
+        else
+            btn.innerHTML = "Shuffled";
     }
 
     //#endregion
