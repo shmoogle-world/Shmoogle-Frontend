@@ -42,70 +42,71 @@ export class ResultComponent implements OnInit, OnDestroy {
         private spinerservice: Ng4LoadingSpinnerService
     ) { }
 
+
     ngOnInit() {
         if (!(this.text = sessionStorage.search)) {
             this.text = "Never Gonna Give You Up";
         }
 
-        const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        if (width <= 425) {
-            document.querySelector('#resBtn .mat-button-wrapper').innerHTML = 'Show';
-        }
+        // const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        // if (width <= 425) {
+        //     document.querySelector('#resBtn .mat-button-wrapper').innerHTML = 'Show';
+        // }
         this.search();
     }
 
     public ngOnDestroy(): void {
-        //localStorage.clear();
     }
+
     //#endregion
 
-    public hideRes(): void {
-        const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        const btn = document.querySelector('#resBtn .mat-button-wrapper');
-        const shuffled = document.querySelector('#shuffled');
-        const unshuffled = document.querySelector('#unshuffled');
+    // public hideRes(): void {
+    //     const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    //     const btn = document.querySelector('#resBtn .mat-button-wrapper');
+    //     const shuffled = document.querySelector('#shuffled');
+    //     const unshuffled = document.querySelector('#unshuffled');
 
-        if (width <= 425) {
-            if (btn.innerHTML == 'Show') {
-                if (unshuffled.classList.contains('hidden'))
-                    unshuffled.classList.remove('hidden');
+    //     if (width <= 425) {
+    //         if (btn.innerHTML == 'Show') {
+    //             if (unshuffled.classList.contains('hidden'))
+    //                 unshuffled.classList.remove('hidden');
 
-                if (!shuffled.classList.contains('hidden'))
-                    shuffled.classList.add('hidden');
+    //             if (!shuffled.classList.contains('hidden'))
+    //                 shuffled.classList.add('hidden');
 
-                btn.innerHTML = 'Hide';
-            }
-            else {
-                if (!unshuffled.classList.contains('hidden'))
-                    unshuffled.classList.add('hidden');
+    //             btn.innerHTML = 'Hide';
+    //         }
+    //         else {
+    //             if (!unshuffled.classList.contains('hidden'))
+    //                 unshuffled.classList.add('hidden');
 
-                if (shuffled.classList.contains('hidden'))
-                    shuffled.classList.remove('hidden');
-                btn.innerHTML = 'Show';
-            }
-        } else {
-            if (btn.innerHTML == 'Show Unshuffled') {
-                if (shuffled.classList.contains('hidden'))
-                    shuffled.classList.remove('hidden');
+    //             if (shuffled.classList.contains('hidden'))
+    //                 shuffled.classList.remove('hidden');
+    //             btn.innerHTML = 'Show';
+    //         }
+    //     } else {
+    //         if (btn.innerHTML == 'Show Unshuffled') {
+    //             if (shuffled.classList.contains('hidden'))
+    //                 shuffled.classList.remove('hidden');
 
-                if (unshuffled.classList.contains('hidden'))
-                    unshuffled.classList.remove('hidden');
+    //             if (unshuffled.classList.contains('hidden'))
+    //                 unshuffled.classList.remove('hidden');
 
-                btn.innerHTML = 'Hide Unshuffled';
-            }
-            else {
-                if (!unshuffled.classList.contains('hidden'))
-                    unshuffled.classList.add('hidden');
+    //             btn.innerHTML = 'Hide Unshuffled';
+    //         }
+    //         else {
+    //             if (!unshuffled.classList.contains('hidden'))
+    //                 unshuffled.classList.add('hidden');
 
-                btn.innerHTML = 'Show Unshuffled';
-            }
-        }
+    //             btn.innerHTML = 'Show Unshuffled';
+    //         }
+    //     }
 
-    }
+    // }
 
     //#region Public Members
 
-    public requestSearch() {
+    public requestSearch(): void {
         sessionStorage.clear();
         this.search();
     }
@@ -115,16 +116,16 @@ export class ResultComponent implements OnInit, OnDestroy {
     public search(): void {
         //moves to top of the page
         window.scrollTo(0, 0);
-        const btn = document.querySelector('#resBtn .mat-button-wrapper');
-        const shuffled = document.querySelector('#shuffled');
-        const unshuffled = document.querySelector('#unshuffled');
+        // const btn = document.querySelector('#resBtn .mat-button-wrapper');
+        // const shuffled = document.querySelector('#shuffled');
+        // const unshuffled = document.querySelector('#unshuffled');
 
-        if (!unshuffled.classList.contains('hidden') && btn.innerHTML == 'Hide Unshuffled') {
-            if (shuffled.classList.contains('hidden'))
-                shuffled.classList.remove('hidden');
-            unshuffled.classList.add('hidden');
-            btn.innerHTML = 'Show Unshuffled';
-        }
+        // if (!unshuffled.classList.contains('hidden') && btn.innerHTML == 'Hide Unshuffled') {
+        //     if (shuffled.classList.contains('hidden'))
+        //         shuffled.classList.remove('hidden');
+        //     unshuffled.classList.add('hidden');
+        //     btn.innerHTML = 'Show Unshuffled';
+        // }
         if (this.text === "") this.text = "never gonna give you up - rick astley";
 
         if (sessionStorage.cache) {
@@ -150,14 +151,11 @@ export class ResultComponent implements OnInit, OnDestroy {
                 "https://bingsearchapi.azurewebsites.net/shmoogleShuffle/" + this.text
             )
             .subscribe(
-                (response) => {
+                (response: any) => {
+                    console.log(response);
                     this.results = response[1];
                     this.unshuffled = response[0];
                     this.counter = this.results.length;
-
-                    //this.results = response;
-                    //this.unshuffled = response;
-                    //this.counter = response.length;
 
                     this.loadingAnimation = false;
 
