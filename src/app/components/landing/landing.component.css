@@ -221,6 +221,9 @@ footer {
   font-weight: 300;
 }
 
+.para{
+  margin-top:30px;
+}
 .send {
   border: none;
   border-radius: 5px;
