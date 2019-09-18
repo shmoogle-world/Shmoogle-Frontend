@@ -211,5 +211,9 @@ export class ResultComponent implements OnInit, OnDestroy {
             btn.innerHTML = "Shuffled";
     }
 
+    private toggle(): void{
+        this.shuffled = !this.shuffled;
+    }
+
     //#endregion
 }

@@ -17,7 +17,13 @@
       <div class="bar"></div>
     </div>
   </div>
-  <button id="shuffleBtn" mat-button *ngIf="mobile" (click)="shuffled = !shuffled">Swap</button>
+  <!-- <button id="shuffleBtn" mat-button *ngIf="mobile" (click)="shuffled = !shuffled">Swap</button> -->
+  <div id="shuffleBtn">
+    <label class="switch" *ngIf="mobile">
+      <input type="checkbox" (click)="toggle()">
+      <span class="slider round"></span>
+    </label>
+  </div>
 </div>
 <main>
   <div class="counter">

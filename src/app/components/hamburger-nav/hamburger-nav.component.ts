@@ -13,15 +13,23 @@ export class HamburgerNavComponent implements OnInit {
     ngOnInit() {
     }
 
-    public blog(): void {
-        window.location.href = 'http://shmoogle.world/blog/sample-page/';
-    }
-
     public whatIs(): void {
         window.location.href = 'http://shmoogle.world/blog/what-is-shmoogle/';
     }
 
     public goodFor(): void {
-        window.location.href = 'http://shmoogle.world/blog/what-is-shmoogle#whatisitgoodfor';
+        window.location.href = 'http://shmoogle.world/blog/what-is-it-good-for/';
+    }
+
+    public howWork(): void {
+        window.location.href = 'http://shmoogle.world/blog/how-does-it-work/';
+    }
+
+    public shmoogleStory(): void {
+        window.location.href = 'http://shmoogle.world/blog/the-shmoogle-story/';
+    }
+
+    public aboutUs(): void {
+        window.location.href = 'http://shmoogle.world/blog/about-us/';
     }
 }
