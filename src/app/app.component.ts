@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CookieService } from "ngx-cookie-service";
-
+import { Location } from '@angular/common';
 
 declare var $;
 
@@ -14,9 +14,12 @@ export class AppComponent implements OnInit {
   //ng build --prod --base-href /public_html  --deploy-url /shmoogleV3/
   public cookieValue = 'UNKNOWN';
 
-  constructor(public cookieService: CookieService) {}
+  constructor(public cookieService: CookieService) { }
 
   ngOnInit() {
+      if (location.protocol === 'http:') {
+        window.location.href = location.href.replace('http', 'https');
+      }
   }
 
 }
