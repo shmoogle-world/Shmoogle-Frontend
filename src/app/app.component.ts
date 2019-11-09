@@ -17,9 +17,6 @@ export class AppComponent implements OnInit {
   constructor(public cookieService: CookieService) { }
 
   ngOnInit() {
-      if (location.protocol === 'http:') {
-        window.location.href = location.href.replace('http', 'https');
-      }
   }
 
 }
