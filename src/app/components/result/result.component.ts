@@ -75,7 +75,7 @@ export class ResultComponent implements OnInit, OnDestroy {
         if (sessionStorage.cache) {
             if (sessionStorage.search) {
                 if (this.text == sessionStorage.search) {
-                    let storage = sessionStorage.getItem("cache");
+                    let storage = sessionStorage.getItem("cache_res");
                     let unshuff = sessionStorage.getItem("cache_unshuf");
                     this.results = JSON.parse(storage);
                     this.unshuffled = JSON.parse(unshuff);
@@ -92,10 +92,11 @@ export class ResultComponent implements OnInit, OnDestroy {
         const initTime = new Date().getTime();
         this.httpservice
             .get(
-                "https://bingsearchapi.azurewebsites.net/shmoogleShuffle/" + this.text
+                "https://bingsearchapiv1.azurewebsites.net/api/search/" + this.text +"?key=1251abfa-efe5-4225-a074-1f7897fb0054"
             )
             .subscribe(
                 (response: any) => {
+                    console.log(response);
                     this.results = response[1];
                     this.unshuffled = response[0];
                     this.counter = this.results.length;
