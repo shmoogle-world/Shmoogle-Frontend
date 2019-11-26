@@ -50,7 +50,6 @@ export class ResultComponent implements OnInit, OnDestroy {
             this.text = "Never Gonna Give You Up";
         }
         this.mobile = this.detectmob();
-        console.log(this.mobile);
         this.search();
     }
 
@@ -92,11 +91,10 @@ export class ResultComponent implements OnInit, OnDestroy {
         const initTime = new Date().getTime();
         this.httpservice
             .get(
-                "https://shmoogle.azurewebsites.net/api/search/" + this.text +"?key=1251abfa-efe5-4225-a074-1f7897fb0054"
+                "https://shmoogle.azurewebsites.net/api/search/" + this.text +"?key=e172c104-b919-42be-abad-dea7a2affdeb"
             )
             .subscribe(
                 (response: any) => {
-                    console.log(response);
                     this.results = response[1];
                     this.unshuffled = response[0];
                     this.counter = this.results.length;
@@ -181,7 +179,6 @@ export class ResultComponent implements OnInit, OnDestroy {
      * detects if we are in mobile view or not
      */
     private detectmob() {
-        console.log(window.innerWidth);
         if (window.innerWidth <= 540) {
             return true;
         } else {
