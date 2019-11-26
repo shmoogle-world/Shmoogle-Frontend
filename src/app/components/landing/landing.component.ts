@@ -141,9 +141,8 @@ export class LandingComponent implements OnInit {
             this.EmailModel.email = this.email;
             //send to backend
             this.httpservice
-                .post(
-                    "https://bingsearchapi.azurewebsites.net/shmoogleAddUser",
-                    request
+                .get(
+                    "https://shmoogle.azurewebsites.net/api/maillist/"+this.email+"?key=e172c104-b919-42be-abad-dea7a2affdeb"
                 )
                 .subscribe(
                     res => {
