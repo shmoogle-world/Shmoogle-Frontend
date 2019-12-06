@@ -143,7 +143,7 @@ export class LandingComponent implements OnInit {
             //send to backend
             this.httpservice
                 .get(
-                    "https://shmoogle.azurewebsites.net/api/maillist/"+this.email+"?key=e172c104-b919-42be-abad-dea7a2affdeb"
+                    "https://shmoogle.azurewebsites.net/api/maillist/"+this.email+"?key=1251abfa-efe5-4225-a074-1f7897fb0054"
                 )
                 .subscribe(
                     res => {
