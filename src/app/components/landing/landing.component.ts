@@ -20,6 +20,7 @@ import { formatDate } from "@angular/common";
     templateUrl: "./landing.component.html",
     styleUrls: ["./landing.component.css"]
 })
+
 export class LandingComponent implements OnInit {
     //#region Public Members
     @Input() numberResult: number = 3434;
@@ -85,7 +86,7 @@ export class LandingComponent implements OnInit {
             if a woodchuck could chuck wood?";
             sessionStorage.setItem("search", text2);
         }
-        sessionStorage.removeItem('cache');
+        sessionStorage.removeItem('cache_res');
         sessionStorage.removeItem('cache_unshuf');
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
         this.navservice.navigateByUrl("results");

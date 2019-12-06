@@ -31,8 +31,8 @@ export class ResultComponent implements OnInit, OnDestroy {
     public counter: number = 0;
     public loadingAnimation: boolean = false;
     public elapsed: number;
-    private mobile: boolean;
-    private shuffled: boolean = true;
+    public mobile: boolean;
+    public shuffled: boolean = true;
     //#endregion
 
     //#region Constructor & Lifecycle Hooks
@@ -70,8 +70,8 @@ export class ResultComponent implements OnInit, OnDestroy {
     public search(): void {
         window.scrollTo(0, 0);
         if (this.text === "") this.text = "never gonna give you up - rick astley";
-
-        if (sessionStorage.cache) {
+        console.log(sessionStorage.cache_res);
+        if (sessionStorage.cache_res) {
             if (sessionStorage.search) {
                 if (this.text == sessionStorage.search) {
                     let storage = sessionStorage.getItem("cache_res");
@@ -97,8 +97,8 @@ export class ResultComponent implements OnInit, OnDestroy {
                 (response: any) => {
                     this.results = response[1];
                     this.unshuffled = response[0];
+                    this.decode();
                     this.counter = this.results.length;
-
                     this.loadingAnimation = false;
 
                     sessionStorage.setItem("search", this.text);
@@ -110,7 +110,6 @@ export class ResultComponent implements OnInit, OnDestroy {
                     this.elapsed = parseFloat(time.toPrecision(3));
                     sessionStorage.setItem("elapsed", time.toPrecision(3));
 
-                    this.decode();
                 },
                 error => {
                     console.log(error);
