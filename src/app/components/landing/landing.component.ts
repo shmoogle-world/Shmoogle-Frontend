@@ -30,6 +30,7 @@ export class LandingComponent implements OnInit {
     public afterMail: boolean;
     public EmailModel: EmailModel = new EmailModel();
     public loadingAnimation: boolean = false;
+    private apiKey:string = 'e172c104-b919-42be-abad-dea7a2affdeb';
     //#endregion
 
     @LocalStorage()
@@ -143,7 +144,7 @@ export class LandingComponent implements OnInit {
             //send to backend
             this.httpservice
                 .get(
-                    "https://shmoogle.azurewebsites.net/api/maillist/"+this.email+"?key=e172c104-b919-42be-abad-dea7a2affdeb"
+                    `https://shmoogle.azurewebsites.net/api/maillist/${this.email}?key=${this.apiKey}`
                 )
                 .subscribe(
                     res => {

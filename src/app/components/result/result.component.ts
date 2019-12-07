@@ -33,6 +33,9 @@ export class ResultComponent implements OnInit, OnDestroy {
     public elapsed: number;
     public mobile: boolean;
     public shuffled: boolean = true;
+    public noResults: boolean = false;
+    private apiKey:string = 'e172c104-b919-42be-abad-dea7a2affdeb';
+    public data:boolean = false;
     //#endregion
 
     //#region Constructor & Lifecycle Hooks
@@ -47,7 +50,7 @@ export class ResultComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         if (!(this.text = sessionStorage.search)) {
-            this.text = "Never Gonna Give You Up";
+            this.navservice.navigateByUrl("/")
         }
         this.mobile = this.detectmob();
         this.search();
@@ -68,8 +71,11 @@ export class ResultComponent implements OnInit, OnDestroy {
      * Searches in bing motor
      */
     public search(): void {
+        this.data = false;
+        this.noResults = false;
+        
         window.scrollTo(0, 0);
-        if (this.text === "") this.text = "never gonna give you up - rick astley";
+        if (this.text === "") this.navservice.navigateByUrl("/");
         console.log(sessionStorage.cache_res);
         if (sessionStorage.cache_res) {
             if (sessionStorage.search) {
@@ -80,6 +86,7 @@ export class ResultComponent implements OnInit, OnDestroy {
                     this.unshuffled = JSON.parse(unshuff);
                     this.counter = this.results.length;
                     this.elapsed = parseFloat(sessionStorage.getItem("elapsed"));
+                    this.data = true;
                     return;
                 }
             }
@@ -91,10 +98,16 @@ export class ResultComponent implements OnInit, OnDestroy {
         const initTime = new Date().getTime();
         this.httpservice
             .get(
-                "https://shmoogle.azurewebsites.net/api/search/" + this.text +"?key=e172c104-b919-42be-abad-dea7a2affdeb"
+                `https://shmoogle.azurewebsites.net/api/search/${this.text}?key=${this.apiKey}`
             )
             .subscribe(
                 (response: any) => {
+                    if(response[0].error){
+                        this.noResults = true;
+                        this.loadingAnimation = false;
+                        sessionStorage.clear();
+                        return;
+                    }
                     this.results = response[1];
                     this.unshuffled = response[0];
                     this.decode();
@@ -109,7 +122,7 @@ export class ResultComponent implements OnInit, OnDestroy {
                     let time = (new Date().getTime() - initTime) / 1000;
                     this.elapsed = parseFloat(time.toPrecision(3));
                     sessionStorage.setItem("elapsed", time.toPrecision(3));
-
+                    this.data = true;
                 },
                 error => {
                     console.log(error);
