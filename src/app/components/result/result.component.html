@@ -17,7 +17,6 @@
       <div class="bar"></div>
     </div>
   </div>
-  <!-- <button id="shuffleBtn" mat-button *ngIf="mobile" (click)="shuffled = !shuffled">Swap</button> -->
   <div id="shuffleBtn">
     <label class="switch" *ngIf="mobile">
       <input type="checkbox" (click)="toggle()">
@@ -25,36 +24,42 @@
     </label>
   </div>
 </div>
-<main>
-  <div class="counter">
-    Showing {{ counter }} results ({{ elapsed }} seconds)
-  </div>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-xs-6" *ngIf="shuffled">
-        <div class="results-container">
-          <div class="result-div" *ngFor="let res of results; let i = index">
-            <div class="original-position">
-              Position: {{ res.originalResultIndex + 1 }}
+<main *ngIf="!noResults; else noResultsContainer">
+  <ng-container *ngIf="data">
+    <div class="counter">
+      Showing {{ counter }} results ({{ elapsed }} seconds)
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xs-6" *ngIf="shuffled">
+          <div class="results-container">
+            <div class="result-div" *ngFor="let res of results; let i = index">
+              <div class="original-position">
+                Position: {{ res.originalResultIndex + 1 }}
+              </div>
+              <a href="{{ res.url }}" class="title">{{ res.name }}</a>
+              <a href="{{ res.url }}" class="url">{{ res.url }}</a>
+              <div class="content">{{ res.snippet }}</div>
             </div>
-            <a href="{{ res.url }}" class="title">{{ res.name }}</a>
-            <a href="{{ res.url }}" class="url">{{ res.url }}</a>
-            <div class="content">{{ res.snippet }}</div>
           </div>
         </div>
-      </div>
-      <div class="col-xs-6" *ngIf="(mobile && !shuffled) || (!mobile)">
-        <div class="results-container">
-          <div class="result-div" *ngFor="let res of unshuffled; let i = index">
-            <div class="original-position">
-              Original Position: {{ res.originalResultIndex + 1 }}
+        <div class="col-xs-6" *ngIf="(mobile && !shuffled) || (!mobile)">
+          <div class="results-container">
+            <div class="result-div" *ngFor="let res of unshuffled; let i = index">
+              <div class="original-position">
+                Original Position: {{ res.originalResultIndex + 1 }}
+              </div>
+              <a href="{{ res.url }}" class="title">{{ res.name }}</a>
+              <a href="{{ res.url }}" class="url">{{ res.url }}</a>
+              <div class="content">{{ res.snippet }}</div>
             </div>
-            <a href="{{ res.url }}" class="title">{{ res.name }}</a>
-            <a href="{{ res.url }}" class="url">{{ res.url }}</a>
-            <div class="content">{{ res.snippet }}</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 </main>
+
+<ng-template #noResultsContainer>
+  <p class="errMessage">There are no search results for this query!</p>
+</ng-template>
