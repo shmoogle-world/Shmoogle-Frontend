@@ -19,6 +19,23 @@
   background: #555;
 }
 
+.counter {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: rgb(128, 128, 128);
+    margin-left: 6vw;
+}
+
+
+.envelop {
+    display: flex;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-bottom: 1px #eee solid;
+    height: 12vh;
+}
+
 @media only screen and (max-width: 426px) {
   #resBtn {
     font-size: 0.8rem;

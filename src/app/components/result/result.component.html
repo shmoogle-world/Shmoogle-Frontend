@@ -1,5 +1,10 @@
 <div class="envelop" #stickyMenu [class.sticky]="sticky">
-    <app-text-results></app-text-results>
+    <app-search-bar 
+        (onSearch)="onSearch($event);" 
+        [searchText]="searchText"
+        [loadingAnimation]="loadingAnimation"
+    ></app-search-bar>
+    
 </div>
 <main>
   

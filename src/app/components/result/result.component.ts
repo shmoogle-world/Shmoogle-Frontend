@@ -83,6 +83,10 @@ export class ResultComponent implements OnInit {
 
     //#endregion 
     
+    public onSearch(text) {
+        this.searchText = text;
+        this.sendSearchQuery();
+    }
     //#region Public Members
     
     public sendSearchQuery(): void {
@@ -136,7 +140,7 @@ export class ResultComponent implements OnInit {
         this.loadingAnimation = false;
         this.noResults = true;
     }
-    
+
     public setParam(key, value) {
         const params = new URLSearchParams(location.search);
         params.set(key, value);

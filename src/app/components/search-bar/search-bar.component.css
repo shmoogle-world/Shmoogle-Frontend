@@ -1,4 +1,12 @@
-
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    flex: 1;
+    padding-top: 19px;
+    padding-left: 1.5rem;
+}
+  
 /*Slider*/
 
 /* The switch - the box around the slider */
@@ -28,7 +36,7 @@
   
   .load-bar {
     position: relative;
-    width: 401px;
+    width: inherit;
     height: 2px;
     bottom: 2px;
     background-color: #ffcb04;
@@ -80,38 +88,17 @@
   }
   
   /* Search Bar nav menu */
-  
-  .envelop {
-    display: flex;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    border-bottom: 1px #eee solid;
-    height: 12vh;
-  }
-  
-  .small-logo {
+.small-logo {
     width: 52px;
-    height: 32px;
-  }
+    object-fit: contain;
+    height: 100%;
+}
   
-  .div-1 {
+.div-1 {
     cursor: pointer;
     cursor: pointer;
-    padding-right: 1.5rem;
-    padding-top: 2rem;
-    padding-left: 1.5rem;
-  }
-  
-  .div-2 {
-    align-items: center;
-    display: flex;
-  }
-  
-  .div-3 {
-    margin-left: 40px;
-    padding-top: 9px;
-  }
-  
+    width: 52px;
+} 
   .logo {
     width: 260px;
     height: 70px;
@@ -119,7 +106,6 @@
   
   .input {
     width: 442px;
-    margin-top: 19px;
     height: 52px;
     border-left: none;
     border-right: none;
@@ -141,18 +127,14 @@
   
   .search-icon {
     width: 18px;
-    height: 23px;
-    position: relative;
-    top: 40px;
-    right: 18px;
-    margin-left: 25px;
+
     cursor: pointer;
   }
   
   .input-div {
     display: flex;
     flex-direction: row;
-    width: 442px;
+    width: 401px;
     margin-left: 18px;
   }
   
@@ -182,14 +164,7 @@
     background-color: #ffffffbd;
     size: 50%;
   }
-  .counter {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      font-size: 13px;
-      color: rgb(128, 128, 128);
-      margin-left: 6vw;
-    }
-  
+ 
   /* Media Queries */
   
   @media only screen and (max-width: 765px) {

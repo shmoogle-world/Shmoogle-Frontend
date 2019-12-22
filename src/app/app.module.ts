@@ -55,7 +55,7 @@ const appRoutes: Routes = [
     NgxWebstorageModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: false}//, useHash: true  }
+      { enableTracing: true}//, useHash: true  }
       // <-- debugging purposes only
     ),
     Ng4LoadingSpinnerModule.forRoot()
