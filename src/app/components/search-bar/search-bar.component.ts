@@ -2,9 +2,9 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-search-bar',
-  templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css']
+    selector: 'app-search-bar',
+    templateUrl: './search-bar.component.html',
+    styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
     @Output() public onSearch: EventEmitter<any> = new EventEmitter();
@@ -12,7 +12,7 @@ export class SearchBarComponent implements OnInit {
     @Input() public searchText: string = '';
     @Input() public loadingAnimation: boolean;
     @Input() public showShuffleSlider: boolean = false;
-    constructor(public navservice: Router,) { }
+    constructor(public navservice: Router, ) { }
 
     public ngOnInit() {
     }

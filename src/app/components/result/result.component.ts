@@ -41,7 +41,7 @@ export class ResultComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        
+
         this.isMobile = this.checkIsMobile();
         this.route.queryParams.subscribe(params => {
             this.searchText = params['q'];
@@ -58,8 +58,8 @@ export class ResultComponent implements OnInit {
     //#region Caching
 
     public validCacheExists(): boolean {
-        return sessionStorage.cache_res && 
-            sessionStorage.search && 
+        return sessionStorage.cache_res &&
+            sessionStorage.search &&
             this.searchText == sessionStorage.search;
     }
 
@@ -71,7 +71,7 @@ export class ResultComponent implements OnInit {
         this.resultCount = this.shuffledSearchResults.length;
         this.elapsedSearchTime = parseFloat(sessionStorage.getItem("elapsed"));
     }
-    
+
     public setCache(initialSearchTime) {
         sessionStorage.setItem("search", this.searchText);
         sessionStorage.setItem("cache_res", JSON.stringify(this.shuffledSearchResults));
@@ -82,7 +82,7 @@ export class ResultComponent implements OnInit {
     }
 
     //#endregion 
-    
+
     public onSearch(text) {
         this.searchText = text;
         this.sendSearchQuery();
@@ -93,14 +93,14 @@ export class ResultComponent implements OnInit {
         this.showShuffled = event;
     }
     //#region Public Members
-    
+
     public sendSearchQuery(): void {
         this.noResults = false;
         window.scrollTo(0, 0);
-        
+
         if (this.searchText === "") this.navservice.navigateByUrl("/");
-        
-        if(this.validCacheExists()) {
+
+        if (this.validCacheExists()) {
             this.getCache();
             return;
         }
@@ -126,7 +126,7 @@ export class ResultComponent implements OnInit {
     }
 
     private handleSearchResponse(initialSearchTime: Date, response: any) {
-        if(response[0].error){
+        if (response[0].error) {
             this.noResultsReceived();
             sessionStorage.clear();
             return;
@@ -134,7 +134,7 @@ export class ResultComponent implements OnInit {
         this.shuffledSearchResults = response[1];
         this.unshuffledSearchResults = response[0];
         this.resultCount = this.shuffledSearchResults.length;
-        
+
         this.decodeSearchResults();
         this.setCache(initialSearchTime);
         console.log(response);
@@ -149,9 +149,9 @@ export class ResultComponent implements OnInit {
     public setParam(key, value) {
         const params = new URLSearchParams(location.search);
         params.set(key, value);
-        let url = location.protocol + 
-            '//' + location.host + 
-            location.pathname + "?" + 
+        let url = location.protocol +
+            '//' + location.host +
+            location.pathname + "?" +
             params.toString();
         window.history.replaceState("Shmoogle", "Shmoogle", url);
     }
