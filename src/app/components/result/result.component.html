@@ -1,8 +1,10 @@
 <div class="envelop" #stickyMenu [class.sticky]="sticky">
     <app-search-bar 
-        (onSearch)="onSearch($event);" 
+        (onSearch)="onSearch($event);"
+        (onShuffleToggle)="onShuffleToggle($event);"
         [searchText]="searchText"
         [loadingAnimation]="loadingAnimation"
+        [showShuffleSlider]="isMobile"
     ></app-search-bar>
     
 </div>

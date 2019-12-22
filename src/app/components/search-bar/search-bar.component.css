@@ -3,12 +3,14 @@
     flex-direction: row;
     flex-basis: 100%;
     flex: 1;
-    padding-top: 19px;
     padding-left: 1.5rem;
 }
   
 /*Slider*/
-
+.slider {
+    padding-left: 20px;
+    margin: auto 0;
+}
 /* The switch - the box around the slider */
 .switch {
     position: relative;

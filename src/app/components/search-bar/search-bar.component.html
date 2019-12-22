@@ -18,16 +18,17 @@
             <div class="bar"></div>
         </div>
     </div>
-        <img class="search-icon" 
-            src="/assets/search.svg" 
-            (click)="search()"
-            (keyup.enter)="search()"
-            tabindex="0"
-        />
-        <div id="shuffleBtn"
-            *ngIf="isMobile"    
-        >
-            <mat-slide-toggle></mat-slide-toggle>
-        </div>
-
+    <img class="search-icon" 
+        src="/assets/search.svg" 
+        (click)="search()"
+        (keyup.enter)="search()"
+        tabindex="0"
+    />
+    <mat-slide-toggle 
+        class="slider" 
+        *ngIf="showShuffleSlider" 
+        (change)="onShuffleToggled($event)"
+        [checked]="true"
+    ></mat-slide-toggle>
+    
 </div>

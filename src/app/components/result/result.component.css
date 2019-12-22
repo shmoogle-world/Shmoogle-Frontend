@@ -30,10 +30,9 @@
 
 .envelop {
     display: flex;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+    padding-top: 5rem;
+    padding-bottom: 6rem;
     border-bottom: 1px #eee solid;
-    height: 12vh;
 }
 
 @media only screen and (max-width: 426px) {
@@ -47,6 +46,11 @@
     height: 100%;
     width: 150%;
     overflow: auto;
+  }
+  
+  .envelop {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
   }
 
   .search-icon{

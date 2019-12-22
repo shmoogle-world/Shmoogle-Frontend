@@ -87,6 +87,11 @@ export class ResultComponent implements OnInit {
         this.searchText = text;
         this.sendSearchQuery();
     }
+
+    public onShuffleToggle(event) {
+        console.log(event);
+        this.showShuffled = event;
+    }
     //#region Public Members
     
     public sendSearchQuery(): void {
