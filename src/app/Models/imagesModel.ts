@@ -1,16 +1,16 @@
 export class ImageModel{
-    public name: String;
-    public thumbnailUrl: String;
+    public name: string;
+    public thumbnailUrl: string;
     public datePublished: Date;
     public isFamilyFriendly: boolean;
-    public contentUrl: String;
-    public hostPageUrl: String;
-    public encodingFormat: String;
-    public hostPageDisplayUrl: String;
+    public contentUrl: string;
+    public hostPageUrl: string;
+    public encodingFormat: string;
+    public hostPageDisplayUrl: string;
     public width: number;
     public height: number;
-    public hostPageFavIconUrl: String;
-    public hostPageDomainFriendlyName: String;
+    public hostPageFavIconUrl: string;
+    public hostPageDomainFriendlyName: string;
     public thumbnail: any;
     public accentColor: any;
     public originalResultIndex: number;

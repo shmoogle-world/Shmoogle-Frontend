@@ -25,6 +25,7 @@ import { ImageResultsComponent } from './components/image-results/image-results.
 const appRoutes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'results', component:  ResultComponent },
+  { path: 'images/results', component:  ImageResultsComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: '**', component: LandingComponent }
 ];
