@@ -136,6 +136,7 @@ export class ResultComponent implements OnInit {
         this.loadingAnimation = false;
         this.noResults = true;
     }
+    
     public setParam(key, value) {
         const params = new URLSearchParams(location.search);
         params.set(key, value);

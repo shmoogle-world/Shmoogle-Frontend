@@ -13,21 +13,20 @@ import { MatDialogModule } from "@angular/material";
 import { ErrorDialogBoxComponent } from './components/error-dialog-box/error-dialog-box.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import { AboutUsComponent } from './components/about-us/about-us.component';
 import { HamburgerNavComponent } from './components/hamburger-nav/hamburger-nav.component';
-import { MatMenuModule, MatButtonModule } from '@angular/material';
+import { MatMenuModule, MatButtonModule, MatSlideToggleModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ImageResultsComponent } from './components/image-results/image-results.component';
 import { TextResultsComponent } from './components/text-results/text-results.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 const appRoutes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'results', component:  ResultComponent },
   { path: 'images/results', component:  ImageResultsComponent },
-  { path: 'aboutus', component: AboutUsComponent },
   { path: '**', component: LandingComponent }
 ];
 
@@ -38,10 +37,10 @@ const appRoutes: Routes = [
     LandingComponent,
     ResultComponent,
     ErrorDialogBoxComponent,
-    AboutUsComponent,
     HamburgerNavComponent,
     ImageResultsComponent,
     TextResultsComponent,
+    SearchBarComponent,
     ],
   imports: [
     BrowserModule,
@@ -52,6 +51,7 @@ const appRoutes: Routes = [
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    MatSlideToggleModule,
     NgxWebstorageModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,

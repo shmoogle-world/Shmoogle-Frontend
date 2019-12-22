@@ -1,3 +1,10 @@
-<p>
-  text-results works!
-</p>
+<div class="results-container">
+    <div class="result-div" *ngFor="let res of data; let i = index">
+      <div class="original-position">
+        Position: {{ res.originalResultIndex + 1 }}
+      </div>
+      <a href="{{ res.url }}" class="title">{{ res.name }}</a>
+      <a href="{{ res.url }}" class="url">{{ res.url }}</a>
+      <div class="content">{{ res.snippet }}</div>
+    </div>
+  </div>
