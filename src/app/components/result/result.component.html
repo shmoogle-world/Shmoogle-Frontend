@@ -25,7 +25,8 @@
   </div>
 </div>
 <main>
-  <ng-container *ngIf="!noResults; else noResultsContainer">
+  <app-text-results></app-text-results>
+  <!-- <ng-container *ngIf="!noResults; else noResultsContainer">
     <div class="counter">
       Showing {{ resultCount }} results ({{ elapsedSearchTime }} seconds)
     </div>
@@ -61,5 +62,5 @@
   <ng-template #noResultsContainer>
     <p *ngIf="!wrongURL" class="errMessage">There are no search results for this query!</p>
     <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p>
-  </ng-template>
+  </ng-template> -->
 </main>

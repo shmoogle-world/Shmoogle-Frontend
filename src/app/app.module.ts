@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ImageResultsComponent } from './components/image-results/image-results.component';
+import { TextResultsComponent } from './components/text-results/text-results.component';
 
 
 const appRoutes: Routes = [
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
     AboutUsComponent,
     HamburgerNavComponent,
     ImageResultsComponent,
+    TextResultsComponent,
     ],
   imports: [
     BrowserModule,
