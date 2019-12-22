@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { ResultModel } from "../../Models/resultmodel";
 import { Router } from "@angular/router";
-import { ResultsServiceService } from "../../Services/results-service.service";
 import { GoogleAnalyticsEventsService } from "../../Services/analytics/analytic-sercice/analytic-sercice.component";
 import { MatDialog, MatDialogConfig, MatDialogRef } from "@angular/material";
 import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.component";

@@ -1,12 +1,10 @@
 import {
     Component,
     OnInit,
-    OnDestroy,
     ViewChild,
     ElementRef,
     HostListener
 } from "@angular/core";
-import { ResultModel } from "../../Models/resultmodel";
 import { HttpClient } from "@angular/common/http";
 import { GoogleAnalyticsEventsService } from "../../Services/analytics/analytic-sercice/analytic-sercice.component";
 import { Router } from "@angular/router";
@@ -18,10 +16,10 @@ import { GlobalsService } from '../../Services/globals.service';
     templateUrl: "./result.component.html",
     styleUrls: ["./result.component.css"]
 })
-export class ResultComponent implements OnInit, OnDestroy {
+export class ResultComponent implements OnInit {
     //#region Public Members
-    public shuffledSearchResults: ResultModel[];
-    public unshuffledSearchResults: ResultModel[];
+    public shuffledSearchResults: any;
+    public unshuffledSearchResults: any;
     public searchText: string;
     public resultCount: number = 0;
     public loadingAnimation: boolean = false;
@@ -54,8 +52,6 @@ export class ResultComponent implements OnInit, OnDestroy {
         this.sendSearchQuery();
     }
 
-    public ngOnDestroy(): void {
-    }
 
     //#endregion
 
@@ -132,7 +128,7 @@ export class ResultComponent implements OnInit, OnDestroy {
         
         this.decodeSearchResults();
         this.setCache(initialSearchTime);
-        
+        console.log(response);
         this.loadingAnimation = false;
     }
 
@@ -191,8 +187,8 @@ export class ResultComponent implements OnInit, OnDestroy {
     //need to figure out a better way of decoding the urls
     private decodeSearchResults(): void {
         for (let i = 0; i < this.shuffledSearchResults.length; ++i) {
-            let tmp1: ResultModel = this.shuffledSearchResults[i];
-            let tmp2: ResultModel = this.unshuffledSearchResults[i];
+            let tmp1 = this.shuffledSearchResults[i];
+            let tmp2 = this.unshuffledSearchResults[i];
 
             tmp1.url = decodeURI(tmp1.url);
             tmp2.url = decodeURI(tmp2.url);
