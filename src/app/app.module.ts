@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultComponent } from './components/result/result.component';
-import { ResultsServiceService } from './Services/results-service.service';
+import { GlobalsService } from './Services/globals.service';
 import { GoogleAnalyticsEventsService } from './Services/analytics/analytic-sercice/analytic-sercice.component';
 import { InsightsServiceComponent } from './Services/analytics/insights-service/insights-service.component';
 import { MatDialogModule } from "@angular/material";
@@ -53,13 +53,13 @@ const appRoutes: Routes = [
     NgxWebstorageModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true}//, useHash: true  }
+      { enableTracing: false}//, useHash: true  }
       // <-- debugging purposes only
     ),
     Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [
-    ResultsServiceService,
+    GlobalsService,
     GoogleAnalyticsEventsService,
     InsightsServiceComponent,
     CookieService

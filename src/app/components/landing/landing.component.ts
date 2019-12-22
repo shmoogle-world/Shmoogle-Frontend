@@ -11,9 +11,9 @@ import { $ } from "protractor";
 import { PlatformLocation } from "@angular/common";
 import { EmailModel } from "../../Models/EmailModel";
 import { AppComponent } from "../../app.component";
-import { compileBaseDefFromMetadata } from "@angular/compiler";
 import { LocalStorage, SessionStorage } from "ngx-webstorage";
 import { formatDate } from "@angular/common";
+import { GlobalsService } from '../../Services/globals.service';
 
 @Component({
     selector: "app-landing",
@@ -23,14 +23,12 @@ import { formatDate } from "@angular/common";
 
 export class LandingComponent implements OnInit {
     //#region Public Members
-    @Input() numberResult: number = 3434;
     public text: string = "";
     public email: string = "";
     public error: boolean;
     public afterMail: boolean;
     public EmailModel: EmailModel = new EmailModel();
     public loadingAnimation: boolean = false;
-    private apiKey:string = 'e172c104-b919-42be-abad-dea7a2affdeb';
     //#endregion
 
     @LocalStorage()
@@ -38,10 +36,10 @@ export class LandingComponent implements OnInit {
 
     //#region Constructor + LideCycle Hooks
     constructor(
+        private globals: GlobalsService,
         private comp: AppComponent,
         public httpservice: HttpClient,
         public navservice: Router,
-        public resultservice: ResultsServiceService,
         public analyticservice: GoogleAnalyticsEventsService,
         private dialog: MatDialog,
         private spinerservice: Ng4LoadingSpinnerService,
@@ -90,7 +88,7 @@ export class LandingComponent implements OnInit {
         sessionStorage.removeItem('cache_res');
         sessionStorage.removeItem('cache_unshuf');
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
-        this.navservice.navigateByUrl("results");
+        this.navservice.navigate([`/results`], { queryParams: {q: this.text }});
     }
 
     /**
@@ -137,14 +135,12 @@ export class LandingComponent implements OnInit {
             );
 
             this.loadingAnimation = true;
-            var request = {
-                email: this.email
-            };
+
             this.EmailModel.email = this.email;
             //send to backend
             this.httpservice
                 .get(
-                    `https://shmoogle.azurewebsites.net/api/maillist/${this.email}?key=${this.apiKey}`
+                    `${this.globals.baseUrl}/api/maillist/${this.email}?key=${this.globals.apiKey}`
                 )
                 .subscribe(
                     res => {

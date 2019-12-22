@@ -1,5 +1,5 @@
 <div class="envelop" #stickyMenu [class.sticky]="sticky">
-  <div class="div-1" (click)="returnHome()">
+  <div class="div-1" (click)="navservice.navigateByUrl('/');">
     <svg class="small-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="156"
       height="96" viewBox="0 0 52 32">
       <image id="Vector_Smart_Object" data-name="Vector Smart Object" width="52" height="32"
@@ -8,8 +8,8 @@
   </div>
   <div>
     <div class="input-div">
-      <input class="input" type="text" [(ngModel)]="text" (keyup)="CheckEnterKey($event)" />
-      <img class="search-icon" src="/assets/search.svg" (click)="requestSearch()" />
+      <input class="input" type="text" [(ngModel)]="searchText" (keyup.enter)="sendSearchQuery()"/>
+      <img class="search-icon" src="/assets/search.svg" (click)="sendSearchQuery()"/>
     </div>
     <div *ngIf="loadingAnimation" class="load-bar">
       <div class="bar"></div>
@@ -19,21 +19,21 @@
   </div>
   <div id="shuffleBtn">
     <label class="switch" *ngIf="mobile">
-      <input type="checkbox" (click)="toggle()">
+      <input type="checkbox" (click)="showShuffled = !showShuffled;">
       <span class="slider round"></span>
     </label>
   </div>
 </div>
-<main *ngIf="!noResults; else noResultsContainer">
-  <ng-container *ngIf="data">
+<main>
+  <ng-container *ngIf="!noResults; else noResultsContainer">
     <div class="counter">
-      Showing {{ counter }} results ({{ elapsed }} seconds)
+      Showing {{ resultCount }} results ({{ elapsedSearchTime }} seconds)
     </div>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-xs-6" *ngIf="shuffled">
+        <div class="col-xs-6" *ngIf="showShuffled">
           <div class="results-container">
-            <div class="result-div" *ngFor="let res of results; let i = index">
+            <div class="result-div" *ngFor="let res of shuffledSearchResults; let i = index">
               <div class="original-position">
                 Position: {{ res.originalResultIndex + 1 }}
               </div>
@@ -43,9 +43,9 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6" *ngIf="(mobile && !shuffled) || (!mobile)">
+        <div class="col-xs-6" *ngIf="(isMobile && !showShuffled) || (!isMobile)">
           <div class="results-container">
-            <div class="result-div" *ngFor="let res of unshuffled; let i = index">
+            <div class="result-div" *ngFor="let res of unshuffledSearchResults; let i = index">
               <div class="original-position">
                 Original Position: {{ res.originalResultIndex + 1 }}
               </div>
@@ -58,8 +58,8 @@
       </div>
     </div>
   </ng-container>
+  <ng-template #noResultsContainer>
+    <p *ngIf="!wrongURL" class="errMessage">There are no search results for this query!</p>
+    <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p>
+  </ng-template>
 </main>
-
-<ng-template #noResultsContainer>
-  <p class="errMessage">There are no search results for this query!</p>
-</ng-template>
