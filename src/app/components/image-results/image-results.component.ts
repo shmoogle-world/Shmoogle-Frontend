@@ -1,5 +1,5 @@
 import {
-    Component,
+    Component, Input,OnInit
 } from "@angular/core";
 import { ResultComponent } from "../result/result.component";
 
@@ -8,6 +8,10 @@ import { ResultComponent } from "../result/result.component";
     templateUrl: './image-results.component.html',
     styleUrls: ['./image-results.component.css']
 })
-export class ImageResultsComponent extends ResultComponent {
-    public endpointPath: string = "search/images/";
+export class ImageResultsComponent implements OnInit {
+    @Input() data: string;
+    constructor() { }
+
+    ngOnInit() {
+    }
 }

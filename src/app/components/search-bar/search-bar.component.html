@@ -7,13 +7,19 @@
         </svg>
     </div>
     <div>
+        <button (click)="imagesSearch = false; toggle();">Text</button>
+        <button (click)="imagesSearch = true; toggle();">images</button>
+    </div>
+    <div>
         <div class="input-div">
             <input class="input" type="text" [(ngModel)]="searchText" (keyup.enter)="search()" />
-        </div>
-        <div *ngIf="loadingAnimation" class="load-bar">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+            <div class="animation-wrapper">
+                <div *ngIf="!loadingAnimation" class="load-bar">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
         </div>
     </div>
     <img class="search-icon" src="/assets/search.svg" (click)="search()" (keyup.enter)="search()" tabindex="0" />

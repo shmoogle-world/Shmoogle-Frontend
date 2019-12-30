@@ -3,7 +3,8 @@ import {
     OnInit,
     ViewChild,
     ElementRef,
-    HostListener
+    HostListener,
+    Input
 } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { GoogleAnalyticsEventsService } from "../../Services/analytics/analytic-sercice/analytic-sercice.component";
@@ -29,6 +30,8 @@ export class ResultComponent implements OnInit {
     public noResults: boolean = false;
     public wrongURL: boolean = false;
     public endpointPath: string = "search/";
+    public imagesSearch: boolean = false;
+    private type: string = 'text';
     //#endregion
 
     //#region Constructor & Lifecycle Hooks
@@ -60,12 +63,13 @@ export class ResultComponent implements OnInit {
     public validCacheExists(): boolean {
         return sessionStorage.cache_res &&
             sessionStorage.search &&
-            this.searchText == sessionStorage.search;
+            this.searchText == sessionStorage.search && sessionStorage.type == this.type;
     }
 
     public getCache(): void {
         let storage = sessionStorage.getItem("cache_res");
         let unshuff = sessionStorage.getItem("cache_unshuf");
+        this.type = sessionStorage.getItem("type");
         this.shuffledSearchResults = JSON.parse(storage);
         this.unshuffledSearchResults = JSON.parse(unshuff);
         this.resultCount = this.shuffledSearchResults.length;
@@ -73,6 +77,7 @@ export class ResultComponent implements OnInit {
     }
 
     public setCache(initialSearchTime) {
+        sessionStorage.setItem("type", this.type);
         sessionStorage.setItem("search", this.searchText);
         sessionStorage.setItem("cache_res", JSON.stringify(this.shuffledSearchResults));
         sessionStorage.setItem("cache_unshuf", JSON.stringify(this.unshuffledSearchResults));
@@ -89,22 +94,27 @@ export class ResultComponent implements OnInit {
     }
 
     public onShuffleToggle(event) {
-        console.log(event);
         this.showShuffled = event;
+    }
+
+    public toggleType(event) {
+        this.type = event.type;
+        this.imagesSearch = event.value;
+        this.endpointPath = event.endpointPath;
+        this.searchText = event.text;
+        this.sendSearchQuery();
     }
     //#region Public Members
 
     public sendSearchQuery(): void {
         this.noResults = false;
         window.scrollTo(0, 0);
-
         if (this.searchText === "") this.navservice.navigateByUrl("/");
 
         if (this.validCacheExists()) {
             this.getCache();
             return;
         }
-
         this.setParam("q", this.searchText);
 
         this.loadingAnimation = true;
@@ -137,7 +147,6 @@ export class ResultComponent implements OnInit {
 
         this.decodeSearchResults();
         this.setCache(initialSearchTime);
-        console.log(response);
         this.loadingAnimation = false;
     }
 

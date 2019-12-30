@@ -1,27 +1,45 @@
 <div class="envelop" #stickyMenu [class.sticky]="sticky">
-    <app-search-bar (onSearch)="onSearch($event);" (onShuffleToggle)="onShuffleToggle($event);"
-        [searchText]="searchText" [loadingAnimation]="loadingAnimation" [showShuffleSlider]="isMobile"></app-search-bar>
+    <app-search-bar 
+        (onSearch)="onSearch($event);"
+        (onShuffleToggle)="onShuffleToggle($event);"
+        (toggleType)="toggleType($event)"
+        [searchText]="searchText"
+        [loadingAnimation]="loadingAnimation"
+        [showShuffleSlider]="isMobile"
+    ></app-search-bar>
 </div>
 <main>
-    <ng-container *ngIf="!noResults; else noResultsContainer">
-        <div class="counter">
-            Showing {{ resultCount }} results ({{ elapsedSearchTime }} seconds)
-        </div>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xs-6" *ngIf="showShuffled">
-                    <app-text-results [data]="shuffledSearchResults"></app-text-results>
-                </div>
-                <div class="col-xs-6" *ngIf="(isMobile && !showShuffled) || (!isMobile)">
-                    <div class="results-container">
-                        <app-text-results [data]="unshuffledSearchResults"></app-text-results>
-                    </div>
-                </div>
+  <ng-container *ngIf="!noResults; else noResultsContainer">
+    <div class="counter">
+      Showing {{ resultCount }} results ({{ elapsedSearchTime }} seconds)
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xs-6" *ngIf="showShuffled">
+          <ng-container *ngIf="!imagesSearch; else imagesContainerShuff">
+            <div class="results-container">
+              <app-text-results [data]="shuffledSearchResults"></app-text-results>
             </div>
+          </ng-container>
+          <ng-template #imagesContainerShuff>
+              <app-image-results [data]="shuffledSearchResults"></app-image-results>
+          </ng-template>
         </div>
-    </ng-container>
-    <ng-template #noResultsContainer>
-        <p *ngIf="!wrongURL" class="errMessage">There are no search results for this query!</p>
-        <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p>
-    </ng-template>
-</main>
+        <div class="col-xs-6" *ngIf="(isMobile && !showShuffled) || (!isMobile)">
+          <ng-container *ngIf="!imagesSearch; else imagesContainerUnShuff">
+            <div class="results-container">
+              <app-text-results [data]="unshuffledSearchResults"></app-text-results>
+            </div>
+          </ng-container>
+          <ng-template #imagesContainerUnShuff>
+            <app-image-results [data]="unshuffledSearchResults"></app-image-results>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noResultsContainer>
+    <p *ngIf="!wrongURL" class="errMessage">There are no search results for this query!</p>
+    <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p>
+  </ng-template>
+</main >
