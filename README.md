@@ -3,6 +3,6 @@
   
 # Whats Next ?
 - [x] Shmoogle split view
-- [] Shmoogle Images
-- [] Shmoogle Video
-- [] Shmoogle Boards
+- [ ] Shmoogle Images
+- [ ] Shmoogle Video
+- [ ] Shmoogle Boards
