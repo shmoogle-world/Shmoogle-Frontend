@@ -26,11 +26,11 @@
           </ng-template>
         </div>
         <div class="col-xs-6" *ngIf="(isMobile && !showShuffled) || (!isMobile)">
-          <ng-container *ngIf="!imagesSearch; else imagesContainerUnShuff">
+          <!-- <ng-container *ngIf="!imagesSearch; else imagesContainerUnShuff">
             <div class="results-container">
               <app-text-results [data]="unshuffledSearchResults"></app-text-results>
             </div>
-          </ng-container>
+          </ng-container> -->
           <ng-template #imagesContainerUnShuff>
             <app-image-results [data]="unshuffledSearchResults"></app-image-results>
           </ng-template>
