@@ -1,7 +1,7 @@
 /* Scrollbar design*/
 /* width */
 ::-webkit-scrollbar {
-    width: 9px;
+    width: 10px;
   }
   
   /* Track */
@@ -247,11 +247,11 @@
   
   /* Results containers */
   
-  .results-container {
-    width: 88%;
+  /* .results-container {
+    width: 100%;
     height: 85vh;
     overflow: scroll;
-  }
+  } */
   
   .counter {
     margin-top: 20px;
@@ -292,7 +292,7 @@
   }
   
   .result-div {
-    margin-top: 30px;
+    margin-top: 0px;
     font-family: Arial, sans-serif;
   }
   
@@ -339,3 +339,23 @@
     margin-top: 2vh;
     margin-left: 5vw;
   }
+
+  .box {
+    padding: 0 5px 0 5px;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
