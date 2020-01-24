@@ -1,6 +1,8 @@
 #hamburgerBtn {
   margin-right: 15px;
-  left: 80vw;
+  position: absolute;
+  right: 1vw;
+  top: 2vh;
 }
 
 .line {

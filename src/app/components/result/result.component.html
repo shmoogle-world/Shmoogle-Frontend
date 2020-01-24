@@ -1,5 +1,5 @@
 <div class="envelop" #stickyMenu [class.sticky]="sticky">
-  <div class="div-1" (click)="returnHome()">
+  <div class="div-1" [routerLink]="['/']">
     <svg class="small-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="156"
       height="96" viewBox="0 0 52 32">
       <image id="Vector_Smart_Object" data-name="Vector Smart Object" width="52" height="32"
@@ -8,8 +8,8 @@
   </div>
   <div>
     <div class="input-div">
-      <input class="input" type="text" [(ngModel)]="text" (keyup)="CheckEnterKey($event)" />
-      <img class="search-icon" src="/assets/search.svg" (click)="requestSearch()" />
+      <input class="input" type="text" [(ngModel)]="text" (keyup.enter)="requestSearch()" />
+      <img class="search-icon" src="/assets/search.svg" (keyup.enter)="requestSearch()" (click)="requestSearch()" />
     </div>
     <div *ngIf="loadingAnimation" class="load-bar">
       <div class="bar"></div>
