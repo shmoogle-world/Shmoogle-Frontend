@@ -18,6 +18,7 @@ import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import { LandingComponent } from "../landing/landing.component";
 import { decode } from '@angular/router/src/url_tree';
 
+
 @Component({
     selector: "app-result",
     templateUrl: "./result.component.html",
@@ -73,7 +74,6 @@ export class ResultComponent implements OnInit, OnDestroy {
     public search(): void {
         this.data = false;
         this.noResults = false;
-        
         window.scrollTo(0, 0);
         if (this.text === "") this.navservice.navigateByUrl("/");
         console.log(sessionStorage.cache_res);
@@ -87,6 +87,7 @@ export class ResultComponent implements OnInit, OnDestroy {
                     this.counter = this.results.length;
                     this.elapsed = parseFloat(sessionStorage.getItem("elapsed"));
                     this.data = true;
+                    
                     return;
                 }
             }
