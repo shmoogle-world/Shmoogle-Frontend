@@ -1,18 +1,11 @@
-import { Component, OnInit, Input, OnDestroy } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { ResultModel } from "../../Models/resultmodel";
 import { Router } from "@angular/router";
 import { ResultsServiceService } from "../../Services/results-service.service";
 import { GoogleAnalyticsEventsService } from "../../Services/analytics/analytic-sercice/analytic-sercice.component";
-import { MatDialog, MatDialogConfig, MatDialogRef } from "@angular/material";
+import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.component";
-import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
-import { $ } from "protractor";
-import { PlatformLocation } from "@angular/common";
-import { EmailModel } from "../../Models/EmailModel";
 import { AppComponent } from "../../app.component";
-import { compileBaseDefFromMetadata } from "@angular/compiler";
-import { LocalStorage, SessionStorage } from "ngx-webstorage";
 import { formatDate } from "@angular/common";
 
 @Component({
@@ -28,13 +21,12 @@ export class LandingComponent implements OnInit {
     public email: string = "";
     public error: boolean;
     public afterMail: boolean;
-    public EmailModel: EmailModel = new EmailModel();
     public loadingAnimation: boolean = false;
     private apiKey:string = 'e172c104-b919-42be-abad-dea7a2affdeb';
     //#endregion
 
-    @LocalStorage()
-    public boundValue;
+    // @LocalStorage()
+    // public boundValue;
 
     //#region Constructor + LideCycle Hooks
     constructor(
@@ -44,12 +36,7 @@ export class LandingComponent implements OnInit {
         public resultservice: ResultsServiceService,
         public analyticservice: GoogleAnalyticsEventsService,
         private dialog: MatDialog,
-        private spinerservice: Ng4LoadingSpinnerService,
-        private location: PlatformLocation
     ) {
-        location.onPopState(() => {
-            //console.log("pressed back!");
-        });
     }
 
     public ngOnInit(): void {
@@ -62,7 +49,6 @@ export class LandingComponent implements OnInit {
                 formatDate(new Date(), "dd-mm-yyyy---h-MM-ss", "en-US")
             );
         }
-
         if (this.comp.cookieService.get("Subscribed").includes("NewVisitor")) {
             setTimeout(() => {
                 var element = document.getElementById("footer");
@@ -137,10 +123,7 @@ export class LandingComponent implements OnInit {
             );
 
             this.loadingAnimation = true;
-            var request = {
-                email: this.email
-            };
-            this.EmailModel.email = this.email;
+            
             //send to backend
             this.httpservice
                 .get(
@@ -148,7 +131,6 @@ export class LandingComponent implements OnInit {
                 )
                 .subscribe(
                     res => {
-                        //console.log("email " + this.EmailModel);
                         this.afterMail = true;
                         this.loadingAnimation = false;
                         setTimeout(() => {
@@ -182,12 +164,6 @@ export class LandingComponent implements OnInit {
         if (this.error) this.error = false;
     }
 
-    /**
-     * Opens About us page
-     */
-    public MoveToAboutUS(): void {
-        this.navservice.navigateByUrl("aboutus");
-    }
     //#endregion
 
     //#region Private Methods - then why was it public ?
