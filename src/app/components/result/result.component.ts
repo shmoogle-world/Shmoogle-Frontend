@@ -14,8 +14,6 @@ import { Router } from "@angular/router";
 import { MatDialogConfig, MatDialog } from "@angular/material";
 import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.component";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
-import { LandingComponent } from "../landing/landing.component";
-import { decode } from '@angular/router/src/url_tree';
 import { shuffle } from 'lodash';
 
 @Component({
@@ -133,7 +131,7 @@ export class ResultComponent implements OnInit {
                 }
             );
     }
-    
+
     /**
      * Opens the error dialog box
      */
