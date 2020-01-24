@@ -2,7 +2,6 @@ import {
     Component,
     OnInit,
     Input,
-    OnDestroy,
     ViewChild,
     ElementRef,
     HostListener
@@ -17,14 +16,14 @@ import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.co
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import { LandingComponent } from "../landing/landing.component";
 import { decode } from '@angular/router/src/url_tree';
-
+import { shuffle } from 'lodash';
 
 @Component({
     selector: "app-result",
     templateUrl: "./result.component.html",
     styleUrls: ["./result.component.css"]
 })
-export class ResultComponent implements OnInit, OnDestroy {
+export class ResultComponent implements OnInit {
     //#region Public Members
     @Input() results: ResultModel[];
     @Input() unshuffled: ResultModel[];
@@ -35,7 +34,7 @@ export class ResultComponent implements OnInit, OnDestroy {
     public mobile: boolean;
     public shuffled: boolean = true;
     public noResults: boolean = false;
-    private apiKey:string = 'e172c104-b919-42be-abad-dea7a2affdeb';
+    private apiKey: string = 'c467fa56-5c12-4ff8-8e32-38ca6e903ea1';
     public data:boolean = false;
     //#endregion
 
@@ -56,18 +55,30 @@ export class ResultComponent implements OnInit, OnDestroy {
         this.mobile = this.detectmob();
         this.search();
     }
-
-    public ngOnDestroy(): void {
-    }
-
     //#endregion
 
     //#region Public Members
 
     public requestSearch(): void {
-        sessionStorage.clear();
-        this.search();
+        if(this.cacheIsValid(this.text)) {
+            this.results = shuffle(this.results);
+            sessionStorage.setItem("cache_res", JSON.stringify(this.results));
+        } else {
+            this.search();
+        }
     }
+
+    /**
+     * Checks if the current search request already exists in the cache.
+     * 
+     * @param searchTerm lookup term
+     */
+    private cacheIsValid(searchTerm: string): boolean {
+        return sessionStorage.cache_res &&
+            sessionStorage.search && 
+            searchTerm == sessionStorage.search;
+    } 
+
     /*
      * Searches in bing motor
      */
@@ -76,23 +87,15 @@ export class ResultComponent implements OnInit, OnDestroy {
         this.noResults = false;
         window.scrollTo(0, 0);
         if (this.text === "") this.navservice.navigateByUrl("/");
-        console.log(sessionStorage.cache_res);
-        if (sessionStorage.cache_res) {
-            if (sessionStorage.search) {
-                if (this.text == sessionStorage.search) {
-                    let storage = sessionStorage.getItem("cache_res");
-                    let unshuff = sessionStorage.getItem("cache_unshuf");
-                    this.results = JSON.parse(storage);
-                    this.unshuffled = JSON.parse(unshuff);
-                    this.counter = this.results.length;
-                    this.elapsed = parseFloat(sessionStorage.getItem("elapsed"));
-                    this.data = true;
-                    
-                    return;
-                }
-            }
+        if (this.cacheIsValid(this.text)) {
+            this.results = JSON.parse(sessionStorage.getItem("cache_res"));
+            this.unshuffled = JSON.parse(sessionStorage.getItem("cache_unshuf"));
+            this.counter = this.results.length;
+            this.elapsed = parseFloat(sessionStorage.getItem("elapsed"));
+            this.data = true;
+            return;
         }
-
+    
         this.loadingAnimation = true;
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
 
@@ -130,27 +133,7 @@ export class ResultComponent implements OnInit, OnDestroy {
                 }
             );
     }
-
-    /**
-     * Checks if the button enter was pressed
-     * @param e
-     */
-    public CheckEnterKey(e) {
-        if (e.keyCode == 13) {
-            this.search();
-        } else {
-            return;
-        }
-    }
-
-    /**
-     * Navigates to home page
-     */
-    public returnHome(): void {
-        //this.resultservice.landing = true;
-        this.navservice.navigateByUrl("/");
-    }
-
+    
     /**
      * Opens the error dialog box
      */

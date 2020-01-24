@@ -65,14 +65,9 @@ export class LandingComponent implements OnInit {
 
     //#region Public Methods
     public search(): void {
-        if (this.text !== "") {
-            sessionStorage.setItem("search", this.text);
-        } else {
-            let text2: string =
-                "How much wood would a woodchuck chuck\
-            if a woodchuck could chuck wood?";
-            sessionStorage.setItem("search", text2);
-        }
+        if (this.text === "") 
+            return;
+        sessionStorage.setItem("search", this.text);
         sessionStorage.removeItem('cache_res');
         sessionStorage.removeItem('cache_unshuf');
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
