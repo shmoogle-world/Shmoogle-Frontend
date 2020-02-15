@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +18,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 
 import { RouteModule } from './route.module';
-import { SearchResultsModule } from './components/search-results/search-results.module';
 
 @NgModule({
     declarations: [
