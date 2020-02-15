@@ -1,19 +1,19 @@
-<div class="col-xs-6" *ngIf="showShuffled">
+<div class="col-xs-6" *ngIf="(!isMobile && showShuffled)">
     <ng-container>
       <div class="results-container">
-        <app-text-list [data]="shuffledSearchResults"></app-text-list>
+        <app-text-list [data]="results.shuffled"></app-text-list>
       </div>
     </ng-container>
-  </div>
-  <div class="col-xs-6" *ngIf="(isMobile && !showShuffled)">
+</div>
+<div class="col-xs-6" *ngIf="(!isMobile && !showShuffled)">
     
     <ng-container>
       <div class="results-container">
-        <app-text-list [data]="unshuffledSearchResults"></app-text-list>
+        <app-text-list [data]="results.shuffled"></app-text-list>
       </div>
     </ng-container>
-  </div>
-
-<div class="results-container">
-    <app-text-row *ngFor="let index of data" [data]="index"></app-text-row>
 </div>
+
+<!-- <div class="results-container">
+    <app-text-row *ngFor="let index of data" [data]="index"></app-text-row>
+</div> -->

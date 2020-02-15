@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { SearchResultService } from '../search-result.service';
 
 @Component({
     selector: 'app-search-bar',
@@ -7,20 +8,35 @@ import { Router } from '@angular/router';
     styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-    @Output() public onSearch: EventEmitter<any> = new EventEmitter();
-    @Output() public onShuffleToggle: EventEmitter<any> = new EventEmitter();
-    @Output() public toggleType: EventEmitter<any> = new EventEmitter();
-    @Input() public searchText: string = '';
-    @Input() public loadingAnimation: boolean;
-    @Input() public showShuffleSlider: boolean = false;
+    
+    public searchText: string = '';
+    public loadingAnimation: boolean;
+    public showShuffleSlider: boolean = false;
     public imagesSearch: boolean = false;
-    constructor(public navservice: Router, ) { }
+    constructor(
+        public router: Router,
+        private route: ActivatedRoute,
+        private sRService: SearchResultService) { }
 
     public ngOnInit() {
+        this.sRService.isMobile = this.checkIsMobile();
+        this.route.queryParams.subscribe(params => {
+            this.sRService.searchText = params['q'];
+            if (this.sRService.searchText == undefined) {
+                this.router.navigateByUrl("/");
+            }
+        });
+        this.sRService.sendSearchQuery();
+        this.searchText = this.sRService.searchText;
     }
 
     public async toggle() {
-        let response = { value: this.imagesSearch, endpointPath: '', type: '', text: this.searchText };
+        let response = { 
+            value: this.imagesSearch, 
+            endpointPath: '', 
+            type: '', 
+            text: this.searchText 
+        };
         if (this.imagesSearch) {
             response.endpointPath = 'search/images/';
             response.type = 'img';
@@ -29,13 +45,24 @@ export class SearchBarComponent implements OnInit {
             response.type = 'text';
         }
 
-        this.toggleType.emit(response);
+        this.sRService.toggleType(response);
     }
 
     public search() {
-        this.onSearch.emit(this.searchText);    
+        this.sRService.onSearch(this.searchText);    
     }
     public onShuffleToggled(event) {
-        this.onShuffleToggle.emit(event.checked);
+        this.sRService.onShuffleToggle(event.checked);
+    }
+
+    /**
+     * detects if we are in mobile view or not
+     */
+    private checkIsMobile() {
+        if (window.innerWidth <= 540) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

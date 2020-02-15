@@ -1,15 +1,10 @@
 <div class="envelop" #stickyMenu [class.sticky]="sticky">
     <app-search-bar 
-        (onSearch)="onSearch($event);"
-        (onShuffleToggle)="onShuffleToggle($event);"
-        (toggleType)="toggleType($event)"
-        [searchText]="searchText"
-        [loadingAnimation]="loadingAnimation"
-        [showShuffleSlider]="isMobile"
     ></app-search-bar>
 </div>
 <main>
-  <ng-container *ngIf="!noResults; else noResultsContainer">
+    <router-outlet></router-outlet>
+  <!-- <ng-container *ngIf="!noResults; else noResultsContainer">
     <div class="counter">
       Showing {{ resultCount }} results ({{ elapsedSearchTime }} seconds)
     </div>
@@ -25,5 +20,5 @@
   <ng-template #noResultsContainer>
     <p *ngIf="!wrongURL" class="errMessage">There are no search results for this query!</p>
     <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p>
-  </ng-template>
+  </ng-template> -->
 </main >
