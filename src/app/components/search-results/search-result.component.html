@@ -2,11 +2,11 @@
     <app-search-bar 
     ></app-search-bar>
 </div>
-<main>
+<main *ngIf="!requestPending">
     <app-result-counter></app-result-counter>
-    <div class="container" *ngIf="!requestPending">
+    <div class="container" >
         <div class="row justify-content-center">
             <router-outlet></router-outlet>
         </div>
     </div>
-</main >
+</main>
