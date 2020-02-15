@@ -10,12 +10,11 @@ import { SearchResults } from './search-results.model';
 export class SearchResultService {
 
     public resultsChanged = new Subject<SearchResults>();
-    private results: SearchResults;
-
+    private results: SearchResults = new SearchResults();
+    public requestPendingChanged = new Subject<boolean>();
+    public requestPending: boolean = false;
     
     public searchText: string;
-    public resultCount: number = 0;
-    public loadingAnimation: boolean = false;
     public isMobile: boolean;
     public showShuffled: boolean = true;
     public noResults: boolean = false;
@@ -35,12 +34,16 @@ export class SearchResultService {
         this.resultsChanged.next(newResults);
     }
 
+    private set searchRequestPending(v: boolean) {
+        this.requestPending = true;
+        this.requestPendingChanged.next(v);
+    }
     
     public get searchResults() : SearchResults {
         return this.results;
     }
     
-        
+ 
     public validCacheExists(): boolean {
         return sessionStorage.chache_shuffled &&
             sessionStorage.search &&
@@ -56,7 +59,6 @@ export class SearchResultService {
             shuffled.length,
             parseFloat(sessionStorage.getItem("elapsed")),
         );
-        console.log("old cached results found", searchResults);
         this.searchResults = searchResults;
     }
 
@@ -99,8 +101,8 @@ export class SearchResultService {
         }
         this.setParam("q", this.searchText);
 
-        this.loadingAnimation = true;
-        
+        this.searchRequestPending = true;
+
         const initialSearchTime = new Date().getTime();
         this.http.get<[SearchResult[], SearchResult[]]>(
                 `${this.globals.baseUrl}/api/${this.endpointPath}${this.searchText}?key=${this.globals.apiKey}`
@@ -138,15 +140,14 @@ export class SearchResultService {
             response[0].length,
             time
         );
-        console.log("new search results", searchResults);
         this.setCache(searchResults);
         this.searchResults = searchResults;
-        this.loadingAnimation = false;
+        this.searchRequestPending = false;
     }
 
     public noResultsReceived() {
         this.searchResults = new SearchResults();
-        this.loadingAnimation = false;
+        this.searchRequestPending = false;
         this.noResults = true;
     }
 

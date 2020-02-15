@@ -1,6 +1,13 @@
-<div class="col-xs-6" *ngIf="showShuffled">
-    <app-text-list [data]="results.shuffled"></app-text-list>
-</div>
-<div class="col-xs-6" *ngIf="!(isMobile && !showShuffled)">   
-    <app-text-list [data]="results.unshuffled"></app-text-list>
-</div>
+<ng-container *ngIf="results.shuffled.length > 0; else noResults">
+
+    <div class="col-xs-6" *ngIf="showShuffled">
+        <app-text-list [data]="results.shuffled"></app-text-list>
+    </div>
+    <div class="col-xs-6" *ngIf="!(isMobile && !showShuffled)">   
+        <app-text-list [data]="results.unshuffled"></app-text-list>
+    </div>
+</ng-container>
+<ng-template #noResults>
+    <p class="errMessage">There are no search results for this query!</p>
+    <!-- <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p> -->
+</ng-template>

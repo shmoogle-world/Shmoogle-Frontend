@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class TextResultsComponent implements OnInit, OnDestroy {
     
-    public results: SearchResults = new SearchResults();
+    public results: SearchResults;
     public isMobile: boolean = false;
     public showShuffled: boolean = true;
     private subscription: Subscription;
@@ -19,7 +19,6 @@ export class TextResultsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.subscription = this.sRService.resultsChanged.subscribe(results => {
-            console.log("this happens, text result is made");
             this.results = results;
         });
         this.results = this.sRService.searchResults;

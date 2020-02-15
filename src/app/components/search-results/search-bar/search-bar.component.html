@@ -14,7 +14,7 @@
         <div class="input-div">
             <input class="input" type="text" [(ngModel)]="searchText" (keyup.enter)="search()" />
             <div class="animation-wrapper">
-                <div *ngIf="!loadingAnimation" class="load-bar">
+                <div *ngIf="requestPending" class="load-bar">
                     <div class="bar"></div>
                     <div class="bar"></div>
                     <div class="bar"></div>

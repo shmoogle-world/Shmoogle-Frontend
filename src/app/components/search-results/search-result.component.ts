@@ -6,6 +6,8 @@ import {
     HostListener
 } from "@angular/core";
 import { Router } from "@angular/router";
+import { Subscription } from 'rxjs';
+import { SearchResultService } from './search-result.service';
 
 @Component({
     selector: "app-result",
@@ -15,12 +17,21 @@ import { Router } from "@angular/router";
 })
 export class SearchResultComponent implements OnInit {
 
-    //#region Constructor & Lifecycle Hooks
+    public requestPending: boolean;
+
+    private pendingSubscription: Subscription;
+
     constructor(
         public router: Router,
+        private sRService: SearchResultService
     ) { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
+            this.requestPending = pending;
+        });
+        this.requestPending = this.sRService.requestPending;
+    }
 
 
     //#endregion

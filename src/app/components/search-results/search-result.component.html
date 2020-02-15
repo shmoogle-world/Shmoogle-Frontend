@@ -4,26 +4,9 @@
 </div>
 <main>
     <app-result-counter></app-result-counter>
-    <div class="container">
+    <div class="container" *ngIf="!requestPending">
         <div class="row justify-content-center">
             <router-outlet></router-outlet>
         </div>
     </div>
-  <!-- <ng-container *ngIf="!noResults; else noResultsContainer">
-    <div class="counter">
-      Showing {{ resultCount }} results ({{ elapsedSearchTime }} seconds)
-    </div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-xs-12" *ngIf="showShuffled && imagesSearch">
-          <app-image-results [data]="shuffledSearchResults"></app-image-results>
-        </div>
-        
-      </div>
-    </div>
-  </ng-container>
-  <ng-template #noResultsContainer>
-    <p *ngIf="!wrongURL" class="errMessage">There are no search results for this query!</p>
-    <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p>
-  </ng-template> -->
 </main >

@@ -1,16 +1,19 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SearchResultService } from '../search-result.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-search-bar',
     templateUrl: './search-bar.component.html',
     styleUrls: ['./search-bar.component.css']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent implements OnInit, OnDestroy {
     
     public searchText: string = '';
-    public loadingAnimation: boolean;
+    public requestPending: boolean;
+
+    private pendingSubscription: Subscription;
     public showShuffleSlider: boolean = false;
     public imagesSearch: boolean = false;
     constructor(
@@ -26,8 +29,17 @@ export class SearchBarComponent implements OnInit {
                 this.router.navigateByUrl("/");
             }
         });
+
+        this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
+            this.requestPending = pending;
+        });
+        this.requestPending = this.sRService.requestPending;
+
         this.sRService.sendSearchQuery();
         this.searchText = this.sRService.searchText;
+    }
+    ngOnDestroy() {
+        this.pendingSubscription.unsubscribe();
     }
 
     public async toggle() {

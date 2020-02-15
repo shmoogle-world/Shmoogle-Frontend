@@ -7,3 +7,9 @@
     color: rgb(128, 128, 128);
     margin-left: 6vw;
 }
+
+.errMessage{
+    font-size: 2rem;
+    margin-top: 2vh;
+    margin-left: 5vw;
+  }
