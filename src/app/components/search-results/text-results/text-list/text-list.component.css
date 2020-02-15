@@ -23,6 +23,7 @@
     width: 88%;
     height: 85vh;
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 /* Media Queries */
