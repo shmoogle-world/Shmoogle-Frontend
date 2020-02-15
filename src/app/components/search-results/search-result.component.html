@@ -18,6 +18,8 @@
         <div class="col-xs-12" *ngIf="showShuffled && imagesSearch">
           <app-image-results [data]="shuffledSearchResults"></app-image-results>
         </div>
+
+        
         <div class="col-xs-6" *ngIf="showShuffled && !imagesSearch">
           <ng-container *ngIf="!imagesSearch; else imagesContainerShuff">
             <div class="results-container">
@@ -26,15 +28,12 @@
           </ng-container>
         </div>
         <div class="col-xs-6" *ngIf="(isMobile && !showShuffled) || (!isMobile) || !imagesSearch">
+          
           <ng-container *ngIf="!imagesSearch; else imagesContainerUnShuff">
             <div class="results-container">
               <app-text-results [data]="unshuffledSearchResults"></app-text-results>
             </div>
           </ng-container>
-          <!-- DO WE NEED 2 SCREENS FOR IMAGE RESULTS?:::::::::::::::-->
-          <!-- <ng-template #imagesContainerUnShuff>
-            <app-image-results [data]="unshuffledSearchResults"></app-image-results>
-          </ng-template> -->
         </div>
       </div>
     </div>

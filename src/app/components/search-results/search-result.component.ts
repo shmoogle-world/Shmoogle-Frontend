@@ -14,10 +14,10 @@ import { GlobalsService } from '../../Services/globals.service';
 
 @Component({
     selector: "app-result",
-    templateUrl: "./result.component.html",
-    styleUrls: ["./result.component.css"]
+    templateUrl: "./search-result.component.html",
+    styleUrls: ["./search-result.component.css"]
 })
-export class ResultComponent implements OnInit {
+export class SearchResultComponent implements OnInit {
     //#region Public Members
     public shuffledSearchResults: any;
     public unshuffledSearchResults: any;

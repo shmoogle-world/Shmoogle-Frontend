@@ -86,7 +86,7 @@ export class LandingComponent implements OnInit {
         sessionStorage.removeItem('cache_res');
         sessionStorage.removeItem('cache_unshuf');
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
-        this.navservice.navigate([`/results`], { queryParams: {q: this.text }});
+        this.navservice.navigate([`/search`], { queryParams: {q: this.text }});
     }
 
     /**

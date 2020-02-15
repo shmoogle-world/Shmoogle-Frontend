@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ResultComponent } from './components/result/result.component';
 import { GlobalsService } from './Services/globals.service';
 import { GoogleAnalyticsEventsService } from './Services/analytics/analytic-sercice/analytic-sercice.component';
 import { InsightsServiceComponent } from './Services/analytics/insights-service/insights-service.component';
@@ -18,55 +17,39 @@ import { MatMenuModule, MatButtonModule, MatSlideToggleModule } from '@angular/m
 import { MatIconModule } from '@angular/material/icon';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
-import { ImageResultsComponent } from './components/image-results/image-results.component';
-import { TextResultsComponent } from './components/text-results/text-results.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
-
-const appRoutes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'results', component:  ResultComponent },
-  { path: 'images/results', component:  ImageResultsComponent },
-  { path: '**', component: LandingComponent }
-];
-
+import { RouteModule } from './route.module';
+import { SearchResultsModule } from './components/search-results/search-results.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LandingComponent,
-    ResultComponent,
-    ErrorDialogBoxComponent,
-    HamburgerNavComponent,
-    ImageResultsComponent,
-    TextResultsComponent,
-    SearchBarComponent,
+    declarations: [
+        AppComponent,
+        LandingComponent,
+        ErrorDialogBoxComponent,
+        HamburgerNavComponent,
     ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MatDialogModule,
-    HttpClientModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSlideToggleModule,
-    NgxWebstorageModule.forRoot(),
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true}//, useHash: true  }
-      // <-- debugging purposes only
-    ),
-    Ng4LoadingSpinnerModule.forRoot()
-  ],
-  providers: [
-    GlobalsService,
-    GoogleAnalyticsEventsService,
-    InsightsServiceComponent,
-    CookieService
-  ],
-  bootstrap: [AppComponent],
-  entryComponents: [ErrorDialogBoxComponent]
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatDialogModule,
+        HttpClientModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        MatSlideToggleModule,
+        NgxWebstorageModule.forRoot(),
+        Ng4LoadingSpinnerModule.forRoot(),
+        // SearchResultsModule,
+        RouteModule,
+    ],
+    providers: [
+        GlobalsService,
+        GoogleAnalyticsEventsService,
+        InsightsServiceComponent,
+        CookieService
+    ],
+    bootstrap: [AppComponent],
+    entryComponents: [ErrorDialogBoxComponent]
 })
 export class AppModule { }

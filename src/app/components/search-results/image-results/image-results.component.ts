@@ -1,7 +1,7 @@
 import {
     Component, Input,OnInit
 } from "@angular/core";
-import { ResultComponent } from "../result/result.component";
+import { SearchResultComponent } from "../search-result.component";
 
 @Component({
     selector: 'app-image-results',
