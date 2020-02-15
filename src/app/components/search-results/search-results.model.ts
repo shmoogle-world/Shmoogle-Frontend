@@ -5,8 +5,8 @@ export class SearchResults {
     constructor(
         private shuffledArr: SearchResult[] = [], 
         private unshuffledArr: SearchResult[] = [],
-        private elapsedSearchTime: number = 0,
         private resultCount: number = 0,
+        private elapsedSearchTime: number = 0,
         ) {}
     
     

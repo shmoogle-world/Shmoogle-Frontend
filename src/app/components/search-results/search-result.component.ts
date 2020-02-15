@@ -3,17 +3,15 @@ import {
     OnInit,
     ViewChild,
     ElementRef,
-    HostListener,
-    Input
+    HostListener
 } from "@angular/core";
 import { Router } from "@angular/router";
-import { ActivatedRoute } from '@angular/router';
-import { SearchResultService } from './search-result.service';
 
 @Component({
     selector: "app-result",
     templateUrl: "./search-result.component.html",
-    styleUrls: ["./search-result.component.css"]
+    styleUrls: ["./search-result.component.css"],
+
 })
 export class SearchResultComponent implements OnInit {
 

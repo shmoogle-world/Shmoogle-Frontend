@@ -30,10 +30,16 @@ export class SearchResultService {
 
    //#region Caching
         
-    public set searchResults(newResults : SearchResults) {
+    public set searchResults(newResults: SearchResults) {
         this.results = newResults;
-        this.resultsChanged.next(newResults)
+        this.resultsChanged.next(newResults);
     }
+
+    
+    public get searchResults() : SearchResults {
+        return this.results;
+    }
+    
         
     public validCacheExists(): boolean {
         return sessionStorage.chache_shuffled &&
@@ -50,6 +56,7 @@ export class SearchResultService {
             shuffled.length,
             parseFloat(sessionStorage.getItem("elapsed")),
         );
+        console.log("old cached results found", searchResults);
         this.searchResults = searchResults;
     }
 

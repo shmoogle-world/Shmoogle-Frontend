@@ -1,25 +1,22 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { SearchResultService } from '../search-result.service';
+import { Component, OnInit } from '@angular/core';
 import { SearchResults } from '../search-results.model';
+import { SearchResultService } from '../search-result.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-text-results',
-  templateUrl: './text-results.component.html',
-  styleUrls: ['./text-results.component.css']
+  selector: 'app-result-counter',
+  templateUrl: './result-counter.component.html',
+  styleUrls: ['./result-counter.component.css']
 })
-export class TextResultsComponent implements OnInit, OnDestroy {
-    
+export class ResultCounterComponent implements OnInit {
+
     public results: SearchResults = new SearchResults();
-    public isMobile: boolean = false;
-    public showShuffled: boolean = true;
     private subscription: Subscription;
 
     constructor(private sRService: SearchResultService) { }
 
     ngOnInit() {
         this.subscription = this.sRService.resultsChanged.subscribe(results => {
-            console.log("this happens, text result is made");
             this.results = results;
         });
         this.results = this.sRService.searchResults;
@@ -28,5 +25,4 @@ export class TextResultsComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
-
 }

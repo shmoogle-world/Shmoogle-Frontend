@@ -13,6 +13,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchResultService } from './search-result.service';
 import { TextItemComponent } from './text-results/text-list/text-row/text-item.component';
 import { TextListComponent } from './text-results/text-list/text-list.component';
+import { ResultCounterComponent } from './result-counter/result-counter.component';
 
 const featureRoutes: Routes = [
     { path: '', 
@@ -33,6 +34,7 @@ const featureRoutes: Routes = [
         TextListComponent,
         TextItemComponent,
         SearchBarComponent,
+        ResultCounterComponent,
     ],
     imports: [
         CommonModule,
