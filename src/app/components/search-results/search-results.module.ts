@@ -1,19 +1,22 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { RouterModule, Routes } from '@angular/router';
 
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'; 
-
-import { SearchResultComponent } from './search-result.component';
-import { ImageResultsComponent } from './image-results/image-results.component';
-import { TextResultsComponent } from './text-results/text-results.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-
-import { SearchResultService } from './search-result.service';
-import { TextItemComponent } from './text-results/text-list/text-row/text-item.component';
-import { TextListComponent } from './text-results/text-list/text-list.component';
 import { ResultCounterComponent } from './result-counter/result-counter.component';
+import { ImageResultsComponent } from './result-types/image-results/image-results.component';
+import { TextListComponent } from './result-types/text-results/text-list/text-list.component';
+import { TextItemComponent } from './result-types/text-results/text-list/text-row/text-item.component';
+import { TextResultsComponent } from './result-types/text-results/text-results.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SearchResultComponent } from './search-result.component';
+import { SearchResultService } from './search-result.service';
+
+
+
+
+
 
 const featureRoutes: Routes = [
     { path: '', 

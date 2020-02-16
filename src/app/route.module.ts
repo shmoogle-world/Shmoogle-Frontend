@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
-import { SearchResultComponent } from './components/search-results/search-result.component';
-import { ImageResultsComponent } from './components/search-results/image-results/image-results.component';
 
 const appRoutes: Routes = [
     { path: '', component: LandingComponent, pathMatch: 'full' },

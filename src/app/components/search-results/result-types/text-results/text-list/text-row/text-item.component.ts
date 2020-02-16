@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { SearchResult } from '../../../search-result.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { SearchResult } from './../../../../search-result.model';
 
 @Component({
   selector: 'app-text-row',

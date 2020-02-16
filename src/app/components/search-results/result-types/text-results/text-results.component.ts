@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { SearchResultService } from '../search-result.service';
-import { SearchResults } from '../search-results.model';
 import { Subscription } from 'rxjs';
+import { SearchResults } from '../../search-results.model';
+import { SearchResultService } from '../../search-result.service';
 
 @Component({
   selector: 'app-text-results',

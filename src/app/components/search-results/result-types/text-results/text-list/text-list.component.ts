@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SearchResult } from '../../search-result.model';
+import { SearchResult } from '../../../search-result.model';
 
 @Component({
   selector: 'app-text-list',
