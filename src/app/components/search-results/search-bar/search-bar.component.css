@@ -3,9 +3,32 @@
     flex-direction: row;
     flex-basis: 100%;
     flex: 1;
+    
+    align-items: center;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.pl-1 {
     padding-left: 1.5rem;
 }
-  
+.mr-1 {
+    margin-right: 15px;
+}
+
+/* Links */
+.links a {
+    color: #848484;
+    text-decoration: none;
+    padding-right: 7px;
+    font-size: 15px;
+    font-family: "Open Sans";
+    letter-spacing: 2px;
+}
+
+.links .active {
+    color: #d71947;
+}
 /*Slider*/
 .slider {
     padding-left: 20px;
@@ -118,10 +141,10 @@
     border-left: none;
     border-right: none;
     border-top: none;
-    font-size: 18px;
     height: 52px;
     border-bottom: 1px solid darkgrey;
     color: #212121;
+    font-size: 18px;
     font-family: "Open Sans";
     letter-spacing: 2px;
     padding-left: 5px;
@@ -143,7 +166,7 @@
     position: relative;
     flex-direction: row;
     width: 401px;
-    margin-left: 18px;
+    /* margin-left: 18px; */
   }
   
   .main-logo {
@@ -176,7 +199,14 @@
   /* Media Queries */
   
   @media only screen and (max-width: 765px) {
-  
+    .order-md-1 {
+        order: 1;
+        padding-top: 10px;
+    }
+    .order-md-2 {
+        order: 2;
+        padding-top: 10px;
+    }
     .input-div {
       width: 160px;
     }
