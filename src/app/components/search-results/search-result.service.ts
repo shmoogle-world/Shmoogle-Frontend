@@ -4,7 +4,7 @@ import { Router} from '@angular/router';
 import { GlobalsService } from '../../Services/globals.service';
 import { Subject } from 'rxjs';
 import { map} from 'rxjs/operators';
-import { SearchResult } from './search-result.model';
+import { TextResult } from './models/text-result.model';
 import { SearchResults } from './search-results.model';
 @Injectable()
 export class SearchResultService {
@@ -52,10 +52,10 @@ export class SearchResultService {
 
     public getCache(): void {
         this.type = sessionStorage.getItem("type");
-        const shuffled = <SearchResult[]> JSON.parse(sessionStorage.getItem("chache_shuffled"));
+        const shuffled = <TextResult[]> JSON.parse(sessionStorage.getItem("chache_shuffled"));
         const searchResults = new SearchResults(
             shuffled,
-            <SearchResult[]> JSON.parse(sessionStorage.getItem("chache_unshuffled")),
+            <TextResult[]> JSON.parse(sessionStorage.getItem("chache_unshuffled")),
             shuffled.length,
             parseFloat(sessionStorage.getItem("elapsed")),
         );
@@ -102,7 +102,7 @@ export class SearchResultService {
         this.searchRequestPending = true;
 
         const initialSearchTime = new Date().getTime();
-        this.http.get<[SearchResult[], SearchResult[]]>(
+        this.http.get<[TextResult[], TextResult[]]>(
                 `${this.globals.baseUrl}/api/${this.endpointPath}${this.searchText}?key=${this.globals.apiKey}`
             ).pipe(map(response => {
                 for (let i = 0; i < response[0].length; ++i) {
@@ -124,7 +124,7 @@ export class SearchResultService {
             );
     }
 
-    private handleSearchResponse(initialSearchTime: number, response: [SearchResult[], SearchResult[]]) {
+    private handleSearchResponse(initialSearchTime: number, response: [TextResult[], TextResult[]]) {
         //@ts-ignore
         if (response[0].error) {
             this.noResultsReceived();

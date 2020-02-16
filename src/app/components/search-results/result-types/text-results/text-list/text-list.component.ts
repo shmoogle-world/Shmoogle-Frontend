@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SearchResult } from '../../../search-result.model';
+import { TextResult } from '../../../models/text-result.model';
 
 @Component({
   selector: 'app-text-list',
@@ -8,7 +8,7 @@ import { SearchResult } from '../../../search-result.model';
 })
 export class TextListComponent implements OnInit {
 
-    @Input() data: SearchResult[];
+    @Input() data: TextResult[];
 
     constructor() { }
 

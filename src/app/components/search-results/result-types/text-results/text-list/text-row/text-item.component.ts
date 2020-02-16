@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SearchResult } from './../../../../search-result.model';
+import { TextResult } from '../../../../models/text-result.model';
 
 @Component({
   selector: 'app-text-row',
@@ -8,7 +8,7 @@ import { SearchResult } from './../../../../search-result.model';
 })
 export class TextItemComponent implements OnInit {
 
-    @Input() data: SearchResult;
+    @Input() data: TextResult;
 
     constructor() { }
 
