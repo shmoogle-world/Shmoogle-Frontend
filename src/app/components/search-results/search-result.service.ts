@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router} from '@angular/router';
 import { GlobalsService } from '../../Services/globals.service';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { map} from 'rxjs/operators';
 import { TextResult } from './models/text-result.model';
 import { SearchResults } from './search-results.model';
@@ -15,9 +15,10 @@ export class SearchResultService {
     public requestPendingChanged = new Subject<boolean>();
     public requestPending: boolean = false;
     
+    public showShuffled = new BehaviorSubject<boolean>(true);
+
     public searchText: string;
     readonly isMobile: boolean = window.innerWidth <= 540;
-    public showShuffled: boolean = true;
     public wrongURL: boolean = false;
     public endpointPath: string = "search/";
     private type: string = 'text';
@@ -79,7 +80,7 @@ export class SearchResultService {
     }
 
     public onShuffleToggle(event) {
-        this.showShuffled = event;
+        this.showShuffled.next(event);
     }
 
     public toggleType(event) {

@@ -15,6 +15,7 @@ export class TextResultsComponent implements OnInit, OnDestroy {
     public results: SearchResults;
     public isMobile: boolean = false;
     public showShuffled: boolean = true;
+    private showShuffledSubscription: Subscription;
     private subscription: Subscription;
 
     constructor(private sRService: SearchResultService) { }
@@ -31,6 +32,12 @@ export class TextResultsComponent implements OnInit, OnDestroy {
         this.requestPending = this.sRService.requestPending;
         this.toggle();
         this.isMobile = this.sRService.isMobile;
+
+        this.showShuffledSubscription = this.sRService.showShuffled
+        .subscribe((event: boolean) => {
+            console.log("this happens", event);
+            this.showShuffled = event;
+        });
     }
 
     public toggle() {

@@ -23,8 +23,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         private sRService: SearchResultService) { }
 
     public ngOnInit() {
-        const route = this.router.url.split('?')[0];
-        console.log(route);
+        this.showShuffleSlider = this.sRService.isMobile &&  this.router.url.split('?')[0] == '/search';
         this.router.events
             .pipe(filter(event => event instanceof NavigationStart))
             .subscribe((newRoute: NavigationStart) => {
@@ -40,7 +39,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
                 this.router.navigateByUrl("/");
             }
         });
-        
+
         this.searchText = this.sRService.searchText;
 
         this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
@@ -72,7 +71,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     }
 
     public search() {
-        this.sRService.onSearch(this.searchText);    
+        this.sRService.onSearch(this.searchText);
     }
     public onShuffleToggled(event) {
         this.sRService.onShuffleToggle(event.checked);

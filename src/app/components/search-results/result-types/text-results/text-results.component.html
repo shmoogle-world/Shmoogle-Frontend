@@ -4,7 +4,7 @@
         <div class="col-xs-6" *ngIf="showShuffled">
             <app-text-list [data]="results.shuffled"></app-text-list>
         </div>
-        <div class="col-xs-6" *ngIf="!(isMobile && !showShuffled)">   
+        <div class="col-xs-6" *ngIf="!(isMobile && showShuffled)">   
             <app-text-list [data]="results.unshuffled"></app-text-list>
         </div>
     </ng-container>
