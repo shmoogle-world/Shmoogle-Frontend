@@ -1,13 +1,9 @@
-import { Component, OnInit, Input, OnDestroy } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { GoogleAnalyticsEventsService } from "../../Services/analytics/analytic-sercice/analytic-sercice.component";
-import { MatDialog, MatDialogConfig, MatDialogRef } from "@angular/material";
+import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.component";
-import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
-import { $ } from "protractor";
-import { PlatformLocation } from "@angular/common";
-import { EmailModel } from "../../Models/EmailModel";
 import { AppComponent } from "../../app.component";
 import { LocalStorage, SessionStorage } from "ngx-webstorage";
 import { formatDate } from "@angular/common";
@@ -25,12 +21,11 @@ export class LandingComponent implements OnInit {
     public email: string = "";
     public error: boolean;
     public afterMail: boolean;
-    public EmailModel: EmailModel = new EmailModel();
     public loadingAnimation: boolean = false;
     //#endregion
 
-    @LocalStorage()
-    public boundValue;
+    // @LocalStorage()
+    // public boundValue;
 
     //#region Constructor + LideCycle Hooks
     constructor(
@@ -40,12 +35,7 @@ export class LandingComponent implements OnInit {
         public navservice: Router,
         public analyticservice: GoogleAnalyticsEventsService,
         private dialog: MatDialog,
-        private spinerservice: Ng4LoadingSpinnerService,
-        private location: PlatformLocation
     ) {
-        location.onPopState(() => {
-            //console.log("pressed back!");
-        });
     }
 
     public ngOnInit(): void {
@@ -58,7 +48,6 @@ export class LandingComponent implements OnInit {
                 formatDate(new Date(), "dd-mm-yyyy---h-MM-ss", "en-US")
             );
         }
-
         if (this.comp.cookieService.get("Subscribed").includes("NewVisitor")) {
             setTimeout(() => {
                 var element = document.getElementById("footer");
@@ -75,14 +64,9 @@ export class LandingComponent implements OnInit {
 
     //#region Public Methods
     public search(): void {
-        if (this.text !== "") {
-            sessionStorage.setItem("search", this.text);
-        } else {
-            let text2: string =
-                "How much wood would a woodchuck chuck\
-            if a woodchuck could chuck wood?";
-            sessionStorage.setItem("search", text2);
-        }
+        if (this.text === "") 
+            return;
+        sessionStorage.setItem("search", this.text);
         sessionStorage.removeItem('cache_res');
         sessionStorage.removeItem('cache_unshuf');
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
@@ -134,7 +118,7 @@ export class LandingComponent implements OnInit {
 
             this.loadingAnimation = true;
 
-            this.EmailModel.email = this.email;
+            // this.EmailModel.email = this.email;
             //send to backend
             this.httpservice
                 .get(
@@ -142,7 +126,6 @@ export class LandingComponent implements OnInit {
                 )
                 .subscribe(
                     res => {
-                        //console.log("email " + this.EmailModel);
                         this.afterMail = true;
                         this.loadingAnimation = false;
                         setTimeout(() => {
@@ -176,12 +159,6 @@ export class LandingComponent implements OnInit {
         if (this.error) this.error = false;
     }
 
-    /**
-     * Opens About us page
-     */
-    public MoveToAboutUS(): void {
-        this.navservice.navigateByUrl("aboutus");
-    }
     //#endregion
 
     //#region Private Methods - then why was it public ?
