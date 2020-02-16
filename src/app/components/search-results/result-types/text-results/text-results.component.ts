@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SearchResults } from '../../search-results.model';
 import { SearchResultService } from '../../search-result.service';
@@ -30,6 +30,7 @@ export class TextResultsComponent implements OnInit, OnDestroy {
         });
         this.requestPending = this.sRService.requestPending;
         this.toggle();
+        this.isMobile = this.sRService.isMobile;
     }
 
     public toggle() {

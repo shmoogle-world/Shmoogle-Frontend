@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SearchResultService } from '../search-result.service';
+import { map, filter } from 'rxjs/operators';
 
 @Component({
     selector: 'app-search-bar',
@@ -22,15 +23,24 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         private sRService: SearchResultService) { }
 
     public ngOnInit() {
-        this.sRService.isMobile = this.checkIsMobile();
+        const route = this.router.url.split('?')[0];
+        console.log(route);
+        this.router.events
+            .pipe(filter(event => event instanceof NavigationStart))
+            .subscribe((newRoute: NavigationStart) => {
+                this.showShuffleSlider = this.sRService.isMobile &&  newRoute.url.split('?')[0] == '/search';
+            })
+        
         this.route.queryParams.subscribe(params => {
+            
             const query = params['q'];
             this.sRService.searchText = query;
             this.searchText = query;
-            if (this.sRService.searchText == undefined) {
+            if (query == undefined) {
                 this.router.navigateByUrl("/");
             }
         });
+        
         this.searchText = this.sRService.searchText;
 
         this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
@@ -68,14 +78,4 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         this.sRService.onShuffleToggle(event.checked);
     }
 
-    /**
-     * detects if we are in mobile view or not
-     */
-    private checkIsMobile() {
-        if (window.innerWidth <= 540) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }

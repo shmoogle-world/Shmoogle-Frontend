@@ -16,9 +16,8 @@ export class SearchResultService {
     public requestPending: boolean = false;
     
     public searchText: string;
-    public isMobile: boolean;
+    readonly isMobile: boolean = window.innerWidth <= 540;
     public showShuffled: boolean = true;
-    public noResults: boolean = false;
     public wrongURL: boolean = false;
     public endpointPath: string = "search/";
     private type: string = 'text';
@@ -46,9 +45,9 @@ export class SearchResultService {
     
  
     public validCacheExists(): boolean {
-        return sessionStorage.chache_shuffled &&
-            sessionStorage.search &&
-            this.searchText == sessionStorage.search && sessionStorage.type == this.type;
+        return sessionStorage.getItem('chache_shuffled') &&
+            sessionStorage.getItem('search') &&
+            this.searchText == sessionStorage.getItem('search') && sessionStorage.getItem('type') == this.type;
     }
 
     public getCache(): void {
@@ -61,6 +60,7 @@ export class SearchResultService {
             parseFloat(sessionStorage.getItem("elapsed")),
         );
         this.searchResults = searchResults;
+        this.searchRequestPending = false;
     }
 
     public setCache(searchResults: SearchResults) {
@@ -90,18 +90,16 @@ export class SearchResultService {
     //#region Public Members
 
     public sendSearchQuery(): void {
-        this.noResults = false;
         window.scrollTo(0, 0);
         if (this.searchText === "") this.navservice.navigateByUrl("/");
-
         if (this.validCacheExists()) {
             this.getCache();
             return;
         }
         this.setParam("q", this.searchText);
-
+        
         this.searchRequestPending = true;
-
+        
         const initialSearchTime = new Date().getTime();
         this.http.get<[TextResult[] | ImageResult[], TextResult[] | ImageResult[]]>(
                 `${this.globals.baseUrl}/api/${this.endpointPath}${this.searchText}?key=${this.globals.apiKey}`
@@ -122,37 +120,28 @@ export class SearchResultService {
                 this.handleSearchResponse.bind(this, initialSearchTime),
                 error => {
                     console.log(error.error);
-                    this.noResultsReceived();
+                    this.searchResults = new SearchResults();
+                    this.searchRequestPending = false;
                     this.wrongURL = true;
                 }
             );
     }
 
     private handleSearchResponse(initialSearchTime: number, response: [(TextResult[] | ImageResult[]), (TextResult[] | ImageResult[])]) {
-        
-        //@ts-ignore
-        if (response[0].error) {
-            this.noResultsReceived();
-            sessionStorage.clear();
+        if(!response[0][0].hasOwnProperty("url") && this.type == 'text') {
             return;
         }
-
+        
+        
         const searchResults = new SearchResults(
             response[1],
             response[0],
             response[0].length,
             (new Date().getTime() - initialSearchTime) / 1000
         );
-
         this.setCache(searchResults);
         this.searchResults = searchResults;
         this.searchRequestPending = false;
-    }
-
-    public noResultsReceived() {
-        this.searchResults = new SearchResults();
-        this.searchRequestPending = false;
-        this.noResults = true;
     }
 
     public setParam(key, value) {
