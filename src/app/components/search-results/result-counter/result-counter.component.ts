@@ -9,7 +9,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./result-counter.component.css']
 })
 export class ResultCounterComponent implements OnInit {
-
+    public requestPending: boolean;
+    private pendingSubscription: Subscription;
+    
     public results: SearchResults = new SearchResults();
     private subscription: Subscription;
 
@@ -20,9 +22,15 @@ export class ResultCounterComponent implements OnInit {
             this.results = results;
         });
         this.results = this.sRService.searchResults;
+
+        this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
+            this.requestPending = pending;
+        });
+        this.requestPending = this.sRService.requestPending;
     }
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
+        this.pendingSubscription.unsubscribe();
     }
 }

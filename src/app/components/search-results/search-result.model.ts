@@ -10,5 +10,8 @@ export class SearchResult {
         public language: string,
         public isNavigational: boolean,
         public originalResultIndex: number,
+        public contentUrl: string | undefined,
+        public height: number | undefined,
+        public width: number | undefined,
     ) {}
 }

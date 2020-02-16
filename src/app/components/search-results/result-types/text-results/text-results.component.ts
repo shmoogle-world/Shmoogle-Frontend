@@ -9,7 +9,9 @@ import { SearchResultService } from '../../search-result.service';
   styleUrls: ['./text-results.component.css']
 })
 export class TextResultsComponent implements OnInit, OnDestroy {
-    
+    public requestPending: boolean;
+    private pendingSubscription: Subscription;
+
     public results: SearchResults;
     public isMobile: boolean = false;
     public showShuffled: boolean = true;
@@ -22,10 +24,24 @@ export class TextResultsComponent implements OnInit, OnDestroy {
             this.results = results;
         });
         this.results = this.sRService.searchResults;
+
+        this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
+            this.requestPending = pending;
+        });
+        this.requestPending = this.sRService.requestPending;
+        this.toggle();
+    }
+
+    public toggle() {
+        this.sRService.toggleType({    
+            endpointPath: 'search/', 
+            type: 'text',  
+        });
     }
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
+        this.pendingSubscription.unsubscribe();
     }
 
 }

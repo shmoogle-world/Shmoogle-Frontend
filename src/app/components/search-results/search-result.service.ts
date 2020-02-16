@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { GlobalsService } from '../../Services/globals.service';
 import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 import { SearchResult } from './search-result.model';
 import { SearchResults } from './search-results.model';
 @Injectable()
@@ -20,11 +20,11 @@ export class SearchResultService {
     public noResults: boolean = false;
     public wrongURL: boolean = false;
     public endpointPath: string = "search/";
-    public imagesSearch: boolean = false;
     private type: string = 'text';
     constructor(public http: HttpClient,
         private globals: GlobalsService,
-        public navservice: Router) {}
+        public navservice: Router,
+        ) { }
 
 
    //#region Caching
@@ -83,9 +83,7 @@ export class SearchResultService {
 
     public toggleType(event) {
         this.type = event.type;
-        this.imagesSearch = event.value;
         this.endpointPath = event.endpointPath;
-        this.searchText = event.text;
         this.sendSearchQuery();
     }
     //#region Public Members

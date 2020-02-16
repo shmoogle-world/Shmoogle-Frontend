@@ -3,11 +3,8 @@ import {
     OnInit,
     ViewChild,
     ElementRef,
-    HostListener
+    HostListener,
 } from "@angular/core";
-import { Router } from "@angular/router";
-import { Subscription } from 'rxjs';
-import { SearchResultService } from './search-result.service';
 
 @Component({
     selector: "app-result",
@@ -16,25 +13,8 @@ import { SearchResultService } from './search-result.service';
 
 })
 export class SearchResultComponent implements OnInit {
-
-    public requestPending: boolean;
-
-    private pendingSubscription: Subscription;
-
-    constructor(
-        public router: Router,
-        private sRService: SearchResultService
-    ) { }
-
-    ngOnInit() { 
-        this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
-            this.requestPending = pending;
-        });
-        this.requestPending = this.sRService.requestPending;
-    }
-
-
-    //#endregion
+    
+    ngOnInit() { }
 
     //#region Sticky Nav
 

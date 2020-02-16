@@ -14,10 +14,6 @@ import { SearchResultComponent } from './search-result.component';
 import { SearchResultService } from './search-result.service';
 
 
-
-
-
-
 const featureRoutes: Routes = [
     { path: '', 
         component:  SearchResultComponent, 

@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { SearchResultService } from '../search-result.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SearchResultService } from '../search-result.service';
 
 @Component({
     selector: 'app-search-bar',
@@ -24,19 +24,20 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     public ngOnInit() {
         this.sRService.isMobile = this.checkIsMobile();
         this.route.queryParams.subscribe(params => {
-            this.sRService.searchText = params['q'];
+            const query = params['q'];
+            this.sRService.searchText = query;
+            this.searchText = query;
             if (this.sRService.searchText == undefined) {
                 this.router.navigateByUrl("/");
             }
         });
+        this.searchText = this.sRService.searchText;
 
         this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
             this.requestPending = pending;
         });
         this.requestPending = this.sRService.requestPending;
 
-        this.sRService.sendSearchQuery();
-        this.searchText = this.sRService.searchText;
     }
     ngOnDestroy() {
         this.pendingSubscription.unsubscribe();

@@ -7,8 +7,16 @@
         </svg>
     </div>
     <div>
-        <button (click)="imagesSearch = false; toggle();">Text</button>
-        <button (click)="imagesSearch = true; toggle();">images</button>
+        <a 
+            [routerLink]="['/search/']"
+            queryParamsHandling="merge"
+            routerLinkActive="active" 
+            >Text</a>
+        <a 
+            [routerLink]="['/search/images']"
+            queryParamsHandling="merge"
+
+            >images</a>
     </div>
     <div>
         <div class="input-div">
