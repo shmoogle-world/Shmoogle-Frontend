@@ -24,18 +24,17 @@ export class TextResultsComponent implements OnInit, OnDestroy {
         this.subscription = this.sRService.resultsChanged.subscribe(results => {
             this.results = results;
         });
-        this.results = this.sRService.searchResults;
+        
 
         this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
             this.requestPending = pending;
         });
-        this.requestPending = this.sRService.requestPending;
+
         this.toggle();
         this.isMobile = this.sRService.isMobile;
 
         this.showShuffledSubscription = this.sRService.showShuffled
         .subscribe((event: boolean) => {
-            console.log("this happens", event);
             this.showShuffled = event;
         });
     }
@@ -50,6 +49,7 @@ export class TextResultsComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.subscription.unsubscribe();
         this.pendingSubscription.unsubscribe();
+        this.showShuffledSubscription.unsubscribe();
     }
 
 }

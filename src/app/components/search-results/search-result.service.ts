@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router} from '@angular/router';
 import { GlobalsService } from '../../Services/globals.service';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { map} from 'rxjs/operators';
 import { TextResult } from './models/text-result.model';
 import { SearchResults } from './search-results.model';
@@ -10,11 +10,8 @@ import { ImageResult } from './models/image-result.model';
 @Injectable()
 export class SearchResultService {
 
-    public resultsChanged = new Subject<SearchResults>();
-    private results: SearchResults = new SearchResults();
-    public requestPendingChanged = new Subject<boolean>();
-    public requestPending: boolean = false;
-    
+    public resultsChanged = new ReplaySubject<SearchResults>();
+    public requestPendingChanged = new ReplaySubject<boolean>();
     public showShuffled = new BehaviorSubject<boolean>(true);
 
     public searchText: string;
@@ -30,21 +27,14 @@ export class SearchResultService {
 
    //#region Caching
         
-    public set searchResults(newResults: SearchResults) {
-        this.results = newResults;
+    private set newResults(newResults: SearchResults) {
         this.resultsChanged.next(newResults);
     }
 
     private set searchRequestPending(v: boolean) {
-        this.requestPending = true;
         this.requestPendingChanged.next(v);
     }
     
-    public get searchResults() : SearchResults {
-        return this.results;
-    }
-    
- 
     public validCacheExists(): boolean {
         return sessionStorage.getItem('chache_shuffled') &&
             sessionStorage.getItem('search') &&
@@ -60,7 +50,7 @@ export class SearchResultService {
             shuffled.length,
             parseFloat(sessionStorage.getItem("elapsed")),
         );
-        this.searchResults = searchResults;
+        this.newResults = searchResults;
         this.searchRequestPending = false;
     }
 
@@ -121,7 +111,7 @@ export class SearchResultService {
                 this.handleSearchResponse.bind(this, initialSearchTime),
                 error => {
                     console.log(error.error);
-                    this.searchResults = new SearchResults();
+                    this.newResults = new SearchResults();
                     this.searchRequestPending = false;
                     this.wrongURL = true;
                 }
@@ -141,7 +131,7 @@ export class SearchResultService {
             (new Date().getTime() - initialSearchTime) / 1000
         );
         this.setCache(searchResults);
-        this.searchResults = searchResults;
+        this.newResults = searchResults;
         this.searchRequestPending = false;
     }
 

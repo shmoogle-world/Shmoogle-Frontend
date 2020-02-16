@@ -45,7 +45,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
             this.requestPending = pending;
         });
-        this.requestPending = this.sRService.requestPending;
+
 
     }
     ngOnDestroy() {

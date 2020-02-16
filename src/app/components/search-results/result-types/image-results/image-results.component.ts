@@ -27,11 +27,10 @@ export class ImageResultsComponent implements OnInit {
         this.subscription = this.sRService.resultsChanged.subscribe(results => {
             this.results = results;
         });
-        this.results = this.sRService.searchResults;
+
         this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
             this.requestPending = pending;
         });
-        this.requestPending = this.sRService.requestPending;
 
 
         this.toggle();
