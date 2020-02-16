@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { map} from 'rxjs/operators';
 import { TextResult } from './models/text-result.model';
 import { SearchResults } from './search-results.model';
+import { ImageResult } from './models/image-result.model';
 @Injectable()
 export class SearchResultService {
 
@@ -102,15 +103,18 @@ export class SearchResultService {
         this.searchRequestPending = true;
 
         const initialSearchTime = new Date().getTime();
-        this.http.get<[TextResult[], TextResult[]]>(
+        this.http.get<[TextResult[] | ImageResult[], TextResult[] | ImageResult[]]>(
                 `${this.globals.baseUrl}/api/${this.endpointPath}${this.searchText}?key=${this.globals.apiKey}`
             ).pipe(map(response => {
                 for (let i = 0; i < response[0].length; ++i) {
-                    const tmp1 = response[0][i];
-                    const tmp2 = response[1][i];
-                    
-                    response[0][i].url = decodeURI(tmp1.url);
-                    response[0][i].url = decodeURI(tmp2.url);
+                    if(response[0][i].hasOwnProperty("url")) {
+                        const tmp1 = response[0][i];
+                        const tmp2 = response[1][i];
+                        // @ts-ignore
+                        response[0][i].url = decodeURI(tmp1.url);
+                        // @ts-ignore
+                        response[1][i].url = decodeURI(tmp2.url);
+                    }
                 }
                 return response;
             }))
@@ -124,20 +128,22 @@ export class SearchResultService {
             );
     }
 
-    private handleSearchResponse(initialSearchTime: number, response: [TextResult[], TextResult[]]) {
+    private handleSearchResponse(initialSearchTime: number, response: [(TextResult[] | ImageResult[]), (TextResult[] | ImageResult[])]) {
+        
         //@ts-ignore
         if (response[0].error) {
             this.noResultsReceived();
             sessionStorage.clear();
             return;
         }
-        const time = (new Date().getTime() - initialSearchTime) / 1000;
+
         const searchResults = new SearchResults(
-            response[0],
             response[1],
+            response[0],
             response[0].length,
-            time
+            (new Date().getTime() - initialSearchTime) / 1000
         );
+
         this.setCache(searchResults);
         this.searchResults = searchResults;
         this.searchRequestPending = false;
