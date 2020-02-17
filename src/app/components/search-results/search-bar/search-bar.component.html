@@ -10,6 +10,7 @@
         <div class="d-flex align-items-center">
             <div class="shw-input-parent">
                 <div>
+
                     <input 
                         class="shw-input"
                         type="text" 
@@ -23,12 +24,11 @@
                         <div class="bar"></div>
                         <div class="bar"></div>
                     </div>
-                
                 </div>
                 <mat-icon aria-hidden="false" aria-label="Search" (click)="search()" (keyup.enter)="search()" tabindex="0">search</mat-icon>
             </div>
         </div>
-        <div class="order-md-first links flex-fill">
+        <div class="order-md-first links flex-grow-1">
             <a
                 class="mx-1"
                 [routerLinkActiveOptions]="{exact: true}"
