@@ -1,18 +1,29 @@
-<ng-container *ngIf="!requestPending; else spinner">
-    <ng-container *ngIf="results.shuffled.length > 0; else noResults">
 
-        <div class="col-xs-6" *ngIf="showShuffled">
-            <app-text-list [data]="results.shuffled"></app-text-list>
-        </div>
-        <div class="col-xs-6" *ngIf="!(isMobile && showShuffled)">   
-            <app-text-list [data]="results.unshuffled"></app-text-list>
+    <ng-container *ngIf="!requestPending; else spinner">
+        <div class="container">
+            <div class="row">
+                <ng-container *ngIf="results.shuffled.length > 0; else noResults">
+                    
+                    <div class="col-md" *ngIf="showShuffled">
+                        <app-text-list [data]="results.shuffled"></app-text-list>
+                    </div>
+                    <div class="col-md" *ngIf="!(isMobile && showShuffled)">   
+                        <app-text-list [data]="results.unshuffled"></app-text-list>
+                    </div>
+                </ng-container>
+                <ng-template #noResults>
+                    <div class="w-100">
+
+                        <p class="text-center errMessage px-1">There are no search results for this query!</p>
+                    </div>
+                    <!-- <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p> -->
+                </ng-template>
+            </div>
         </div>
     </ng-container>
-    <ng-template #noResults>
-        <p class="errMessage">There are no search results for this query!</p>
-        <!-- <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p> -->
+    <ng-template #spinner>
+        <div class="d-flex justify-content-center">
+            <app-loader></app-loader>
+        </div>
     </ng-template>
-</ng-container>
-<ng-template #spinner>
-    <app-loader ></app-loader>
-</ng-template>
+

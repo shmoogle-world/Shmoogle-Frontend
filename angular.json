@@ -22,7 +22,7 @@
             ],
             "styles": [
               "node_modules/animate.css/animate.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.css"
             ],
             "stylePreprocessorOptions": {
@@ -83,6 +83,7 @@
             ],
             "styles": [
               "node_modules/animate.css/animate.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.css"
             ],
             "assets": [

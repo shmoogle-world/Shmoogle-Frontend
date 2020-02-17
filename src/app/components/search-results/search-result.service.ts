@@ -16,7 +16,6 @@ export class SearchResultService {
 
     public searchText: string;
     readonly isMobile: boolean = window.innerWidth <= 540;
-    public wrongURL: boolean = false;
     public endpointPath: string = "search/";
     private type: string = 'text';
     constructor(public http: HttpClient,
@@ -36,17 +35,17 @@ export class SearchResultService {
     }
     
     public validCacheExists(): boolean {
-        return sessionStorage.getItem('chache_shuffled') &&
+        return sessionStorage.getItem('cache_shuffled') &&
             sessionStorage.getItem('search') &&
             this.searchText == sessionStorage.getItem('search') && sessionStorage.getItem('type') == this.type;
     }
 
     public getCache(): void {
         this.type = sessionStorage.getItem("type");
-        const shuffled = <TextResult[]> JSON.parse(sessionStorage.getItem("chache_shuffled"));
+        const shuffled = <TextResult[]> JSON.parse(sessionStorage.getItem("cache_shuffled"));
         const searchResults = new SearchResults(
             shuffled,
-            <TextResult[]> JSON.parse(sessionStorage.getItem("chache_unshuffled")),
+            <TextResult[]> JSON.parse(sessionStorage.getItem("cache_unshuffled")),
             shuffled.length,
             parseFloat(sessionStorage.getItem("elapsed")),
         );
@@ -57,8 +56,8 @@ export class SearchResultService {
     public setCache(searchResults: SearchResults) {
         sessionStorage.setItem("type", this.type);
         sessionStorage.setItem("search", this.searchText);
-        sessionStorage.setItem("chache_shuffled", JSON.stringify(searchResults.shuffled));
-        sessionStorage.setItem("chache_unshuffled", JSON.stringify(searchResults.unshuffled));
+        sessionStorage.setItem("cache_shuffled", JSON.stringify(searchResults.shuffled));
+        sessionStorage.setItem("cache_unshuffled", JSON.stringify(searchResults.unshuffled));
         sessionStorage.setItem("elapsed", searchResults.elapsed.toString());
     }
 
@@ -113,12 +112,24 @@ export class SearchResultService {
                     console.log(error.error);
                     this.newResults = new SearchResults();
                     this.searchRequestPending = false;
-                    this.wrongURL = true;
                 }
             );
     }
 
     private handleSearchResponse(initialSearchTime: number, response: [(TextResult[] | ImageResult[]), (TextResult[] | ImageResult[])]) {
+        if(response[0].length == undefined || response[0].length == 0) {
+            const searchResults = new SearchResults(
+                [],
+                [],
+                0,
+                0,
+            );
+            this.setCache(searchResults);
+            this.newResults = searchResults;
+            this.searchRequestPending = false;
+            return;
+        };
+        
         if(!response[0][0].hasOwnProperty("url") && this.type == 'text') {
             return;
         }
