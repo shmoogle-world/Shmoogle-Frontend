@@ -1,3 +1,4 @@
+import { LoaderComponent } from './../../loader/loader.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -35,6 +36,7 @@ const featureRoutes: Routes = [
         TextItemComponent,
         SearchBarComponent,
         ResultCounterComponent,
+        LoaderComponent
     ],
     imports: [
         CommonModule,

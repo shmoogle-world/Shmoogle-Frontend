@@ -1,4 +1,4 @@
-<ng-container *ngIf="!requestPending">
+<ng-container *ngIf="!requestPending; else spinner">
     <ng-container *ngIf="results.shuffled.length > 0; else noResults">
 
         <div class="col-xs-6" *ngIf="showShuffled">
@@ -13,3 +13,6 @@
         <!-- <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p> -->
     </ng-template>
 </ng-container>
+<ng-template #spinner>
+    <app-loader ></app-loader>
+</ng-template>

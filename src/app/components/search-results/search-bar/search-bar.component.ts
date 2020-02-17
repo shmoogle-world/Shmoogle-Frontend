@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, UrlSegment, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SearchResultService } from '../search-result.service';
-import { map, filter } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 @Component({
     selector: 'app-search-bar',
