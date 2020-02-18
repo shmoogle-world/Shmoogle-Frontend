@@ -71,7 +71,6 @@
 }
 /*Slider*/
 .slider {
-    padding-left: 20px;
     margin: auto 0;
 }
 /* The switch - the box around the slider */
@@ -169,12 +168,12 @@
     cursor: pointer;
     width: 52px;
 } 
-  .logo {
+.logo {
     width: 260px;
     height: 70px;
-  }
-  
-  .input {
+}
+
+.input {
     width: 442px;
     height: 52px;
     border-left: none;
@@ -187,57 +186,58 @@
     font-family: "Open Sans";
     letter-spacing: 2px;
     padding-left: 5px;
-  }
-  
-  input:focus {
+}
+
+input:focus {
     border: none;
     border-bottom: 1px solid #3ec4ba;
     outline: none;
-  }
-  
-  .search-icon {
+}
+
+.search-icon {
     width: 18px;
     cursor: pointer;
-  }
+}
 
-  .input-div {
+.input-div {
     display: flex;
     position: relative;
     flex-direction: row;
     width: 401px;
     /* margin-left: 18px; */
-  }
-  
-  .main-logo {
+}
+
+.main-logo {
     width: 230px;
     position: relative;
     bottom: 40px;
     padding-left: 6rem;
     padding-right: 2rem;
-  }
-  
-  #shuffleBtn {
+}
+
+#shuffleBtn {
     height: 5vh;
     margin-top: 3vh;
-  }
-  
-  .sticky {
+}
+
+.sticky {
     position: fixed;
     top: 0;
     overflow: hidden;
     z-index: 10;
     width: 100%;
     background-color: #ffffffbd;
-  }
-  
-  .sticky .input {
+}
+
+.sticky .input {
     background-color: #ffffffbd;
     size: 50%;
-  }
- 
-  /* Media Queries */
-  
-  @media only screen and (max-width: 765px) {
+}
 
-  }
-  
+/* Media Queries */
+
+@media (max-width: 768px) {
+    .links {
+        flex-basis: 30%;
+    }
+}
