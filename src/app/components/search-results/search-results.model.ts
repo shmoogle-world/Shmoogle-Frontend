@@ -1,29 +1,29 @@
 import { ImageResult } from './models/image-result.model';
-import { TextResult } from './models/text-result.model';
+import { WebResult } from './models/web-result.model';
 
 export class SearchResults {
     
     constructor(
-        private shuffledArr: TextResult[] | ImageResult[] = [], 
-        private unshuffledArr: TextResult[] | ImageResult[] = [],
+        private shuffledArr: WebResult[] | ImageResult[] = [], 
+        private unshuffledArr: WebResult[] | ImageResult[] = [],
         private resultCount: number = 0,
         private elapsedSearchTime: number = 0,
         ) {}
     
     
-    public set shuffled(v : TextResult[] | ImageResult[]) {
+    public set shuffled(v : WebResult[] | ImageResult[]) {
         this.shuffledArr = v;
     }
 
-    public set unshuffled(v : TextResult[] | ImageResult[]) {
+    public set unshuffled(v : WebResult[] | ImageResult[]) {
         this.unshuffledArr = v;
     }
     
     
-    public get unshuffled() : TextResult[] | ImageResult[] {
+    public get unshuffled() : WebResult[] | ImageResult[] {
         return this.unshuffledArr.slice();
     }
-    public get shuffled() : TextResult[] | ImageResult[] {
+    public get shuffled() : WebResult[] | ImageResult[] {
         return this.shuffledArr.slice();
     }
     

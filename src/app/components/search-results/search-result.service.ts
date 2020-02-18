@@ -4,7 +4,7 @@ import { Router} from '@angular/router';
 import { GlobalsService } from '../../Services/globals.service';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { map} from 'rxjs/operators';
-import { TextResult } from './models/text-result.model';
+import { WebResult } from './models/web-result.model';
 import { SearchResults } from './search-results.model';
 import { ImageResult } from './models/image-result.model';
 @Injectable()
@@ -42,10 +42,10 @@ export class SearchResultService {
 
     public getCache(): void {
         this.type = sessionStorage.getItem("type");
-        const shuffled = <TextResult[]> JSON.parse(sessionStorage.getItem("cache_shuffled"));
+        const shuffled = <WebResult[]> JSON.parse(sessionStorage.getItem("cache_shuffled"));
         const searchResults = new SearchResults(
             shuffled,
-            <TextResult[]> JSON.parse(sessionStorage.getItem("cache_unshuffled")),
+            <WebResult[]> JSON.parse(sessionStorage.getItem("cache_unshuffled")),
             shuffled.length,
             parseFloat(sessionStorage.getItem("elapsed")),
         );
@@ -91,7 +91,7 @@ export class SearchResultService {
         this.searchRequestPending = true;
         
         const initialSearchTime = new Date().getTime();
-        this.http.get<[TextResult[] | ImageResult[], TextResult[] | ImageResult[]]>(
+        this.http.get<[WebResult[] | ImageResult[], WebResult[] | ImageResult[]]>(
                 `${this.globals.baseUrl}/api/${this.endpointPath}${this.searchText}?key=${this.globals.apiKey}`
             ).pipe(map(response => {
                 for (let i = 0; i < response[0].length; ++i) {
@@ -116,7 +116,7 @@ export class SearchResultService {
             );
     }
 
-    private handleSearchResponse(initialSearchTime: number, response: [(TextResult[] | ImageResult[]), (TextResult[] | ImageResult[])]) {
+    private handleSearchResponse(initialSearchTime: number, response: [(WebResult[] | ImageResult[]), (WebResult[] | ImageResult[])]) {
         if(response[0].length == undefined || response[0].length == 0) {
             const searchResults = new SearchResults(
                 [],

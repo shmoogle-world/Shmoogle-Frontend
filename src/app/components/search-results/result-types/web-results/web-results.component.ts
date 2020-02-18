@@ -4,11 +4,12 @@ import { SearchResults } from '../../search-results.model';
 import { SearchResultService } from '../../search-result.service';
 
 @Component({
-  selector: 'app-text-results',
-  templateUrl: './text-results.component.html',
-  styleUrls: ['./text-results.component.css']
+  selector: 'app-web-results',
+  templateUrl: './web-results.component.html',
+  styleUrls: ['./web-results.component.css']
 })
-export class TextResultsComponent implements OnInit, OnDestroy {
+export class WebResultsComponent implements OnInit, OnDestroy {
+    
     public requestPending: boolean;
     private pendingSubscription: Subscription;
 
