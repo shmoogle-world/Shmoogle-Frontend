@@ -7,9 +7,9 @@
         </svg>
     </div>
     <span class="d-flex align-items-center flex-wrap pl-1">
-        <div class="d-flex align-items-center">
-            <div class="shw-input-parent">
-                <div>
+
+            <div class="d-flex align-items-center">
+                <div class="shw-input-parent">
 
                     <input 
                         class="shw-input"
@@ -25,9 +25,15 @@
                         <div class="bar"></div>
                     </div>
                 </div>
-                <mat-icon aria-hidden="false" aria-label="Search" (click)="search()" (keyup.enter)="search()" tabindex="0">search</mat-icon>
+                <mat-icon
+                    class="search-icon pointer"
+                    aria-hidden="false" 
+                    aria-label="Search" 
+                    (click)="search()" 
+                    (keyup.enter)="search()" 
+                    tabindex="0"
+                    >search</mat-icon>
             </div>
-        </div>
         <div class="order-md-first links flex-grow-1">
             <a
                 class="mx-1"
@@ -43,7 +49,12 @@
                 routerLinkActive="active"
                 >Images</a>
         </div>
-        <mat-slide-toggle class="slider" *ngIf="showShuffleSlider" (change)="onShuffleToggled($event)" [checked]="true"></mat-slide-toggle>
+        <mat-slide-toggle 
+            *ngIf="showShuffleSlider" 
+            [checked]="true"
+            (change)="onShuffleToggled($event)" 
+            class="slider mr-3" 
+            ></mat-slide-toggle>
     </span>
 
 </div>

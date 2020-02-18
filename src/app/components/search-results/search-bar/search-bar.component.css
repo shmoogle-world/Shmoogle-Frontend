@@ -1,11 +1,7 @@
-.test {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+.search-icon {
+    transform: translate(-120%, 0);
 }
-.shw-flexbox {
-    display: flex;
-}
+
 .shw-load-animation {
     position: relative;
     width: 100%;
@@ -13,54 +9,15 @@
     bottom: 2px;
     background-color: #ffcb04;
 }
-.shw-load-bar {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    width: 0;
-    height: 100%;
-    left: 50%;
-    text-align: center;
-}
-.shw-load-bar:nth-child(1) {
-    background-color: #e22a52;
-    animation: loading 3s linear infinite;
-}
-.shw-load-bar:nth-child(2) {
-    background-color: #3ec4ba;
-    animation: loading 3s linear 1s infinite;
-}
-.shw-load-bar:nth-child(3) {
-    background-color: #ffcb04;
-    animation: loading 3s linear 2s infinite;
-}
-@keyframes loading {
-    from {
-        left: 50%;
-        width: 0;
-        z-index: 100;
-    }
-    33.3333% {
-        left: 0;
-        width: 100%;
-        z-index: 10;
-    }
-    to {
-        left: 0;
-        width: 100%;
-    }
-}
+
 .shw-input-parent {
-    display: flex;
-    flex-direction: row;
     min-width: 148px;
     max-width: 442px;
-    height: 54px;
+    height: 32px;
     width: 100%;
 }
 .shw-input {
     width: 100%;
-   margin-top: 15px;
     border-left: none;
     border-right: none;
     border-top: none;
@@ -70,14 +27,10 @@
     font-family: "Open Sans";
     letter-spacing: 2px;
 }
-.shw-hide-background {
-    background-image: none;
-}
 .shw-input:focus {
     border: none;
     border-bottom: 1px solid #3ec4ba;
     outline: none;
-    background-image: none;
 }
 .shw-search-icon {
     width: 18px;
