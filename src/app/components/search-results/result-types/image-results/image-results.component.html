@@ -1,17 +1,18 @@
 <ng-container *ngIf="!requestPending; else spinner">
     <div class="results-container d-flex justify-content-center flex-wrap">
-        <div *ngFor="let res of results.shuffled; let i = index">
-            <div class="card text-center" style="width: 350px; height: 350px; margin: 10px 10px;" >
-                <span class="position-text" style="margin:5px 0;">Position: {{ res.originalResultIndex + 1 }}</span>
+        <div *ngFor="let res of results.shuffled;  let i = index;">
+            <div class="card text-center">
+                <span class="my-1">Position: {{ res.originalResultIndex + 1 }}</span>
                 <a target="_blank" [href]="res.contentUrl">
-                    <img class="card-img-top" [src]="res.contentUrl" [alt]="res.name"
-                        style="max-height: 180px; max-width:180px">
+                    <img class="card-img-top" [src]="res.contentUrl" [alt]="res.name">
                 </a>
-                <div class="card-body">
+                <div class="card-body d-flex flex-column justify-content-between">
                     <h6 class="card-title">{{ res.name }}</h6>
-                    <a target="_blank" [href]="res.hostPageUrl"
-                        class="card-link">{{ res.hostPageDomainFriendlyName ? res.hostPageDomainFriendlyName : res.hostPageDisplayUrl.slice(0,35)+'...' }}</a>
-                    <p class="card-text" style="color: black;"> {{ res.width }} x {{ res.height }} </p>
+                    <div>
+                        <a target="_blank" [href]="res.hostPageUrl"
+                            class="title">{{ res.hostPageDomainFriendlyName ? res.hostPageDomainFriendlyName : res.hostPageDisplayUrl.slice(0,34)+'...' }}</a>
+                        <p class="mb-0" > {{ res.width }} x {{ res.height }} </p>
+                    </div>
                 </div>
             </div>
         </div>
