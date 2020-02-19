@@ -1,5 +1,5 @@
 .search-icon {
-    transform: translate(-55%, 0);
+    transform: translate(-90%, 0);
 }
 
 .shw-load-animation {
@@ -17,8 +17,6 @@
     width: 100%;
 }
 .shw-input {
-    margin-top: 2px;
-    margin-left: 10px;
     width: 100%;
     border-left: none;
     border-right: none;
