@@ -19,7 +19,9 @@
     background: #555;
   }
   
-  
+  a{
+    text-decoration: none;
+  }
   
   /* Results containers */
 

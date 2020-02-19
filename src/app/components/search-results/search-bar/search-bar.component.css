@@ -1,6 +1,6 @@
-.search-icon {
+/* .search-icon {
     transform: translate(-120%, 0);
-}
+} */
 
 .shw-load-animation {
     position: relative;
@@ -17,6 +17,8 @@
     width: 100%;
 }
 .shw-input {
+    margin-top: 2px;
+    margin-left: 10px;
     width: 100%;
     border-left: none;
     border-right: none;
@@ -105,11 +107,11 @@
   }
   .shw-load-animation {
     position: relative;
-
     width: inherit;
     height: 2px;
     bottom: 2px;
     background-color: #ffcb04;
+    margin-left: 10px;
   }
   
   .bar {

@@ -1,22 +1,18 @@
 <ng-container *ngIf="!requestPending; else spinner">
-    <div class="results-container">
-        <div class="result-div" *ngFor="let res of results.shuffled; let i = index">
-            <div class="col-sm-4" style="margin-bottom:20px;">
-                <a target="_blank" [href]="res.hostPageUrl">
-                    <div class="card text-center" style="width: 30rem; height: 35rem;">
-                        <h6 class="card-title" style="color: black;"> <br> <b> Position: {{ res.originalResultIndex + 1 }} </b> </h6>
-                        <a target="_blank" [href]="res.contentUrl">
-                            <img class="card-img-top" [src]="res.contentUrl" [alt]="res.name"
-                            style="max-height: 230px; max-width:280px">
-                        </a>
-                        <div>
-                            <a target="_blank" [href]="res.hostPageUrl" class="title">{{ res.name }}</a>
-                            <a target="_blank" [href]="res.hostPageUrl" class="url">{{ res.hostPageDomainFriendlyName }}</a>
-                            <h6 class="card-body" style="color: black;"> {{ res.width }} x {{ res.height }} </h6>
-                        </div>
-
-                    </div>
+    <div class="results-container d-flex justify-content-center flex-wrap">
+        <div *ngFor="let res of results.shuffled; let i = index">
+            <div class="card text-center" style="width: 350px; height: 350px; margin: 10px 10px;" >
+                <span class="position-text" style="margin:5px 0;">Position: {{ res.originalResultIndex + 1 }}</span>
+                <a target="_blank" [href]="res.contentUrl">
+                    <img class="card-img-top" [src]="res.contentUrl" [alt]="res.name"
+                        style="max-height: 180px; max-width:180px">
                 </a>
+                <div class="card-body">
+                    <h6 class="card-title">{{ res.name }}</h6>
+                    <a target="_blank" [href]="res.hostPageUrl"
+                        class="card-link">{{ res.hostPageDomainFriendlyName ? res.hostPageDomainFriendlyName : res.hostPageDisplayUrl.slice(0,35)+'...' }}</a>
+                    <p class="card-text" style="color: black;"> {{ res.width }} x {{ res.height }} </p>
+                </div>
             </div>
         </div>
     </div>
