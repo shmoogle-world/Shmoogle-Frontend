@@ -1,3 +1,4 @@
+import { LogoComponent } from './branding/logo/logo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -24,6 +25,7 @@ import { GlobalsService } from './Services/globals.service';
         LandingComponent,
         ErrorDialogBoxComponent,
         HamburgerNavComponent,
+        LogoComponent,        
     ],
     imports: [
         BrowserModule,
@@ -37,7 +39,6 @@ import { GlobalsService } from './Services/globals.service';
         MatSlideToggleModule,
         NgxWebstorageModule.forRoot(),
         Ng4LoadingSpinnerModule.forRoot(),
-        // SearchResultsModule,
         RouteModule,
     ],
     providers: [

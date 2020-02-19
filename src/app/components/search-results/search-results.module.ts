@@ -1,3 +1,4 @@
+import { IconComponent } from './../../branding/icon/icon.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -34,7 +35,8 @@ const featureRoutes: Routes = [
         WebResultsComponent,
         SearchBarComponent,
         ResultCounterComponent,
-        LoaderComponent
+        LoaderComponent,
+        IconComponent,
     ],
     imports: [
         CommonModule,

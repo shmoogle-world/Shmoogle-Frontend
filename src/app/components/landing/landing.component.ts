@@ -161,7 +161,7 @@ export class LandingComponent implements OnInit {
 
     //#endregion
 
-    //#region Private Methods - then why was it public ?
+    //#region Private Methods
 
     private validateEmail(email): boolean {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
