@@ -1,6 +1,6 @@
 
 <ng-container *ngIf="!requestPending; else spinner">
-    <div class="container">
+    <div class="container-fluid px-3 px-md-5 max-width">
         <div class="row">
             <ng-container *ngIf="results.shuffled.length > 0; else noResults">
                 
@@ -15,7 +15,6 @@
                 <div class="w-100">
                     <p class="text-center errMessage px-1">There are no search results for this query!</p>
                 </div>
-                <!-- <p *ngIf="wrongURL" class="errMessage">Something went wrong!</p> -->
             </ng-template>
         </div>
     </div>
