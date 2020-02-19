@@ -7,6 +7,7 @@ import { map} from 'rxjs/operators';
 import { WebResult } from './models/web-result.model';
 import { SearchResults } from './search-results.model';
 import { ImageResult } from './models/image-result.model';
+import { shuffle } from 'lodash';
 @Injectable()
 export class SearchResultService {
 
@@ -14,10 +15,11 @@ export class SearchResultService {
     public requestPendingChanged = new ReplaySubject<boolean>();
     public showShuffled = new BehaviorSubject<boolean>(true);
 
-    public searchText: string;
+    public searchQuery: string;
     readonly isMobile: boolean = window.innerWidth <= 540;
     public endpointPath: string = "search/";
     private type: string = 'text';
+  
     constructor(public http: HttpClient,
         private globals: GlobalsService,
         public navservice: Router,
@@ -34,28 +36,27 @@ export class SearchResultService {
         this.requestPendingChanged.next(v);
     }
     
-    public validCacheExists(): boolean {
+    public cacheIsValid(): boolean {
         return sessionStorage.getItem('cache_shuffled') &&
-            sessionStorage.getItem('search') &&
-            this.searchText == sessionStorage.getItem('search') && sessionStorage.getItem('type') == this.type;
+            sessionStorage.getItem('cached_query') &&
+            this.searchQuery == sessionStorage.getItem('cached_query') && sessionStorage.getItem('type') == this.type;
     }
 
-    public getCache(): void {
+    public getCache(): SearchResults {
         this.type = sessionStorage.getItem("type");
         const shuffled = <WebResult[]> JSON.parse(sessionStorage.getItem("cache_shuffled"));
-        const searchResults = new SearchResults(
+        return new SearchResults(
             shuffled,
             <WebResult[]> JSON.parse(sessionStorage.getItem("cache_unshuffled")),
             shuffled.length,
             parseFloat(sessionStorage.getItem("elapsed")),
         );
-        this.newResults = searchResults;
-        this.searchRequestPending = false;
+        
     }
 
     public setCache(searchResults: SearchResults) {
         sessionStorage.setItem("type", this.type);
-        sessionStorage.setItem("search", this.searchText);
+        sessionStorage.setItem('cached_query', this.searchQuery);
         sessionStorage.setItem("cache_shuffled", JSON.stringify(searchResults.shuffled));
         sessionStorage.setItem("cache_unshuffled", JSON.stringify(searchResults.unshuffled));
         sessionStorage.setItem("elapsed", searchResults.elapsed.toString());
@@ -63,36 +64,38 @@ export class SearchResultService {
 
     //#endregion 
 
-    public onSearch(text) {
-        this.searchText = text;
-        this.sendSearchQuery();
-    }
-
-    public onShuffleToggle(event) {
-        this.showShuffled.next(event);
-    }
-
-    public toggleType(event) {
-        this.type = event.type;
-        this.endpointPath = event.endpointPath;
-        this.sendSearchQuery();
-    }
-    //#region Public Members
-
-    public sendSearchQuery(): void {
-        window.scrollTo(0, 0);
-        if (this.searchText === "") this.navservice.navigateByUrl("/");
-        if (this.validCacheExists()) {
-            this.getCache();
+    public requestSearch(text) {
+        this.searchQuery = text;
+        if(this.cacheIsValid()) {
+            let cachedRes = this.getCache();
+            cachedRes.shuffled = shuffle(cachedRes.shuffled);
+            this.setCache(cachedRes);
+            this.newResults = cachedRes;
             return;
         }
-        this.setParam("q", this.searchText);
+        this.sendSearchRequest();
+    }
+
+    public sendSearchRequest() {
+        window.scrollTo(0, 0);
+        if (this.searchQuery === ""){ 
+            this.navservice.navigateByUrl("/");
+        } else if (this.cacheIsValid()) {
+            this.newResults = this.getCache();
+            return;
+        }
+        this.setParam("q", this.searchQuery);
+        
+        this.fetchSearchResults();
+    }
+
+    private fetchSearchResults(): void {
         
         this.searchRequestPending = true;
         
         const initialSearchTime = new Date().getTime();
         this.http.get<[WebResult[] | ImageResult[], WebResult[] | ImageResult[]]>(
-                `${this.globals.baseUrl}/api/${this.endpointPath}${this.searchText}?key=${this.globals.apiKey}`
+                `${this.globals.baseUrl}/api/${this.endpointPath}${this.searchQuery}?key=${this.globals.apiKey}`
             ).pipe(map(response => {
                 for (let i = 0; i < response[0].length; ++i) {
                     if(response[0][i].hasOwnProperty("url")) {
@@ -154,5 +157,15 @@ export class SearchResultService {
             location.pathname + "?" +
             params.toString();
         window.history.replaceState("Shmoogle", "Shmoogle", url);
+    }
+
+    public onShuffleToggle(event) {
+        this.showShuffled.next(event);
+    }
+
+    public toggleType(event) {
+        this.type = event.type;
+        this.endpointPath = event.endpointPath;
+        this.sendSearchRequest();
     }
 }

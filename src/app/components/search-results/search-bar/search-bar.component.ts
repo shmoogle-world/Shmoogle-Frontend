@@ -33,14 +33,14 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         this.route.queryParams.subscribe(params => {
             
             const query = params['q'];
-            this.sRService.searchText = query;
+            this.sRService.searchQuery = query;
             this.searchText = query;
             if (query == undefined) {
                 this.router.navigateByUrl("/");
             }
         });
 
-        this.searchText = this.sRService.searchText;
+        this.searchText = this.sRService.searchQuery;
 
         this.pendingSubscription = this.sRService.requestPendingChanged.subscribe(pending => {
             this.requestPending = pending;
@@ -71,7 +71,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     }
 
     public search() {
-        this.sRService.onSearch(this.searchText);
+        this.sRService.requestSearch(this.searchText);
     }
     public onShuffleToggled(event) {
         this.sRService.onShuffleToggle(event.checked);
