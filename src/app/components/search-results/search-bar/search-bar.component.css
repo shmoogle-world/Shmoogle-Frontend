@@ -1,20 +1,14 @@
-.search-icon {
+/* .search-icon {
     transform: translate(-90%, 0);
-}
-
-.shw-load-animation {
-    position: relative;
-    width: 100%;
-    height: 2px;
-    bottom: 2px;
-    background-color: #ffcb04;
-}
+} */
 
 .shw-input-parent {
     min-width: 148px;
     max-width: 442px;
     height: 32px;
     width: 100%;
+    margin-left: 15px;
+    margin-top: 5px;
 }
 .shw-input {
     width: 100%;
@@ -82,11 +76,10 @@
 /* Loading Bar Animation */
 .shw-load-animation {
     position: relative;
-    width: inherit;
+    width: 100%;
     height: 2px;
     bottom: 2px;
     background-color: #ffcb04;
-    margin-left: 10px;
 }
 
 .bar {

@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators';
     styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit, OnDestroy {
-    
+
     public searchText: string = '';
     public requestPending: boolean;
 
@@ -23,15 +23,15 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         private sRService: SearchResultService) { }
 
     public ngOnInit() {
-        this.showShuffleSlider = this.sRService.isMobile &&  this.router.url.split('?')[0] == '/search';
+        this.showShuffleSlider = this.sRService.isMobile && this.router.url.split('?')[0] == '/search';
         this.router.events
             .pipe(filter(event => event instanceof NavigationStart))
             .subscribe((newRoute: NavigationStart) => {
-                this.showShuffleSlider = this.sRService.isMobile &&  newRoute.url.split('?')[0] == '/search';
+                this.showShuffleSlider = this.sRService.isMobile && newRoute.url.split('?')[0] == '/search';
             })
-        
+
         this.route.queryParams.subscribe(params => {
-            
+
             const query = params['q'];
             this.sRService.searchQuery = query;
             this.searchText = query;
@@ -53,11 +53,11 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     }
 
     public async toggle() {
-        let response = { 
-            value: this.imagesSearch, 
-            endpointPath: '', 
-            type: '', 
-            text: this.searchText 
+        let response = {
+            value: this.imagesSearch,
+            endpointPath: '',
+            type: '',
+            text: this.searchText
         };
         if (this.imagesSearch) {
             response.endpointPath = 'search/images/';
@@ -71,10 +71,14 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     }
 
     public search() {
+        try {
+            (document.activeElement as HTMLElement).blur();
+        } catch (err) {
+            console.log(err);
+        }
         this.sRService.requestSearch(this.searchText);
     }
     public onShuffleToggled(event) {
         this.sRService.onShuffleToggle(event.checked);
     }
-
 }

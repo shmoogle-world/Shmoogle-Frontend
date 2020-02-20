@@ -18,7 +18,7 @@ export class SearchResultService {
     public searchQuery: string;
     readonly isMobile: boolean = window.innerWidth <= 540;
     public endpointPath: string = "search/";
-    private type: string = 'text';
+    private type: string = "text";
   
     constructor(public http: HttpClient,
         private globals: GlobalsService,
@@ -56,7 +56,7 @@ export class SearchResultService {
 
     public setCache(searchResults: SearchResults) {
         sessionStorage.setItem("type", this.type);
-        sessionStorage.setItem('cached_query', this.searchQuery);
+        sessionStorage.setItem("cached_query", this.searchQuery);
         sessionStorage.setItem("cache_shuffled", JSON.stringify(searchResults.shuffled));
         sessionStorage.setItem("cache_unshuffled", JSON.stringify(searchResults.unshuffled));
         sessionStorage.setItem("elapsed", searchResults.elapsed.toString());
@@ -133,7 +133,7 @@ export class SearchResultService {
             return;
         };
         
-        if(!response[0][0].hasOwnProperty("url") && this.type == 'text') {
+        if(!response[0][0].hasOwnProperty("url") && this.type == "text") {
             return;
         }
         
