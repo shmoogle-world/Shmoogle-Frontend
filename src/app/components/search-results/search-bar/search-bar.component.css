@@ -160,8 +160,3 @@ input:focus {
         flex-basis: 30%;
     }
 }    
-@media (max-width: 505px) {
-    .shw-input-parent{
-        margin-left: 0px;
-    }
-}  
