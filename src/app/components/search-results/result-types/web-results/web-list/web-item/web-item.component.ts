@@ -4,7 +4,7 @@ import { WebResult } from '../../../../models/web-result.model';
 @Component({
   selector: 'app-web-row',
   templateUrl: './web-item.component.html',
-  styleUrls: ['./web-item.component.css']
+  styleUrls: ['./web-item.component.scss']
 })
 export class WebItemComponent implements OnInit {
 

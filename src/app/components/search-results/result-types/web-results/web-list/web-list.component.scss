@@ -35,16 +35,3 @@
         overflow: auto;
     }
 }
-$baseSpeed: 0.1s;
-
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-
-@for $i from 1 through 10 {
-    .animation:nth-child(#{$i}) {
-        animation: fadein $baseSpeed+ ($i * 0.1s);
-    }
-  }
