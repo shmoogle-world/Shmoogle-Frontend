@@ -4,7 +4,7 @@ import { WebResult } from '../../../models/web-result.model';
 @Component({
   selector: 'app-web-list',
   templateUrl: './web-list.component.html',
-  styleUrls: ['./web-list.component.css']
+  styleUrls: ['./web-list.component.scss']
 })
 export class WebListComponent implements OnInit {
 
