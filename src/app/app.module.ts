@@ -6,7 +6,6 @@ import { MatButtonModule, MatDialogModule, MatMenuModule, MatSlideToggleModule }
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AppComponent } from './app.component';
@@ -38,7 +37,6 @@ import { GlobalsService } from './Services/globals.service';
         MatButtonModule,
         MatSlideToggleModule,
         NgxWebstorageModule.forRoot(),
-        Ng4LoadingSpinnerModule.forRoot(),
         RouteModule,
     ],
     providers: [
