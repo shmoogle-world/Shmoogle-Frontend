@@ -1,7 +1,7 @@
 import {
     Component,
     OnInit,
-    ViewChild,
+    ContentChild,
     ElementRef,
     HostListener,
 } from "@angular/core";
@@ -18,7 +18,7 @@ export class SearchResultComponent implements OnInit {
 
     //#region Sticky Nav
 
-    @ViewChild("stickyMenu") menuElement: ElementRef;
+    @ContentChild("stickyMenu") menuElement: ElementRef;
 
     sticky: boolean = false;
     elementPosition: any;

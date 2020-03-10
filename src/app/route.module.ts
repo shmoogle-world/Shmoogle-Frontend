@@ -5,7 +5,7 @@ import { LandingComponent } from './components/landing/landing.component';
 
 const appRoutes: Routes = [
     { path: '', component: LandingComponent, pathMatch: 'full' },
-    { path: 'search', loadChildren: './components/search-results/search-results.module#SearchResultsModule'},
+    { path: 'search', loadChildren: () => import('./components/search-results/search-results.module').then(m => m.SearchResultsModule)},
     { path: '**', component: LandingComponent, pathMatch: 'full' },
     // { path: 'search', component: SearchResultComponent },
   ];
