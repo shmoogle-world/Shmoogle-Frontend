@@ -2,10 +2,9 @@ import { Component, OnInit, Input } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { GoogleAnalyticsEventsService } from "../../Services/analytics/analytic-sercice/analytic-sercice.component";
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.component";
 import { AppComponent } from "../../app.component";
-import { LocalStorage, SessionStorage } from "ngx-webstorage";
 import { formatDate } from "@angular/common";
 import { GlobalsService } from '../../Services/globals.service';
 
