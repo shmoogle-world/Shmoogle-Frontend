@@ -1,12 +1,13 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { ResultsServiceService } from "../../Services/results-service.service";
 import { GoogleAnalyticsEventsService } from "../../Services/analytics/analytic-sercice/analytic-sercice.component";
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.component";
 import { AppComponent } from "../../app.component";
+import { LocalStorage, SessionStorage } from "ngx-webstorage";
 import { formatDate } from "@angular/common";
+import { GlobalsService } from '../../Services/globals.service';
 
 @Component({
     selector: "app-landing",
@@ -16,13 +17,11 @@ import { formatDate } from "@angular/common";
 
 export class LandingComponent implements OnInit {
     //#region Public Members
-    @Input() numberResult: number = 3434;
     public text: string = "";
     public email: string = "";
     public error: boolean;
     public afterMail: boolean;
     public loadingAnimation: boolean = false;
-    private apiKey:string = 'e172c104-b919-42be-abad-dea7a2affdeb';
     //#endregion
 
     // @LocalStorage()
@@ -30,10 +29,10 @@ export class LandingComponent implements OnInit {
 
     //#region Constructor + LideCycle Hooks
     constructor(
+        private globals: GlobalsService,
         private comp: AppComponent,
         public httpservice: HttpClient,
         public navservice: Router,
-        public resultservice: ResultsServiceService,
         public analyticservice: GoogleAnalyticsEventsService,
         private dialog: MatDialog,
     ) {
@@ -71,7 +70,7 @@ export class LandingComponent implements OnInit {
         sessionStorage.removeItem('cache_res');
         sessionStorage.removeItem('cache_unshuf');
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
-        this.navservice.navigateByUrl("results");
+        this.navservice.navigate([`/search`], { queryParams: {q: this.text }});
     }
 
     /**
@@ -118,11 +117,12 @@ export class LandingComponent implements OnInit {
             );
 
             this.loadingAnimation = true;
-            
+
+            // this.EmailModel.email = this.email;
             //send to backend
             this.httpservice
                 .get(
-                    `https://shmoogle.azurewebsites.net/api/maillist/${this.email}?key=${this.apiKey}`
+                    `${this.globals.baseUrl}/api/maillist/${this.email}?key=${this.globals.apiKey}`
                 )
                 .subscribe(
                     res => {
@@ -161,7 +161,7 @@ export class LandingComponent implements OnInit {
 
     //#endregion
 
-    //#region Private Methods - then why was it public ?
+    //#region Private Methods
 
     private validateEmail(email): boolean {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

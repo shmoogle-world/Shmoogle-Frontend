@@ -1,0 +1,51 @@
+ 
+a {
+    text-decoration: none;
+}
+/* Results containers */
+.title {
+    font-size: 18px;
+    color: rgb(26, 13, 171);
+    line-height: 22px;
+    text-decoration: none;
+  }
+  
+.url {
+    font-size: 14px;
+    color: rgb(0, 102, 33);
+    line-height: 16px;
+    margin-top: -2px;
+    display: block;
+    word-break: break-all;
+}
+
+.card {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 350px;  
+  height: 350px;
+  margin: 10px 10px;
+}
+
+.card-img-top {
+    max-height: 180px; 
+    max-width: 180px
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+
+
+@media only screen and (max-width: 426px) {  
+    .card {
+        width: 80vw;
+        height: unset;
+    }
+}

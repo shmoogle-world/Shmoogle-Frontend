@@ -9,8 +9,6 @@
   content: "";
   display: inline;
   position: absolute;
-  width: 0;
-  height: 100%;
   left: 50%;
   text-align: center;
 }
@@ -272,6 +270,13 @@ footer {
   margin: auto;
   padding-top: 0.8rem;
 }
+
+.app-logo {
+    width: 32%; 
+    margin-top: 10%;
+}
+
+
 @media only screen and (max-width: 600px) {
   .input-div {
     width: 260px;
@@ -279,8 +284,9 @@ footer {
   .input {
     width: 248px;
   }
-  .logomain {
-    width: 55% !important;
+  .app-logo {
+    width: 55%;
+    margin-top: 30%;
   }
   .load-bar {
     width: 260px;
@@ -300,51 +306,3 @@ span.error {
   bottom: 5px;
 }
 
-/*
-
-  .main-logo{
-    width: 85%;
-    margin-top: 20px;
-  }
-  .para{
-    padding: 1rem;
-  }
-  .error-div{
-    padding-top: 1.8rem;
-  }
-  .input{
-    width: 90%;
-  }
-  .search-icon{
-    right: -10px;
-    top: 95px;
-  }
-  .div-close{
-    padding-right: 1.5rem;
-  }
-  .input-div{
-    display: flex;
-  }
-  .main-logo-div{
-    padding: 2rem;
-  }
-  ::-webkit-input-placeholder {
-    font-size: 18px;
-  }
-  ::-moz-placeholder {
-    font-size: 18px;
-  }
-  :-ms-input-placeholder {
-    font-size: 18px;
-  }
-  :-moz-placeholder {
-    font-size: 18px;
-  }
-  ::-webkit-input-placeholder {
-    font-size: 18px;
-   }
-   .send{
-    position: relative;
-    top: 10px;
-   }
-}*/

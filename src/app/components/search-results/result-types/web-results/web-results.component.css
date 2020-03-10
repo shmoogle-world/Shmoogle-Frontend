@@ -1,0 +1,9 @@
+/* Results containers */
+.errMessage {
+    font-size: 2rem;
+    margin-top: 2vh;
+}
+
+.max-width {
+    max-width: 2100px;
+}

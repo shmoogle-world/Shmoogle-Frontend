@@ -1,0 +1,37 @@
+/* Scrollbar design*/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.results-container {
+    height: 83vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 426px) {
+
+    .results-container {
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+    }
+}
