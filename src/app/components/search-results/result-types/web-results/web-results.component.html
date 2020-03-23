@@ -1,0 +1,27 @@
+
+<ng-container *ngIf="!requestPending; else spinner">
+    <div class="container-fluid px-3 px-md-5 max-width">
+        <div class="row">
+            <ng-container *ngIf="results.shuffled.length > 0; else noResults">
+                
+                <div class="col-md" *ngIf="showShuffled">
+                    <app-web-list [data]="results.shuffled"></app-web-list>
+                </div>
+                <div class="col-md" *ngIf="!(isMobile && showShuffled)">   
+                    <app-web-list [data]="results.unshuffled"></app-web-list>
+                </div>
+            </ng-container>
+            <ng-template #noResults>
+                <div class="w-100">
+                    <p class="text-center errMessage px-1">There are no search results for this query!</p>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</ng-container>
+<ng-template #spinner>
+    <div class="d-flex justify-content-center">
+        <app-loader></app-loader>
+    </div>
+</ng-template>
+

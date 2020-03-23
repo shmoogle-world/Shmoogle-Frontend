@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~bootstrap/scss/bootstrap.scss";
+html,body{
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.dialog{
+    background: lightgrey;
+    border-radius: 10px;
+}
+
+.pointer {
+    cursor: pointer;
+}

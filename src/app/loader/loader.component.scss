@@ -1,0 +1,69 @@
+$dash-array: 260;
+$stroke-width: 10;
+$anim-speed: 1000ms;
+$dark-theme: #1D1E22;
+$light-theme: #FFFFFF;
+$colors: #E02A52, #FFCB05, #00B8B2;
+
+// Infinity elements
+.infinity {
+  position: absolute;
+  width: 100%;
+  max-width: 800px;
+  
+  path {
+    fill: none;
+    stroke-width: $stroke-width;
+    transform-origin: 50% 50%;
+  }
+}
+
+.infinity__outline {
+  stroke: darken($light-theme, 5%);
+  animation: hover $anim-speed * 4 linear infinite;
+  transition: opacity 600ms;
+}
+
+.infinity__tracer {
+  stroke-linecap: round; 
+  opacity: 0.8;
+  animation: tracer $anim-speed linear reverse infinite;
+
+  @each $c in $colors {
+    $i: index($colors, $c);
+    $s: ( $anim-speed / $i * length($colors));
+    $d: (-$anim-speed / $i * length($colors) * 0.66);
+
+    &--#{$i} {
+      stroke: $c;
+      animation-duration: $s;
+      animation-delay: $d;
+    }
+  }
+}
+
+// Animations
+@keyframes tracer {
+  0% {
+    stroke-dasharray: 0, $dash-array;
+    stroke-dashoffset: -$dash-array * 0.9;
+  }
+  25% {
+    transform: translate(-2px, 2px);
+  }
+  50% {
+    stroke-dasharray: $dash-array / 6, $dash-array;
+    stroke-dashoffset: -$dash-array * 0.3;
+  }
+  65% { 
+    transform: translateX(2px, -2px);
+  }
+  100% {
+    stroke-dasharray: 4, $dash-array;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes hover {
+  50% { transform: translateY(2px) scale(1.02); }
+}
