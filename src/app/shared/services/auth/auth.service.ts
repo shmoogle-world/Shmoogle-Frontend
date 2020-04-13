@@ -106,6 +106,7 @@ export class AuthService {
     }
 
     autoLogin() {
+        // This should be called in the root component on ngInit.
         const userData: {
             email: string;
             id: string;
