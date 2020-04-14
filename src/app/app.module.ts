@@ -18,6 +18,8 @@ import { RouteModule } from './route.module';
 import { GoogleAnalyticsEventsService } from './Services/analytics/analytic-sercice/analytic-sercice.component';
 import { InsightsServiceComponent } from './Services/analytics/insights-service/insights-service.component';
 import { GlobalsService } from './Services/globals.service';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { GlobalsService } from './Services/globals.service';
         LandingComponent,
         ErrorDialogBoxComponent,
         HamburgerNavComponent,
-        LogoComponent,        
+        LogoComponent,     
+        LoginComponent,
+        SignupComponent,   
     ],
     imports: [
         BrowserModule,
