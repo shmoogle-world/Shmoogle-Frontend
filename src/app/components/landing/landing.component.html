@@ -1,27 +1,31 @@
 <div>
-  <app-nav></app-nav>
-  <main>
-    <div class="main-logo-div">
-        <app-logo class="app-logo"></app-logo>
-        <div class="input-div">
-            <input class="input" type="text" [(ngModel)]="text" (keyup)="CheckEnterKey($event)" />
-            <img class="search-icon" src="/assets/search.svg" (click)="search()" />
-        </div>
-        <div *ngIf="loadingAnimation" class="load-bar">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
+    <app-nav></app-nav>
+    <div style="position: relative;">
+        <button class="btn btn-light loginBtn" (click)="openLoginDialog()">Log in</button>
+        <button class="btn btn-secondary signUpBtn">Sign up</button>
     </div>
+    <main>
+        <div class="main-logo-div">
+            <app-logo class="app-logo"></app-logo>
+            <div class="input-div">
+                <input class="input" type="text" [(ngModel)]="text" (keyup)="CheckEnterKey($event)" />
+                <img class="search-icon" src="/assets/search.svg" (click)="search()" />
+            </div>
+            <div *ngIf="loadingAnimation" class="load-bar">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
 
-    <div class="sentances-div">
-        <div class="think">
-            Search dif<span style="margin-left: 1px;">f</span>erent. Think
-            <span style="margin-left: 1px;">dif<span>f</span>erent</span>.
+        <div class="sentances-div">
+            <div class="think">
+                Search dif<span style="margin-left: 1px;">f</span>erent. Think
+                <span style="margin-left: 1px;">dif<span>f</span>erent</span>.
+            </div>
         </div>
-    </div>
-  </main>
-  <footer id="footer">
+    </main>
+    <footer id="footer">
         <div *ngIf="!afterMail">
             <div class="div-close">
                 <img class="close" src="/assets/close-icon.png" (click)="CloseEmail()" />
@@ -32,9 +36,8 @@
             <br />
             <div class="input-div2">
                 <input style="margin-top: 0px !important" class="input" type="mail" placeholder="Enter your E-mail"
-                    [(ngModel)]="email" (input)="DisableError()" 
-                    />
-                    
+                    [(ngModel)]="email" (input)="DisableError()" />
+
                 <button class="send" (click)="Send()">Send!</button>
             </div>
             <div class="error-div">
@@ -44,5 +47,5 @@
         <div *ngIf="afterMail" class="sentance">
             <span>Welcome to the Shmoogle Adventure</span>
         </div>
-  </footer>
+    </footer>
 </div>

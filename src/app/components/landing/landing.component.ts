@@ -7,6 +7,7 @@ import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.co
 import { AppComponent } from "../../app.component";
 import { formatDate } from "@angular/common";
 import { GlobalsService } from '../../Services/globals.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
     selector: "app-landing",
@@ -21,6 +22,7 @@ export class LandingComponent implements OnInit {
     public error: boolean;
     public afterMail: boolean;
     public loadingAnimation: boolean = false;
+    public password: string = "";
     //#endregion
 
     // @LocalStorage()
@@ -63,13 +65,13 @@ export class LandingComponent implements OnInit {
 
     //#region Public Methods
     public search(): void {
-        if (this.text === "") 
+        if (this.text === "")
             return;
         sessionStorage.setItem("search", this.text);
         sessionStorage.removeItem('cache_res');
         sessionStorage.removeItem('cache_unshuf');
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
-        this.navservice.navigate([`/search`], { queryParams: {q: this.text }});
+        this.navservice.navigate([`/search`], { queryParams: { q: this.text } });
     }
 
     /**
@@ -167,4 +169,20 @@ export class LandingComponent implements OnInit {
         return re.test(String(email).toLowerCase());
     }
     //#endregion
+
+
+    //#openLoginModal
+    public openLoginDialog(): void {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.height = "350px";
+        dialogConfig.width = "352px";
+        dialogConfig.panelClass = "loginModal";
+        this.dialog.open(LoginComponent, dialogConfig);
+
+        // dialogConfig.afterClosed().subscribe(result => {
+        //     console.log('The dialog was closed');
+        //     // this.animal = result;
+        // });
+    }
+    //#endLoginModal
 }

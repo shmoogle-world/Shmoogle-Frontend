@@ -306,3 +306,14 @@ span.error {
   bottom: 5px;
 }
 
+.loginBtn{
+  position: absolute; 
+  left:75%; 
+  margin-top:1%;
+}
+
+.signUpBtn{
+  position: absolute; 
+  left:83%; 
+  margin-top:1%;
+}
