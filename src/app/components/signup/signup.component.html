@@ -5,13 +5,14 @@
     </a>
     <span>Welcome to Shmoogle</span>
   </div>
-  <form>
+  <form [formGroup]="userForm" (ngSubmit)="onSignUpSubmit()">
     <div class="form-group">
       <input
         type="text"
         class="form-control input"
         id="name"
         placeholder="*Display name"
+        formControlName="displayName"
       />
     </div>
     <div class="form-group">
@@ -20,6 +21,7 @@
         class="form-control input"
         id="email"
         placeholder="*Email"
+        formControlName="email"
       />
     </div>
     <div class="form-group">
@@ -28,11 +30,12 @@
         class="form-control input"
         id="password"
         placeholder="*Password (6 or more characters)"
+        formControlName="password"
       />
     </div>
     <div class="form-group">
       <input
-        type="text"
+        type="password"
         class="form-control input"
         id="confirm"
         placeholder="*Confirm Password"
@@ -46,7 +49,7 @@
         placeholder="How did you find about Shmoogle?"
       />
     </div>
-    <button type="button" class="btn btn-secondary">Continue</button>
+    <button type="submit" class="btn btn-secondary">Continue</button>
     <div class="privacy-policy">
       <p>
         By continuing, you agree to Shmoogle's

@@ -23,6 +23,7 @@ export class LandingComponent implements OnInit {
     public afterMail: boolean;
     public loadingAnimation: boolean = false;
     public password: string = "";
+    public signUp:boolean= false;
     //#endregion
 
     // @LocalStorage()
@@ -174,15 +175,20 @@ export class LandingComponent implements OnInit {
     //#openLoginModal
     public openLoginDialog(): void {
         const dialogConfig = new MatDialogConfig();
-        dialogConfig.height = "350px";
-        dialogConfig.width = "352px";
+        dialogConfig.height = "280px";
+        dialogConfig.width = "262px";
         dialogConfig.panelClass = "loginModal";
         this.dialog.open(LoginComponent, dialogConfig);
 
+        // this.dialog.closeAll();
         // dialogConfig.afterClosed().subscribe(result => {
         //     console.log('The dialog was closed');
         //     // this.animal = result;
         // });
     }
     //#endLoginModal
+
+    public openSignUp():void{
+        this.signUp = true;
+    }
 }

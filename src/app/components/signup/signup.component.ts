@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { FormGroup, FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http'
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -8,25 +8,24 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 })
 export class SignupComponent implements OnInit {
 
-  email: string;
-  password: string;
-
-  constructor(public dialog: MatDialog) { }
+  userForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+    displayName: new FormControl(''),
+  });
+  signUpURL: string = 'https://bingsearchapiv1.azurewebsites.net/signup';
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(SignupComponent, {
-      width: '250px',
-      data: { email: this.email, password: this.password }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-      console.log(result);
-    });
+  onSignUpSubmit(): void {
+    console.log(this.userForm.value);
+    const result = this.httpClient.post(`${this.signUpURL}`, this.userForm.value);
+    console.log(result);
+    this.userForm.reset();
+    return;
   }
 
 }
+

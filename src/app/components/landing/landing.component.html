@@ -2,7 +2,8 @@
     <app-nav></app-nav>
     <div style="position: relative;">
         <button class="btn btn-light loginBtn" (click)="openLoginDialog()">Log in</button>
-        <button class="btn btn-secondary signUpBtn">Sign up</button>
+        <button class="btn btn-secondary signUpBtn" (click)="openSignUp()">Sign up</button>
+        <app-signup *ngIf="signUp== true"></app-signup>
     </div>
     <main>
         <div class="main-logo-div">

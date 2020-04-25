@@ -1,7 +1,7 @@
 import { LogoComponent } from './branding/logo/logo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from "@angular/material/button";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatMenuModule } from "@angular/material/menu";
@@ -43,6 +43,7 @@ import { SignupComponent } from './components/signup/signup.component';
         MatButtonModule,
         MatSlideToggleModule,
         RouteModule,
+        ReactiveFormsModule
     ],
     providers: [
         GlobalsService,

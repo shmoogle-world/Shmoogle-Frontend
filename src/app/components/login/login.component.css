@@ -22,6 +22,13 @@
     background: #ffffff;
   }
 
+  ::placeholder{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    color: rgba(111, 111, 111, 0.5);
+  }
+
 .btn-secondary {
     background: #6f6f6f;
     border: none;
@@ -29,10 +36,6 @@
     width: 216px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.form{
-    padding-top:10px;
 }
 
 .forgotPass {
@@ -61,10 +64,43 @@
 
 .footer a {
     color: #4f4f4f;
+    text-decoration: none;
 }
 
+.footer p{
+    margin:0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 13px;
+    text-align: center;
+    color: #4f4f4f;
+    margin-top:12px;
+}
 .small-logo {
     width: 52px;
     object-fit: contain;
     height: 100%;
+}
+
+.logo{
+    width:49px;
+    height:31px;
+    align-items: center;
+    margin-top:11px;
+    margin-bottom:13px;
+}
+
+.title{
+    margin-bottom:26px;
+}
+
+.title p{
+    margin:0;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 17px;
+    color: #6F6F6F;
+    
 }
