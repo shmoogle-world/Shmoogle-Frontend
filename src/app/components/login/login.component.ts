@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from './../../shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,18 +12,17 @@ export class LoginComponent implements OnInit {
     email: new FormControl(''),
     password: new FormControl(''),
   });
-  loginURL: string = 'https://bingsearchapiv1.azurewebsites.net/login';
-  constructor(private httpClient: HttpClient) { }
+  constructor(private authservice: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  onLoginSubmit(): void {
-    // TODO: Use EventEmitter with form value
-    const result = this.httpClient.post(`${this.loginURL}`,this.userForm.value);
-    console.log(result);
-    this.userForm.reset();
-    return;
+  async onLoginSubmit() {
+    this.authservice.login(this.userForm.value).subscribe((res) => {
+        this.userForm.reset();
+    }, (error) => {
+        console.log("login error", error);
+    });
   }
 
 }

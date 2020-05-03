@@ -4,22 +4,22 @@ import { Router } from '@angular/router';
 import { User } from './user.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
+import { AuthResponseData } from './auth.service';
 
 export interface AuthResponseData {
     email: string;
-    token: string;
-    refreshToken: string;
-    expiresIn: string;
+    displayName: string;
+    jwt: string;
 }
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    user = new BehaviorSubject<User>(null);
+    public user = new BehaviorSubject<User>(null);
     private tokenExpirationTimer: any;
     private logoutRedirectRoute = '/';
-    private apiEndpoint = '/auth/';
+    private apiEndpoint = 'https://bingsearchapiv1.azurewebsites.net/';
 
     constructor(private http: HttpClient, private router: Router) { }
 
@@ -31,7 +31,7 @@ export class AuthService {
             )
             .pipe(
                 catchError(this.handleError),
-                tap(this.loginTap)
+                tap(this.handleLogin.bind(this))
             );
     }
 
@@ -43,18 +43,11 @@ export class AuthService {
             )
             .pipe(
                 catchError(this.handleError),
-                tap(this.loginTap)
+                tap(this.handleLogin.bind(this))
             );
     }
 
-    private loginTap(res: AuthResponseData) {
-        this.handleLogin(
-            res.email,
-            res.token,
-            res.refreshToken,
-            +res.expiresIn
-        );
-    }
+    
 
     logout() {
         this.user.next(null);
@@ -66,16 +59,11 @@ export class AuthService {
         this.tokenExpirationTimer = null;
     }
 
-    private handleLogin(
-        email: string,
-        userId: string,
-        token: string,
-        expiresIn: number
-    ) {
-        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-        const user = new User(email, userId, token, expirationDate);
+    private handleLogin (res: AuthResponseData) {
+        const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
+        const user = new User(res.email, res.jwt, expirationDate);
         this.user.next(user);
-        this.autoLogout(expiresIn * 1000);
+        this.autoLogout(86400 * 1000);
         localStorage.setItem('userData', JSON.stringify(user));
     }
 
@@ -109,7 +97,6 @@ export class AuthService {
         // This should be called in the root component on ngInit.
         const userData: {
             email: string;
-            id: string;
             _token: string;
             _tokenExpirationDate: string;
         } = JSON.parse(localStorage.getItem('auth-user'));
@@ -120,7 +107,6 @@ export class AuthService {
 
         const loadedUser = new User(
             userData.email,
-            userData.id,
             userData._token,
             new Date(userData._tokenExpirationDate)
         );
