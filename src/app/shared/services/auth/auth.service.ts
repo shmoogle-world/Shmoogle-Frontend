@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { User } from './user.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { AuthResponseData } from './auth.service';
+import * as jwtDecode from "jwt-decode";
 
 export interface AuthResponseData {
     email: string;
@@ -61,7 +61,9 @@ export class AuthService {
 
     private handleLogin (res: AuthResponseData) {
         const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
-        const user = new User(res.email, res.jwt, expirationDate);
+        const data = jwtDecode(res.jwt);
+        //const user = new User(res.email, res.jwt, expirationDate);
+        const user = new User(data.email, res.jwt, expirationDate);
         this.user.next(user);
         this.autoLogout(86400 * 1000);
         localStorage.setItem('userData', JSON.stringify(user));
