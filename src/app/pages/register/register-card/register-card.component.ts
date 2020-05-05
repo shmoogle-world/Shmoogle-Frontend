@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-register-card',
+  templateUrl: './register-card.component.html',
+  styleUrls: ['./register-card.component.css']
 })
-export class SignupComponent implements OnInit {
+export class RegisterCardComponent implements OnInit {
 
   userForm = new FormGroup({
     email: new FormControl(''),

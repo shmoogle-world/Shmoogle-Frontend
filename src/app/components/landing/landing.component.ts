@@ -7,7 +7,7 @@ import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.co
 import { AppComponent } from "../../app.component";
 import { formatDate } from "@angular/common";
 import { GlobalsService } from '../../Services/globals.service';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from '../../shared/user-info/login-modal/login-modal.component';
 
 @Component({
     selector: "app-landing",
@@ -22,8 +22,6 @@ export class LandingComponent implements OnInit {
     public error: boolean;
     public afterMail: boolean;
     public loadingAnimation: boolean = false;
-    public password: string = "";
-    public signUp:boolean= false;
     //#endregion
 
     // @LocalStorage()
@@ -170,25 +168,5 @@ export class LandingComponent implements OnInit {
         return re.test(String(email).toLowerCase());
     }
     //#endregion
-
-
-    //#openLoginModal
-    public openLoginDialog(): void {
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.height = "280px";
-        dialogConfig.width = "262px";
-        dialogConfig.panelClass = "loginModal";
-        this.dialog.open(LoginComponent, dialogConfig);
-
-        // this.dialog.closeAll();
-        // dialogConfig.afterClosed().subscribe(result => {
-        //     console.log('The dialog was closed');
-        //     // this.animal = result;
-        // });
-    }
-    //#endLoginModal
-
-    public openSignUp():void{
-        this.signUp = true;
-    }
+    
 }

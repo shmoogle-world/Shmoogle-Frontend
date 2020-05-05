@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AuthService } from './../../shared/services/auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-modal',
+  templateUrl: './login-modal.component.html',
+  styleUrls: ['./login-modal.component.css']
 })
 export class LoginComponent implements OnInit {
   userForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
   });
-  constructor(private authservice: AuthService) { }
+  constructor(private authservice: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +25,11 @@ export class LoginComponent implements OnInit {
     }, (error) => {
         console.log("login error", error);
     });
+  }
+
+  registerRedirect(e: any) {
+    e.preventDefault();
+    this.router.navigate(["register"]);
   }
 
 }

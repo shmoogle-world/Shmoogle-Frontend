@@ -84,11 +84,9 @@
 }
 
 .logo{
-    width:49px;
-    height:31px;
-    align-items: center;
-    margin-top:11px;
-    margin-bottom:13px;
+   display: flex;
+   justify-content: center;
+   padding-bottom: 10px;
 }
 
 .title{

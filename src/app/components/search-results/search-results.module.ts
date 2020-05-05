@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { IconComponent } from './../../branding/icon/icon.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -36,10 +37,10 @@ const featureRoutes: Routes = [
         SearchBarComponent,
         ResultCounterComponent,
         LoaderComponent,
-        IconComponent,
     ],
     imports: [
         CommonModule,
+        SharedModule,
         FormsModule,
         MatSlideToggleModule,
         MatIconModule,

@@ -24,6 +24,12 @@
   background-color: #ffcb04;
   animation: loading 3s linear 2s infinite;
 }
+.userInfo{
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
 @keyframes loading {
   from {
     left: 50%;

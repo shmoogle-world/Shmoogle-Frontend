@@ -1,8 +1,10 @@
 <div class="container containerStyle">
   <div class="header">
-    <a href="#">
-      <div class="logo"></div>
-    </a>
+      <div>
+            <a routerLink="/">
+                <app-icon></app-icon>
+            </a>
+      </div>
     <span>Welcome to Shmoogle</span>
   </div>
   <form [formGroup]="userForm" (ngSubmit)="onSignUpSubmit()">

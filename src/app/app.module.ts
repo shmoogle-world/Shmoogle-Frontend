@@ -1,4 +1,6 @@
-import { LogoComponent } from './branding/logo/logo.component';
+import { SharedModule } from './shared/shared.module';
+import { UserInfoComponent } from './shared/user-info/user-info.component';
+import { AuthService } from './shared/services/auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -18,22 +20,20 @@ import { RouteModule } from './route.module';
 import { GoogleAnalyticsEventsService } from './Services/analytics/analytic-sercice/analytic-sercice.component';
 import { InsightsServiceComponent } from './Services/analytics/insights-service/insights-service.component';
 import { GlobalsService } from './Services/globals.service';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
-
+import { LoginComponent } from './shared/user-info/login-modal/login-modal.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LandingComponent,
         ErrorDialogBoxComponent,
-        HamburgerNavComponent,
-        LogoComponent,     
+        HamburgerNavComponent,   
         LoginComponent,
-        SignupComponent,   
+        UserInfoComponent
     ],
     imports: [
         BrowserModule,
+        SharedModule,
         BrowserAnimationsModule,
         FormsModule,
         MatDialogModule,
@@ -49,7 +49,8 @@ import { SignupComponent } from './components/signup/signup.component';
         GlobalsService,
         GoogleAnalyticsEventsService,
         InsightsServiceComponent,
-        CookieService
+        CookieService,
+        AuthService,
     ],
     bootstrap: [AppComponent],
     entryComponents: [ErrorDialogBoxComponent]
