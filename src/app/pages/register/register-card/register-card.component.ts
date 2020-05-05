@@ -32,8 +32,10 @@ export class RegisterCardComponent implements OnInit {
   }
   passwordConfirming(c: AbstractControl): { invalid: boolean } {
     if (c.get('password').value !== c.get('confirmPassword').value) {
+      c.get('confirmPassword').setErrors({'incorrect': true});
       return { invalid: true };
-    }
+    }else
+    c.get('confirmPassword').setErrors(null);
   }
 }
 
