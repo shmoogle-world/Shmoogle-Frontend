@@ -67,12 +67,11 @@ export class AuthService {
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';
 
-    if (!errorRes.error || !errorRes.error.error) {
+    if (!errorRes.error) {
       return throwError(errorMessage);
     }
 
-    switch (errorRes.error.error.message) {
-
+    switch (errorRes.error) {
       case 'EMAIL_EXISTS':
         errorMessage = 'This email exists already';
         break;
@@ -82,6 +81,8 @@ export class AuthService {
       case 'INVALID_PASSWORD':
         errorMessage = 'This password is not correct.';
         break;
+      default:
+        errorMessage = 'An unknown error occurred!';
     }
     return throwError(errorMessage);
   }
