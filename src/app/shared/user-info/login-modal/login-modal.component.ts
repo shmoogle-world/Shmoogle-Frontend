@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -12,8 +12,8 @@ import { Location } from '@angular/common';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   userForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
   });
   constructor(private authservice: AuthService,
     private router: Router,

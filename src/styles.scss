@@ -20,3 +20,7 @@ html,body{
     padding:0px;
     border-radius: 15px;
 }
+
+.input.ng-touched.ng-dirty.ng-invalid {
+  border: 1px solid red;
+}
