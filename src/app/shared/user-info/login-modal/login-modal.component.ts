@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   registerRedirect(e: any) {
     e.preventDefault();
-    this.router.navigate(["register"]);
+    this.router.navigate(["signup"]);
     this.dialogRef.close();
   }
   onForgotPassword(e: any) {

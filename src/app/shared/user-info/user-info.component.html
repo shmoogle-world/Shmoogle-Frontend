@@ -1,7 +1,7 @@
 <ng-container *ngIf="user == null; else loggedIn">
   <div class="d-flex justify-content-between">
     <button class="btn btn-light loginBtn" (click)="openLoginDialog()">Log in</button>
-    <button class="btn btn-secondary signUpBtn" [routerLink]="['/register']">Sign up</button>
+    <button class="btn btn-secondary signUpBtn" [routerLink]="['/signup']">Sign up</button>
   </div>
 </ng-container>
 
