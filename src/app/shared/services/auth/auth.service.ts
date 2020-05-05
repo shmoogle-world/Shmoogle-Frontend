@@ -25,7 +25,7 @@ export class AuthService {
   signup(data: { displayName: string, email: string, password: string, age: number, found: string }) {
     return this.http
       .post<AuthResponseData>(
-        this.apiEndpoint + "register",
+        this.apiEndpoint + "signup",
         data
       )
       .pipe(
