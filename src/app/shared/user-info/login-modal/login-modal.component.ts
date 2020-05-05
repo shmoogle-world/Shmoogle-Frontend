@@ -1,22 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   userForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
   });
   constructor(private authservice: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private location: Location,
+    private dialogRef:MatDialogRef<LoginComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy() {
+    if(this.router.url === '/login') {
+        this.location.replaceState('/');
+    }
   }
 
   async onLoginSubmit() {
@@ -30,6 +40,6 @@ export class LoginComponent implements OnInit {
   registerRedirect(e: any) {
     e.preventDefault();
     this.router.navigate(["register"]);
+    this.dialogRef.close();
   }
-
 }
