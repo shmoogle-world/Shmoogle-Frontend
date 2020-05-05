@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { User } from './user.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import * as jwtDecode from "jwt-decode";
 
 export interface AuthResponseData {
     email: string;
@@ -47,8 +46,6 @@ export class AuthService {
             );
     }
 
-    
-
     logout() {
         this.user.next(null);
         this.router.navigate([this.logoutRedirectRoute]);
@@ -59,11 +56,9 @@ export class AuthService {
         this.tokenExpirationTimer = null;
     }
 
-    private handleLogin (res: AuthResponseData) {
+    private handleLogin(res: AuthResponseData) {
         const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
-        const data = jwtDecode(res.jwt);
-        //const user = new User(res.email, res.jwt, expirationDate);
-        const user = new User(data.email, res.jwt, expirationDate);
+        const user = new User(res.email, res.jwt, expirationDate);
         this.user.next(user);
         this.autoLogout(86400 * 1000);
         localStorage.setItem('userData', JSON.stringify(user));
@@ -96,7 +91,6 @@ export class AuthService {
     }
 
     autoLogin() {
-        // This should be called in the root component on ngInit.
         const userData: {
             email: string;
             _token: string;
