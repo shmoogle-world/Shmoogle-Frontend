@@ -18,23 +18,30 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private authservice: AuthService,
     private router: Router,
     private location: Location,
-    private dialogRef:MatDialogRef<LoginComponent>) { }
+    private dialogRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit(): void {
   }
 
   ngOnDestroy() {
-    if(this.router.url === '/login') {
-        this.location.replaceState('/');
+    if (this.router.url === '/login') {
+      this.location.replaceState('/');
     }
   }
 
   async onLoginSubmit() {
+    this.userForm.get('email').setErrors(null);
+    this.userForm.get('password').setErrors(null);
     this.authservice.login(this.userForm.value).subscribe((res) => {
-        this.userForm.reset();
-        this.dialogRef.close();
+      this.userForm.reset();
+      this.dialogRef.close();
     }, (error) => {
-        console.log("login error", error);
+      if (error === 'This email exists already')
+        this.userForm.get('email').setErrors({ 'DoesntExist': true });
+      if (error === 'This password is not correct.')
+        this.userForm.get('password').setErrors({ 'Incorrect': true });
+
+      console.log("login error", error);
     });
   }
 

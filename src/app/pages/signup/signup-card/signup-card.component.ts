@@ -28,7 +28,8 @@ export class SignupCardComponent implements OnInit {
       this.userForm.reset();
       this.router.navigate(["/"]);
     }, (error) => {
-      this.userForm.get('email').setErrors({ 'Taken': true });
+      if (error === 'This email exists already')
+        this.userForm.get('email').setErrors({ 'Taken': true });
       console.log("login error", error);
     });
   }
