@@ -42,4 +42,8 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     dialogConfig.panelClass = "loginModal";
     this.dialog.open(LoginComponent, dialogConfig);
   }
+
+  logout() {
+    this.authService.logout();
+  }
 }
