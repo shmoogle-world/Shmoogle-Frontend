@@ -1,2 +1,8 @@
-<button class="btn btn-light loginBtn" (click)="openLoginDialog()">Log in</button>
-<button class="btn btn-secondary signUpBtn" routerLink="register">Sign up</button>
+<ng-container *ngIf="user == null; else loggedIn">
+  <button class="btn btn-light loginBtn" (click)="openLoginDialog()">Log in</button>
+  <button class="btn btn-secondary signUpBtn" routerLink="register">Sign up</button>
+</ng-container>
+
+<ng-template #loggedIn> 
+  <p>Logged in</p>
+</ng-template>

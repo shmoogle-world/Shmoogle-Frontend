@@ -101,10 +101,17 @@ export class SearchResultService {
                     if(response[0][i].hasOwnProperty("url")) {
                         const tmp1 = response[0][i];
                         const tmp2 = response[1][i];
-                        // @ts-ignore
-                        response[0][i].url = decodeURI(tmp1.url);
-                        // @ts-ignore
-                        response[1][i].url = decodeURI(tmp2.url);
+                        try{
+                            // @ts-ignore
+                            response[0][i].url = decodeURI(tmp1.url);
+                            // @ts-ignore
+                            response[1][i].url = decodeURI(tmp2.url);
+                        }catch(e){
+                            // @ts-ignore
+                            response[0][i].url = tmp1.url;
+                            // @ts-ignore
+                            response[1][i].url = tmp2.url;
+                        }
                     }
                 }
                 return response;

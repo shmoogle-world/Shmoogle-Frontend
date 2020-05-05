@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   async onLoginSubmit() {
     this.authservice.login(this.userForm.value).subscribe((res) => {
         this.userForm.reset();
+        this.dialogRef.close();
     }, (error) => {
         console.log("login error", error);
     });

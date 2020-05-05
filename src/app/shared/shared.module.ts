@@ -1,3 +1,4 @@
+import { UserInfoComponent } from './user-info/user-info.component';
 import { IconComponent } from './../branding/icon/icon.component';
 import { LogoComponent } from './../branding/logo/logo.component';
 import { NgModule } from '@angular/core';
@@ -7,7 +8,8 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     IconComponent,
-    LogoComponent
+    LogoComponent,
+    UserInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { CommonModule } from '@angular/common';
 
   exports: [
     IconComponent,
-    LogoComponent
+    LogoComponent,
+    UserInfoComponent
   ]
 })
 export class SharedModule { }

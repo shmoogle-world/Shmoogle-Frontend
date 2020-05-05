@@ -1,5 +1,3 @@
-import { SharedModule } from './../../shared/shared.module';
-import { IconComponent } from './../../branding/icon/icon.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule, Routes } from '@angular/router';
 import { LoaderComponent } from './../../loader/loader.component';
+import { SharedModule } from './../../shared/shared.module';
 import { ResultCounterComponent } from './result-counter/result-counter.component';
 import { ImageResultsComponent } from './result-types/image-results/image-results.component';
 import { WebItemComponent } from './result-types/web-results/web-list/web-item/web-item.component';

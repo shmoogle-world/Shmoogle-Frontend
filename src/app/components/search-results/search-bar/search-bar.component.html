@@ -1,56 +1,60 @@
-<div class="d-flex align-items-center flex-md-wrap pl-1 pr-3">
-    <div class="logo-link pointer mx-3" [routerLink]="['/']">
-        <app-icon class="small-logo"></app-icon>
-    </div>
-    <span class="d-flex align-items-center flex-wrap pl-1">
-
-            <div class="d-flex align-items-center mb-2 mb-md-0">
-                <div class="shw-input-parent">
-
-                    <input 
-                        class="shw-input"
-                        type="text" 
-                        [(ngModel)]="searchText" 
-                        (keyup.enter)="search()"
-                        size="400px"
-                        />
-                    
-                    <div *ngIf="requestPending" class="shw-load-animation">
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                    </div>
-                </div>
-                <mat-icon
-                    class="search-icon pointer"
-                    aria-hidden="false" 
-                    aria-label="Search"
-                    (click)="search()" 
-                    (keyup.enter)="search()" 
-                    tabindex="0"
-                    >search</mat-icon>
-            </div>
-        <div class="order-md-first links flex-grow-1">
-            <a
-                class="mx-1"
-                [routerLinkActiveOptions]="{exact: true}"
-                [routerLink]="['/search/']"
-                queryParamsHandling="merge"
-                routerLinkActive="active"
-                >Web</a>
-            <a 
-                class="mx-1"
-                [routerLink]="['/search/images']"
-                queryParamsHandling="merge"
-                routerLinkActive="active"
-                >Images</a>
+<div class="d-flex justify-content-between pl-1 pr-3">
+    <div class="d-flex align-items-center flex-md-wrap">
+        
+        <div class="logo-link pointer mx-3" [routerLink]="['/']">
+            <app-icon class="small-logo"></app-icon>
         </div>
-        <mat-slide-toggle 
-            *ngIf="showShuffleSlider"
-            [checked]="true"
-            (change)="onShuffleToggled($event)" 
-            class="slider mr-3" 
-            ></mat-slide-toggle>
-    </span>
+        <span class="d-flex align-items-center flex-wrap pl-1">
+    
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                    <div class="shw-input-parent">
+    
+                        <input 
+                            class="shw-input"
+                            type="text" 
+                            [(ngModel)]="searchText" 
+                            (keyup.enter)="search()"
+                            size="400px"
+                            />
+                        
+                        <div *ngIf="requestPending" class="shw-load-animation">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
+                    <mat-icon
+                        class="search-icon pointer"
+                        aria-hidden="false" 
+                        aria-label="Search"
+                        (click)="search()" 
+                        (keyup.enter)="search()" 
+                        tabindex="0"
+                        >search</mat-icon>
+                </div>
+            <div class="order-md-first links flex-grow-1">
+                <a
+                    class="mx-1"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    [routerLink]="['/search/']"
+                    queryParamsHandling="merge"
+                    routerLinkActive="active"
+                    >Web</a>
+                <a 
+                    class="mx-1"
+                    [routerLink]="['/search/images']"
+                    queryParamsHandling="merge"
+                    routerLinkActive="active"
+                    >Images</a>
+            </div>
+            <mat-slide-toggle 
+                *ngIf="showShuffleSlider"
+                [checked]="true"
+                (change)="onShuffleToggled($event)" 
+                class="slider mr-3" 
+                ></mat-slide-toggle>
+        </span>
+    </div>
+    <app-user-info></app-user-info>
 
 </div>
