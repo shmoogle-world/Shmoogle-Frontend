@@ -1,8 +1,23 @@
 <ng-container *ngIf="user == null; else loggedIn">
-  <button class="btn btn-light loginBtn" (click)="openLoginDialog()">Log in</button>
-  <button class="btn btn-secondary signUpBtn" routerLink="register">Sign up</button>
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-light loginBtn" (click)="openLoginDialog()">Log in</button>
+    <button class="btn btn-secondary signUpBtn" routerLink="register">Sign up</button>
+  </div>
 </ng-container>
 
 <ng-template #loggedIn> 
-  <p>Logged in</p>
+  <div class="d-flex">
+
+    <div>
+      <p class="m-0">Logged in as</p>
+      <p class="m-0">{{ user.displayName }}</p>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+  </div>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Help</button>
+  </mat-menu>
 </ng-template>

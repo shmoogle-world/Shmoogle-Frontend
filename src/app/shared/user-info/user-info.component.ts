@@ -27,7 +27,6 @@ export class UserInfoComponent implements OnInit, OnDestroy {
 
     this.subscription = this.authService.user.subscribe(user => {
       this.user = user;
-      console.log(user);
     });
   }
 

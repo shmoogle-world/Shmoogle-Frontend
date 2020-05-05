@@ -58,7 +58,7 @@ export class AuthService {
 
   private handleLogin(res: AuthResponseData) {
     const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
-    const user = new User(res.email, res.jwt, expirationDate);
+    const user = new User(res.email, res.displayName, res.jwt, expirationDate);
     this.user.next(user);
     this.autoLogout(86400 * 1000);
     localStorage.setItem('auth-user', JSON.stringify(user));
@@ -93,6 +93,7 @@ export class AuthService {
   autoLogin() {
     const userData: {
       email: string;
+      displayName: string;
       _token: string;
       _tokenExpirationDate: string;
     } = JSON.parse(localStorage.getItem('auth-user'));
@@ -102,6 +103,7 @@ export class AuthService {
 
     const loadedUser = new User(
       userData.email,
+      userData.displayName,
       userData._token,
       new Date(userData._tokenExpirationDate)
     );
