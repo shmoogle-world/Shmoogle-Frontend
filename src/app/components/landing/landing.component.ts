@@ -7,6 +7,7 @@ import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.co
 import { AppComponent } from "../../app.component";
 import { formatDate } from "@angular/common";
 import { GlobalsService } from '../../Services/globals.service';
+import { LoginComponent } from '../../shared/user-info/login-modal/login-modal.component';
 
 @Component({
     selector: "app-landing",
@@ -58,18 +59,17 @@ export class LandingComponent implements OnInit {
             }, 3000);
         }
     }
-
     //#endregion
 
     //#region Public Methods
     public search(): void {
-        if (this.text === "") 
+        if (this.text === "")
             return;
         sessionStorage.setItem("search", this.text);
         sessionStorage.removeItem('cache_res');
         sessionStorage.removeItem('cache_unshuf');
         this.analyticservice.emitEvent("ClickCategory", this.text, "ClickLabel", 1);
-        this.navservice.navigate([`/search`], { queryParams: {q: this.text }});
+        this.navservice.navigate([`/search`], { queryParams: { q: this.text } });
     }
 
     /**
@@ -167,4 +167,5 @@ export class LandingComponent implements OnInit {
         return re.test(String(email).toLowerCase());
     }
     //#endregion
+    
 }

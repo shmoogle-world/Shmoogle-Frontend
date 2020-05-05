@@ -15,3 +15,12 @@ html,body{
 .pointer {
     cursor: pointer;
 }
+
+.loginModal .mat-dialog-container{
+    padding: 0px;
+    border-radius: 15px;
+}
+
+.input.ng-touched.ng-dirty.ng-invalid {
+  border: 1px solid red;
+}

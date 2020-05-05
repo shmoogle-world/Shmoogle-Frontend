@@ -1,0 +1,104 @@
+
+
+.containerStyle {
+    background-color: #F0F0F0;
+    width:100%;
+    height:100%;
+    border-radius: 15px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    /* margin: 50px auto 0; */
+    padding: 11px;
+    text-align: center;
+  }
+
+.input {
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 216px;
+    height: 25px;
+    background: #ffffff;
+  }
+
+  ::placeholder{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    color: rgba(111, 111, 111, 0.5);
+  }
+
+.btn-secondary {
+    background: #6f6f6f;
+    border: none;
+    padding: 3px;
+    width: 216px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.forgotPass {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 13px;
+    text-align: center;
+    color: #4f4f4f;
+    margin-top:12px;
+}
+
+.forgotPass a{
+    color: #4f4f4f;
+    text-decoration: none;
+}
+
+.footer{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: center;
+    color: #4F4F4F;
+}
+
+.footer a {
+    color: #4f4f4f;
+    text-decoration: none;
+}
+
+.footer p{
+    margin:0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 13px;
+    text-align: center;
+    color: #4f4f4f;
+    margin-top:12px;
+}
+.small-logo {
+    width: 52px;
+    object-fit: contain;
+    height: 100%;
+}
+
+.logo{
+   display: flex;
+   justify-content: center;
+   padding-bottom: 10px;
+}
+
+.title{
+    margin-bottom:26px;
+}
+
+.title p{
+    margin:0;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 17px;
+    color: #6F6F6F;
+    
+}

@@ -24,6 +24,11 @@
   background-color: #ffcb04;
   animation: loading 3s linear 2s infinite;
 }
+.userInfo{
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
 @keyframes loading {
   from {
     left: 50%;
@@ -306,3 +311,14 @@ span.error {
   bottom: 5px;
 }
 
+.loginBtn{
+  position: absolute; 
+  left:75%; 
+  margin-top:1%;
+}
+
+.signUpBtn{
+  position: absolute; 
+  left:83%; 
+  margin-top:1%;
+}

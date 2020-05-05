@@ -1,0 +1,65 @@
+<div class="container containerStyle">
+  <div class="header">
+      <div>
+            <a routerLink="/">
+                <app-icon></app-icon>
+            </a>
+      </div>
+    <span>Welcome to Shmoogle</span>
+  </div>
+  <form [formGroup]="userForm" (ngSubmit)="onSignUpSubmit()">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control input"
+        id="name"
+        placeholder="*Display name"
+        formControlName="displayName"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="email"
+        class="form-control input"
+        id="email"
+        placeholder="*Email"
+        formControlName="email"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        class="form-control input"
+        id="password"
+        placeholder="*Password (6 or more characters)"
+        formControlName="password"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        class="form-control input"
+        id="confirm"
+        placeholder="*Confirm Password"
+        formControlName="confirmPassword"
+      />
+    </div>
+    <button 
+      type="submit" 
+      class="btn btn-secondary"
+      [disabled]="!userForm.valid"
+      >Continue</button>
+    
+    <div class="privacy-policy">
+      <p>
+        By continuing, you agree to Shmoogle's
+        <a href="#">Terms and Services</a> &
+        <a href="#">Privacy policy</a>
+      </p>
+    </div>
+  </form>
+
+  <div class="footer">
+    <p>Already a member? <a routerLink="/login">Log in</a></p>
+  </div>
+</div>

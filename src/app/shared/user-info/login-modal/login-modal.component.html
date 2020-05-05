@@ -1,0 +1,29 @@
+<div class="container containerStyle">
+  <div class="logo">
+    <app-icon></app-icon>
+  </div>
+  <div class="title">
+    <p>Log In To Your Shmoogle Account!</p>
+  </div>
+  <form [formGroup]="userForm" (ngSubmit)="onLoginSubmit()">
+    <div class="form-group">
+      <input type="email" formControlName="email" class="form-control input" id="email" placeholder="Email" />
+    </div>
+    <div class="form-group">
+      <input type="password" formControlName="password" class="form-control input" id="password"
+        placeholder="Password" />
+    </div>
+    <button type="submit" class="btn btn-secondary" [disabled]="!userForm.valid">Log in</button>
+    <div class="forgotPass">
+      <p>
+        or
+        <a href="#" (click)="onForgotPassword($event)">
+          <b>Forgot password?</b>
+        </a>
+      </p>
+    </div>
+  </form>
+  <div class="footer">
+    <p>Don't have an account? <a (click)="signupRedirect($event)" href="#"> <b>Sign up</b></a></p>
+  </div>
+</div>
