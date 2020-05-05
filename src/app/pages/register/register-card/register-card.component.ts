@@ -1,6 +1,6 @@
 import { AuthService } from './../../../shared/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
 @Component({
@@ -11,10 +11,11 @@ import { Router } from '@angular/router';
 export class RegisterCardComponent implements OnInit {
 
   userForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-    displayName: new FormControl(''),
-  });
+    email: new FormControl(null, [Validators.required]),
+    password: new FormControl(null, [Validators.required, Validators.min(6)]),
+    confirmPassword: new FormControl(null, [Validators.required, Validators.min(6)]),
+    displayName: new FormControl(null, [Validators.required]),
+  }, this.passwordConfirming);
   constructor(private authservice: AuthService,
     private router: Router) { }
 
@@ -25,9 +26,14 @@ export class RegisterCardComponent implements OnInit {
     this.authservice.signup(this.userForm.value).subscribe((res) => {
       this.userForm.reset();
       this.router.navigate(["/"]);
-  }, (error) => {
+    }, (error) => {
       console.log("login error", error);
-  });
+    });
+  }
+  passwordConfirming(c: AbstractControl): { invalid: boolean } {
+    if (c.get('password').value !== c.get('confirmPassword').value) {
+      return { invalid: true };
+    }
   }
 }
 

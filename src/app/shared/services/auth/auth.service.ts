@@ -22,7 +22,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  signup(data: { displayName: string, email: string, password: string, age: number, found: string }) {
+  signup(data: { displayName: string, email: string, password: string }) {
     return this.http
       .post<AuthResponseData>(
         this.apiEndpoint + "signup",

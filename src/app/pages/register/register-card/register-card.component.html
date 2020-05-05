@@ -41,17 +41,15 @@
         class="form-control input"
         id="confirm"
         placeholder="*Confirm Password"
+        formControlName="confirmPassword"
       />
     </div>
-    <div class="form-group">
-      <input
-        type="text"
-        class="form-control input"
-        id="heard"
-        placeholder="How did you find about Shmoogle?"
-      />
-    </div>
-    <button type="submit" class="btn btn-secondary">Continue</button>
+    <button 
+      type="submit" 
+      class="btn btn-secondary"
+      [disabled]="!userForm.valid"
+      >Continue</button>
+    
     <div class="privacy-policy">
       <p>
         By continuing, you agree to Shmoogle's
