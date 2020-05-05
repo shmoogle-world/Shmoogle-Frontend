@@ -42,4 +42,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.router.navigate(["register"]);
     this.dialogRef.close();
   }
+  onForgotPassword(e: any) {
+    e.preventDefault();
+    alert("This function is not yet implemented!\nSorry for the inconveniece.");
+  }
 }

@@ -59,7 +59,6 @@ export class LandingComponent implements OnInit {
             }, 3000);
         }
     }
-
     //#endregion
 
     //#region Public Methods

@@ -26,6 +26,5 @@ export class RegisterCardComponent implements OnInit {
     this.userForm.reset();
     return;
   }
-
 }
 

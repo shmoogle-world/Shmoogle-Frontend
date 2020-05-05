@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LoginComponent } from './login-modal/login-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-info',
@@ -9,9 +10,13 @@ import { LoginComponent } from './login-modal/login-modal.component';
 })
 export class UserInfoComponent implements OnInit {
 
-  constructor(private dialog: MatDialog,) { }
+  constructor(private dialog: MatDialog,
+    private navservice: Router) { }
 
   ngOnInit(): void {
+    if(this.navservice.url === '/login') {
+        this.openLoginDialog();
+    }
   }
 
     public openLoginDialog(): void {
