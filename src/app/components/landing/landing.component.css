@@ -25,9 +25,8 @@
   animation: loading 3s linear 2s infinite;
 }
 .userInfo{
-  position: absolute;
-  top: 15px;
-  right: 10px;
+  margin-top: 15px;
+  margin-right: 10px;
 }
 
 @keyframes loading {

@@ -18,7 +18,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
     CommonModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
 
   exports: [
