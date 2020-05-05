@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from './user.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
+import { GlobalsService } from '../../../Services/globals.service';
 
 export interface AuthResponseData {
   email: string;
@@ -20,12 +21,12 @@ export class AuthService {
   private logoutRedirectRoute = '/';
   private apiEndpoint = 'https://bingsearchapiv1.azurewebsites.net/';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private globals: GlobalsService) { }
 
   signup(data: { displayName: string, email: string, password: string }) {
     return this.http
       .post<AuthResponseData>(
-        this.apiEndpoint + "signup",
+        this.globals.baseUrl + "signup",
         data
       )
       .pipe(
@@ -37,7 +38,7 @@ export class AuthService {
   login(data: { email: string, password: string }) {
     return this.http
       .post<AuthResponseData>(
-        this.apiEndpoint + 'login',
+        this.globals.baseUrl + 'login',
         data
       )
       .pipe(
