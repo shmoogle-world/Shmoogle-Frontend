@@ -1,28 +1,14 @@
 <div>
-    <div class="d-flex justify-content-end userInfo" >
-        <app-user-info></app-user-info>
-        <app-nav></app-nav>
+  <div class="d-flex justify-content-end user-info">
+    <app-user-info></app-user-info>
+    <app-nav></app-nav>
+  </div>
+  <main>
+    <div class="main-logo-div">
+      <app-logo class="app-logo"></app-logo>
+      <app-search-input [(inputModel)]="text" (search)="search()"></app-search-input>
     </div>
-    <main>
-        <div class="main-logo-div">
-            <app-logo class="app-logo"></app-logo>
-            <div class="input-div">
-                <input class="input" type="text" [(ngModel)]="text" (keyup)="CheckEnterKey($event)" />
-                <mat-icon class="search-icon" (click)="search()">search</mat-icon>
-            </div>
-            <div *ngIf="loadingAnimation" class="load-bar">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-
-        <div class="sentances-div">
-            <div class="think">
-                Search dif<span style="margin-left: 1px;">f</span>erent. Think
-                <span style="margin-left: 1px;">dif<span>f</span>erent</span>.
-            </div>
-        </div>
-    </main>
-    <app-email-list></app-email-list>
+    <app-motto></app-motto>
+  </main>
+  <app-email-list></app-email-list>
 </div>

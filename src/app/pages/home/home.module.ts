@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EmailListComponent } from './email-list/email-list.component';
+import { MottoComponent } from './motto/motto.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
     HomeComponent,
     HamburgerNavComponent,
     EmailListComponent,
+    MottoComponent,
   ],
   imports: [
     CommonModule,
