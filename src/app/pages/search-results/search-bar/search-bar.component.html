@@ -5,7 +5,8 @@
             <app-icon class="small-logo"></app-icon>
         </div>
         <span class="d-flex align-items-center flex-wrap pl-1">
-            <app-search-input 
+            <app-search-input
+                class="search-input"
                 [(inputModel)]="searchText" 
                 (search)="search()" 
                 [animationActive]="requestPending">

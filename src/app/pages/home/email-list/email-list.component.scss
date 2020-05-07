@@ -1,25 +1,4 @@
-.input {
-    width: 495px;
-    margin-top: 19px;
-    height: 52px;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    font-size: 18px;
-    height: 52px;
-    border-bottom: 1px solid darkgrey;
-    color: #212121;
-    font-family: "Open Sans";
-    letter-spacing: 2px;
-    padding-left: 5px;
-  }
-  input:focus {
-    border: none;
-    border-bottom: 1px solid #3ec4ba;
-    outline: none;
-  }
-
-  footer {
+footer {
     visibility: hidden;
     position: fixed;
     bottom: 0;
@@ -31,18 +10,18 @@
     width: 100%;
     -webkit-transition: width 2s; /* Safari */
     transition: width 2s;
-    padding-bottom: 30px !important;
+    //padding-bottom: 30px !important;
   }
 
   
-.sentance {
+.text {
     color: #4c4c4c;
     font-family: "Open Sans";
     font-size: 18px;
     font-weight: 300;
   }
   
-  .para{
+  .para {
     margin-top:30px;
   }
   .send {
@@ -50,7 +29,6 @@
     border-radius: 5px;
     margin-left: 1rem;
     padding: 1rem;
-    cursor: pointer;
     font-size: 1rem;
     color: #4c4c4c;
     font-family: "Open Sans";
@@ -63,8 +41,6 @@
   .close {
     width: 20px;
     cursor: pointer;
-    position: relative;
-    top: 32px;
   }
   
   .visible {
@@ -77,11 +53,6 @@
     font-family: "Open Sans";
   }
   
-  .input-div2 {
-    text-align: center;
-    margin: auto;
-  }
-
   .error-div {
     text-align: center;
     margin: auto;

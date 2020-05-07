@@ -5,17 +5,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './animated-input.component.html',
   styleUrls: ['./animated-input.component.scss']
 })
-export class AnimatedInputComponent implements OnInit {
+export class AnimatedInputComponent {
   
   @Input() inputModel: string;
   @Output() inputModelChange = new EventEmitter<string>();
   @Output() enter = new EventEmitter<void>();
   @Input() animationActive: boolean = false;
   
-  constructor() { }
+  @Input() inputType: string = 'text';
+  @Input() placeholderText: string = '';
+  @Input() big: boolean = false;
   
-  ngOnInit(): void {
-  }
   onChange(e) {
     this.inputModelChange.emit(e);
   }
