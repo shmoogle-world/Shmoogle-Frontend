@@ -14,12 +14,11 @@ import { ErrorDialogBoxComponent } from './components/error-dialog-box/error-dia
 import { HamburgerNavComponent } from './components/hamburger-nav/hamburger-nav.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { RouteModule } from './route.module';
-import { GoogleAnalyticsEventsService } from './Services/analytics/analytic-sercice/analytic-sercice.component';
-import { InsightsServiceComponent } from './Services/analytics/insights-service/insights-service.component';
 import { GlobalsService } from './Services/globals.service';
 import { AuthService } from './shared/services/auth/auth.service';
 import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './shared/user-info/login-modal/login-modal.component';
+import { AnalyticsService } from './shared/services/analytics/analytics-service';
 
 @NgModule({
     declarations: [
@@ -45,8 +44,7 @@ import { LoginComponent } from './shared/user-info/login-modal/login-modal.compo
     ],
     providers: [
         GlobalsService,
-        GoogleAnalyticsEventsService,
-        InsightsServiceComponent,
+        AnalyticsService,
         CookieService,
         AuthService,
     ],
