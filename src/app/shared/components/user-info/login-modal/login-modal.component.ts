@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialogRef } from '@angular/material/dialog';
 import { Location } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../../shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-login-modal',

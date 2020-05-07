@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 import { shuffle } from 'lodash';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { GlobalsService } from '../../Services/globals.service';
+import { environment } from '../../../environments/environment';
 import { ImageResult } from './models/image-result.model';
 import { WebResult } from './models/web-result.model';
 import { SearchResults } from './search-results.model';
@@ -23,7 +22,6 @@ export class SearchResultService {
   private type: string = "text";
 
   constructor(public http: HttpClient,
-    private globals: GlobalsService,
     public navservice: Router,
   ) { }
 

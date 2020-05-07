@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, throwError } from 'rxjs';
-import { Router } from '@angular/router';
-import { User } from './user.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { GlobalsService } from '../../../Services/globals.service';
-import { environment } from 'src/environments/environment';
+
+import { User } from './user.model';
+import { environment } from '../../../../environments/environment';
 
 export interface AuthResponseData {
   email: string;
@@ -21,7 +21,7 @@ export class AuthService {
   private tokenExpirationTimer: any;
   private logoutRedirectRoute = '/';
 
-  constructor(private http: HttpClient, private router: Router, private globals: GlobalsService) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   signup(data: { displayName: string, email: string, password: string }) {
     return this.http

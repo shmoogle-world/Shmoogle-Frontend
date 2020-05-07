@@ -14,41 +14,39 @@ import { ErrorDialogBoxComponent } from './components/error-dialog-box/error-dia
 import { HamburgerNavComponent } from './components/hamburger-nav/hamburger-nav.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { RouteModule } from './route.module';
-import { GlobalsService } from './Services/globals.service';
+import { LoginComponent } from './shared/components/user-info/login-modal/login-modal.component';
+import { AnalyticsService } from './shared/services/analytics/analytics-service';
 import { AuthService } from './shared/services/auth/auth.service';
 import { SharedModule } from './shared/shared.module';
-import { LoginComponent } from './shared/user-info/login-modal/login-modal.component';
-import { AnalyticsService } from './shared/services/analytics/analytics-service';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LandingComponent,
-        ErrorDialogBoxComponent,
-        HamburgerNavComponent,   
-        LoginComponent
-    ],
-    imports: [
-        BrowserModule,
-        SharedModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        MatDialogModule,
-        HttpClientModule,
-        MatMenuModule,
-        MatIconModule,
-        MatButtonModule,
-        MatSlideToggleModule,
-        RouteModule,
-        ReactiveFormsModule
-    ],
-    providers: [
-        GlobalsService,
-        AnalyticsService,
-        CookieService,
-        AuthService,
-    ],
-    bootstrap: [AppComponent],
-    entryComponents: [ErrorDialogBoxComponent]
+  declarations: [
+    AppComponent,
+    LandingComponent,
+    ErrorDialogBoxComponent,
+    HamburgerNavComponent,
+    LoginComponent
+  ],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatDialogModule,
+    HttpClientModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSlideToggleModule,
+    RouteModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    AnalyticsService,
+    CookieService,
+    AuthService,
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorDialogBoxComponent]
 })
 export class AppModule { }

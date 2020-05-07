@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 import { AppComponent } from "../../app.component";
 import { AnalyticsService } from '../../shared/services/analytics/analytics-service';
 import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.component";

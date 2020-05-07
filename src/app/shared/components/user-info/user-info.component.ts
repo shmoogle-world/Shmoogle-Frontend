@@ -1,10 +1,11 @@
-import { User } from './../services/auth/user.model';
-import { AuthService } from './../services/auth/auth.service';
-import { Subscription } from 'rxjs';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { LoginComponent } from './login-modal/login-modal.component';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth/auth.service';
+import { User } from '../../services/auth/user.model';
+import { LoginComponent } from './login-modal/login-modal.component';
 
 @Component({
   selector: 'app-user-info',
@@ -31,10 +32,10 @@ export class UserInfoComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.subscription)
+    if (this.subscription)
       this.subscription.unsubscribe();
   }
-  
+
   public openLoginDialog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.height = "280px";

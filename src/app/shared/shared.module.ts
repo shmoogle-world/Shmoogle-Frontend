@@ -6,7 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { IconComponent } from './../branding/icon/icon.component';
 import { LogoComponent } from './../branding/logo/logo.component';
-import { UserInfoComponent } from './user-info/user-info.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 
 @NgModule({

@@ -5,9 +5,6 @@
 
 export const environment = {
   production: false,
-  appInsights: { 
-        instrumentationKey: '7c1ca55e-bf8f-49d7-a86f-94f9aae84a4e' 
-  },
   apiEndpoint: 'https://bingsearchapiv1.azurewebsites.net/',
   apiKey: "c467fa56-5c12-4ff8-8e32-38ca6e903ea1"
 };
