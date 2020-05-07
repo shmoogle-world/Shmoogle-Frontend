@@ -17,7 +17,8 @@ export class EmailListComponent implements OnInit {
   public loadingAnimation: boolean;
   private validEmail = false;
   
-  @ViewChild('footer') footer: any; 
+  @ViewChild('footer') footer: any;
+  
   constructor(
     private cookieService: CookieService,
     private httpservice: HttpClient) { }
