@@ -139,21 +139,6 @@ input:focus {
     outline: none;
 }
 
-/* Deprecated for now, awaiting response on slack regarding whether it should be reimplemented */
-.sticky {
-    position: fixed;
-    top: 0;
-    overflow: hidden;
-    z-index: 10;
-    width: 100%;
-    background-color: #ffffffbd;
-}
-
-.sticky .input {
-    background-color: #ffffffbd;
-    size: 50%;
-}
-
 /* Media Queries */
 @media (max-width: 768px) {
     .links {

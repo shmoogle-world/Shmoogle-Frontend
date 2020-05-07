@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-nav',
@@ -6,12 +6,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./hamburger-nav.component.css']
 })
 
-export class HamburgerNavComponent implements OnInit {
-
-    constructor() { }
-
-    ngOnInit() {
-    }
+export class HamburgerNavComponent {
 
     public whatIs(): void {
         window.location.href = 'https://shmoogle.world/blog/what-is-shmoogle/';

@@ -1,20 +1,18 @@
 import { formatDate } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { environment } from '../../../environments/environment';
 import { AppComponent } from "../../app.component";
 import { AnalyticsService } from '../../shared/services/analytics/analytics-service';
-import { ErrorDialogBoxComponent } from "../error-dialog-box/error-dialog-box.component";
 
 @Component({
-  selector: "app-landing",
-  templateUrl: "./landing.component.html",
-  styleUrls: ["./landing.component.css"]
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"]
 })
 
-export class LandingComponent implements OnInit {
+export class HomeComponent implements OnInit {
   //#region Public Members
   public text: string = "";
   public email: string = "";
@@ -32,7 +30,6 @@ export class LandingComponent implements OnInit {
     public httpservice: HttpClient,
     public navservice: Router,
     public analyticservice: AnalyticsService,
-    private dialog: MatDialog,
   ) {
   }
 
@@ -83,24 +80,6 @@ export class LandingComponent implements OnInit {
   }
 
   /**
-   * Opens the error dialog box
-   */
-  public openDialog(): void {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.height = "500px";
-    dialogConfig.width = "500px";
-    dialogConfig.panelClass = "dialog";
-    this.dialog.open(ErrorDialogBoxComponent, dialogConfig);
-  }
-
-  /**
-   * Closes error dialog box
-   */
-  public CloseDialogError(): void {
-    this.dialog.closeAll();
-  }
-
-  /**
    * Send the email
    */
   public Send(): void {
@@ -132,7 +111,6 @@ export class LandingComponent implements OnInit {
           },
           err => {
             this.loadingAnimation = false;
-            this.openDialog();
             console.log(err);
           }
         );

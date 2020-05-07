@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingComponent } from './components/landing/landing.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const appRoutes: Routes = [
-    { path: '', component: LandingComponent, pathMatch: 'full' },
-    { path: 'search', loadChildren: () => import('./components/search-results/search-results.module').then(m => m.SearchResultsModule)},
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'search', loadChildren: () => import('./pages/search-results/search-results.module').then(m => m.SearchResultsModule)},
     { path: 'signup', loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupModule)},
-    { path: '**', component: LandingComponent, pathMatch: 'full' },
+    { path: '**', component: HomeComponent, pathMatch: 'full' },
     // { path: 'search', component: SearchResultComponent },
   ];
 
