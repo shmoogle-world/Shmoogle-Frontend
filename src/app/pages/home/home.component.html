@@ -8,7 +8,7 @@
             <app-logo class="app-logo"></app-logo>
             <div class="input-div">
                 <input class="input" type="text" [(ngModel)]="text" (keyup)="CheckEnterKey($event)" />
-                <img class="search-icon" src="/assets/search.svg" (click)="search()" />
+                <mat-icon class="search-icon" (click)="search()">search</mat-icon>
             </div>
             <div *ngIf="loadingAnimation" class="load-bar">
                 <div class="bar"></div>
