@@ -17,6 +17,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     private pendingSubscription: Subscription;
     public showShuffleSlider: boolean = false;
     public imagesSearch: boolean = false;
+    
     constructor(
         public router: Router,
         private route: ActivatedRoute,

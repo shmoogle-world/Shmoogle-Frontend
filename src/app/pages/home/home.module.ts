@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EmailListComponent } from './email-list/email-list.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   declarations: [
     HomeComponent,
     HamburgerNavComponent,
+    EmailListComponent,
   ],
   imports: [
     CommonModule,

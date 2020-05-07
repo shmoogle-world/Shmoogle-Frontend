@@ -10,6 +10,8 @@ import { IconComponent } from './components/branding/icon/icon.component';
 import { LogoComponent } from './components/branding/logo/logo.component';
 import { LoginComponent } from './components/user-info/login-modal/login-modal.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+import { AnimatedInputComponent } from './components/animated-input/animated-input.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     IconComponent,
     LogoComponent,
     UserInfoComponent,
-    LoginComponent
+    LoginComponent,
+    SearchInputComponent,
+    AnimatedInputComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +38,9 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     IconComponent,
     LogoComponent,
     UserInfoComponent,
-    LoginComponent
+    LoginComponent,
+    SearchInputComponent,
+    AnimatedInputComponent
   ]
 })
 export class SharedModule { }

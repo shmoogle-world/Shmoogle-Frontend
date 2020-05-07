@@ -5,33 +5,12 @@
             <app-icon class="small-logo"></app-icon>
         </div>
         <span class="d-flex align-items-center flex-wrap pl-1">
-    
-                <div class="d-flex align-items-center mb-2 mb-md-0">
-                    <div class="shw-input-parent">
-    
-                        <input 
-                            class="shw-input"
-                            type="text" 
-                            [(ngModel)]="searchText" 
-                            (keyup.enter)="search()"
-                            size="400px"
-                            />
-                        
-                        <div *ngIf="requestPending" class="shw-load-animation">
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                        </div>
-                    </div>
-                    <mat-icon
-                        class="search-icon pointer"
-                        aria-hidden="false" 
-                        aria-label="Search"
-                        (click)="search()" 
-                        (keyup.enter)="search()" 
-                        tabindex="0"
-                        >search</mat-icon>
-                </div>
+            <app-search-input 
+                [(inputModel)]="searchText" 
+                (search)="search()" 
+                [animationActive]="requestPending">
+                
+            </app-search-input>
             <div class="order-md-first links flex-grow-1">
                 <a
                     class="mx-1"

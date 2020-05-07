@@ -202,61 +202,8 @@ input:focus {
   font-size: 16px !important;
 }
 
-footer {
-  visibility: hidden;
-  position: fixed;
-  bottom: 0;
-  background: #ffcb04;
-  color: #212121;
-  font-size: 10px;
-  font-family: "Open Sans";
-  text-align: center;
-  width: 100%;
-  -webkit-transition: width 2s; /* Safari */
-  transition: width 2s;
-  padding-bottom: 30px !important;
-}
-
-.sentance {
-  color: #4c4c4c;
-  font-family: "Open Sans";
-  font-size: 18px;
-  font-weight: 300;
-}
-
-.para{
-  margin-top:30px;
-}
-.send {
-  border: none;
-  border-radius: 5px;
-  margin-left: 1rem;
-  padding: 1rem;
-  cursor: pointer;
-  font-size: 1rem;
-  color: #4c4c4c;
-  font-family: "Open Sans";
-}
-
-.div-close {
-  text-align: right;
-  padding-right: 3rem;
-}
-.close {
-  width: 20px;
-  cursor: pointer;
-  position: relative;
-  top: 32px;
-}
-
 .visible {
   opacity: 1 !important;
-}
-
-.error {
-  opacity: 0;
-  color: red;
-  font-family: "Open Sans";
 }
 
 .input-div2 {
@@ -270,11 +217,7 @@ footer {
   margin-left: 18px;
 }
 
-.error-div {
-  text-align: center;
-  margin: auto;
-  padding-top: 0.8rem;
-}
+
 
 .app-logo {
     width: 32%; 

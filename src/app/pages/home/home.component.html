@@ -24,27 +24,5 @@
             </div>
         </div>
     </main>
-    <footer id="footer">
-        <div *ngIf="!afterMail">
-            <div class="div-close">
-                <img class="close" src="/assets/close-icon.png" (click)="CloseEmail()" />
-            </div>
-            <div class="para">
-                <span class="sentance">Keep up with the Shmoogle story</span>
-            </div>
-            <br />
-            <div class="input-div2">
-                <input style="margin-top: 0px !important" class="input" type="mail" placeholder="Enter your E-mail"
-                    [(ngModel)]="email" (input)="DisableError()" />
-
-                <button class="send" (click)="Send()">Send!</button>
-            </div>
-            <div class="error-div">
-                <span class="error" [ngClass]="{ visible: error }">Please enter a valid email!</span>
-            </div>
-        </div>
-        <div *ngIf="afterMail" class="sentance">
-            <span>Welcome to the Shmoogle Adventure</span>
-        </div>
-    </footer>
+    <app-email-list></app-email-list>
 </div>

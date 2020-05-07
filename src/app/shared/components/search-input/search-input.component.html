@@ -1,0 +1,15 @@
+<div class="d-flex align-items-center mb-2 mb-md-0">
+    <app-animated-input 
+        [inputModel]="inputModel" 
+        (inputModelChange)="inputModelOnChange($event)" 
+        (enter)="emitSearch($event)"
+        [animationActive]="animationActive"></app-animated-input>
+    <mat-icon
+        class="search-icon pointer"
+        aria-hidden="false" 
+        aria-label="Search"
+        (click)="emitSearch($event)" 
+        (keyup.enter)="emitSearch($event)" 
+        tabindex="0"
+        >search</mat-icon>
+</div>

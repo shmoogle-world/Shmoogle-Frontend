@@ -1,33 +1,3 @@
-.shw-input-parent {
-    min-width: 148px;
-    max-width: 442px;
-    height: 32px;
-    width: 100%;
-    margin-left: 15px;
-    margin-top: 5px;
-}
-.shw-input {
-    width: 100%;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    font-size: 18px;
-    border-bottom: 1px solid darkgrey;
-    color: #212121;
-    font-family: "Open Sans";
-    letter-spacing: 2px;
-}
-
-.shw-input:focus {
-    border: none;
-    border-bottom: 1px solid #3ec4ba;
-    outline: none;
-}
-
-.flex-wrap {
-    flex-wrap: wrap;
-}
-
 /* Links */
 .links a {
     color: #848484;
@@ -69,58 +39,6 @@
       background-color: #01b8b3;  /*replace with your color*/
 }
   
-/* Loading Bar Animation */
-.shw-load-animation {
-    position: relative;
-    width: 100%;
-    height: 2px;
-    bottom: 2px;
-    background-color: #ffcb04;
-}
-
-.bar {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    width: 0;
-    height: 100%;
-    left: 50%;
-    text-align: center;
-}
-
-.bar:nth-child(1) {
-    background-color: #e22a52;
-    animation: loading 3s linear infinite;
-}
-
-.bar:nth-child(2) {
-    background-color: #3ec4ba;
-    animation: loading 3s linear 1s infinite;
-}
-
-.bar:nth-child(3) {
-    background-color: #ffcb04;
-    animation: loading 3s linear 2s infinite;
-}
-
-@keyframes loading {
-    from {
-        left: 50%;
-        width: 0;
-        z-index: 100;
-    }
-
-    33.3333% {
-        left: 0;
-        width: 100%;
-        z-index: 10;
-    }
-
-    to {
-        left: 0;
-        width: 100%;
-    }
-}
 
 /* Search Bar nav menu */
 .small-logo {
