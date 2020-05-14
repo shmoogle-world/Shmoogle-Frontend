@@ -6,13 +6,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
+import { AnimatedInputComponent } from './components/animated-input/animated-input.component';
 import { IconComponent } from './components/branding/icon/icon.component';
 import { LogoComponent } from './components/branding/logo/logo.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 import { LoginComponent } from './components/user-info/login-modal/login-modal.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
-import { SearchInputComponent } from './components/search-input/search-input.component';
-import { AnimatedInputComponent } from './components/animated-input/animated-input.component';
-
 
 @NgModule({
   declarations: [
