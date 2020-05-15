@@ -6,6 +6,7 @@ import { SharedModule } from './../../shared/shared.module';
 import { BoardHeaderComponent } from './single-board/board-header/board-header.component';
 import { SingleBoardComponent } from './single-board/single-board.component';
 import { BoardItemComponent } from './single-board/board-item/board-item.component';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   { path: 'view', component: SingleBoardComponent }
@@ -17,6 +18,7 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     DragDropModule,
+    MatIconModule,
     RouterModule.forChild(
       routes,
     ),

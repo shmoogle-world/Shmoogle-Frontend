@@ -1,3 +1,4 @@
+import { SearchBarComponent } from './pages/search-results/search-bar/search-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';

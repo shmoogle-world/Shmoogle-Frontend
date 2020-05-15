@@ -1,3 +1,4 @@
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +13,8 @@ import { LogoComponent } from './components/branding/logo/logo.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { LoginComponent } from './components/user-info/login-modal/login-modal.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { SearchBarComponent } from '../pages/search-results/search-bar/search-bar.component';
+import { SearchResultService } from '../pages/search-results/search-result.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     UserInfoComponent,
     LoginComponent,
     SearchInputComponent,
-    AnimatedInputComponent
+    AnimatedInputComponent,
+    SearchBarComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +32,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    MatSlideToggleModule,
     RouterModule,
     ReactiveFormsModule,
     FormsModule
@@ -37,9 +42,13 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     IconComponent,
     LogoComponent,
     UserInfoComponent,
+    SearchBarComponent,
     LoginComponent,
     SearchInputComponent,
     AnimatedInputComponent
+  ],
+  providers: [
+    SearchResultService,
   ]
 })
 export class SharedModule { }

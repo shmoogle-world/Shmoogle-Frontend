@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule, Routes } from '@angular/router';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { SharedModule } from './../../shared/shared.module';
@@ -11,9 +10,7 @@ import { ImageResultsComponent } from './result-types/image-results/image-result
 import { WebItemComponent } from './result-types/web-results/web-list/web-item/web-item.component';
 import { WebListComponent } from './result-types/web-results/web-list/web-list.component';
 import { WebResultsComponent } from './result-types/web-results/web-results.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchResultComponent } from './search-result.component';
-import { SearchResultService } from './search-result.service';
 
 const featureRoutes: Routes = [
   {
@@ -34,7 +31,6 @@ const featureRoutes: Routes = [
     WebItemComponent,
     WebListComponent,
     WebResultsComponent,
-    SearchBarComponent,
     ResultCounterComponent,
     LoaderComponent,
   ],
@@ -42,13 +38,10 @@ const featureRoutes: Routes = [
     CommonModule,
     SharedModule,
     FormsModule,
-    MatSlideToggleModule,
     MatIconModule,
     RouterModule.forChild(featureRoutes),
   ],
-  providers: [
-    SearchResultService,
-  ]
+  
 })
 export class SearchResultsModule {
 

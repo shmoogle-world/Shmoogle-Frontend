@@ -1,4 +1,5 @@
-<app-board-header></app-board-header>
+<app-search-bar></app-search-bar>
+<app-board-header [board]="board"></app-board-header>
 <div>
-  <app-board-item></app-board-item>
+  <app-board-item *ngFor="let item of board.items" [item]="item"></app-board-item>
 </div>
