@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, throwError } from 'rxjs';
-import { Router } from '@angular/router';
-import { User } from './user.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { GlobalsService } from '../../../Services/globals.service';
+
+import { User } from './user.model';
+import { environment } from '../../../../environments/environment';
 
 export interface AuthResponseData {
   email: string;
@@ -19,14 +20,13 @@ export class AuthService {
   public user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
   private logoutRedirectRoute = '/';
-  private apiEndpoint = 'https://bingsearchapiv1.azurewebsites.net/';
 
-  constructor(private http: HttpClient, private router: Router, private globals: GlobalsService) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   signup(data: { displayName: string, email: string, password: string }) {
     return this.http
       .post<AuthResponseData>(
-        this.globals.baseUrl + "signup",
+        environment.apiEndpoint + "signup",
         data
       )
       .pipe(
@@ -38,7 +38,7 @@ export class AuthService {
   login(data: { email: string, password: string }) {
     return this.http
       .post<AuthResponseData>(
-        this.globals.baseUrl + 'login',
+        environment.apiEndpoint + 'login',
         data
       )
       .pipe(

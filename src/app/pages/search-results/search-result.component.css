@@ -1,0 +1,29 @@
+.search-navbar {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px #eee solid;
+}
+
+@media only screen and (max-width: 426px) {
+  #resBtn {
+    font-size: 0.8rem;
+    width: 20px;
+    margin-left: 4vw;
+  }
+
+  .results-container {
+    height: 100%;
+    width: 150%;
+    overflow: auto;
+  }
+  
+  .search-navbar {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+  }
+
+  .search-icon{
+    margin-left: 0px;
+  }
+
+}

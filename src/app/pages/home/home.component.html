@@ -1,0 +1,14 @@
+<div>
+  <div class="d-flex justify-content-end user-info">
+    <app-user-info></app-user-info>
+    <app-nav></app-nav>
+  </div>
+  <main>
+    <div class="main-logo-div">
+      <app-logo class="app-logo"></app-logo>
+      <app-search-input [(inputModel)]="text" (search)="search()"></app-search-input>
+    </div>
+    <app-motto></app-motto>
+  </main>
+  <app-email-list></app-email-list>
+</div>

@@ -1,0 +1,18 @@
+<div class="shw-input-parent">
+  <input
+    class="shw-input" 
+    [ngClass]="{'shw-input-big': big}"
+    [type]="inputType"
+    [placeholder]="placeholderText"
+    [(ngModel)]="inputModel" 
+    (ngModelChange)="onChange($event)" 
+    (keyup.enter)="enter.emit($event)" 
+    size="400px" 
+  />
+  
+  <div *ngIf="animationActive" class="shw-load-animation">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+</div>

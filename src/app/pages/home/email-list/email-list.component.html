@@ -1,0 +1,41 @@
+<footer #footer>
+  <div *ngIf="!afterMail else welcome" class="py-4">
+    <div class="d-flex justify-content-between w-100 px-3 ">
+      <div style="width:5px"></div>
+      <div>
+        <span class="text">Keep up with the Shmoogle story</span>
+      </div>
+      <div>
+        <mat-icon class="close" (click)="closeEmail()">close</mat-icon>
+      </div>
+    </div>
+    
+    <br />
+    
+      <div class="d-flex justify-content-center">
+        <app-animated-input
+          class="mt-0" 
+          inputType="email" 
+          placeholderText="Enter your E-mail"
+          [inputModel]="email" (inputModelChange)="onEmailChange($event)"
+          [animationActive]="loadingAnimation"
+          (enter)="send()"
+          big="true"
+        ></app-animated-input>
+        <button
+          class="ml-1"
+          type="submit"
+          style="height: 50px;"
+          mat-flat-button
+          (click)="send()"
+          [disabled]="!validEmail"
+          >Send!</button>
+      </div>
+  </div>
+
+</footer>
+<ng-template #welcome>
+  <div class="text py-5">
+    <span>Welcome to the Shmoogle Adventure</span>
+  </div>
+</ng-template>

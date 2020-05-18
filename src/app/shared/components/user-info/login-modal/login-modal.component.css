@@ -1,0 +1,120 @@
+
+
+.containerStyle {
+    background-color: #F0F0F0;
+    width:100%;
+    height:100%;
+    border-radius: 15px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    padding: 30px;
+    text-align: center;
+  }
+
+.input {
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 10%;
+    font-size:130%;
+    background: #ffffff;
+  }
+
+  .form-group{
+    margin-bottom:1.5rem;
+  }
+
+  ::placeholder{
+    color: rgba(111, 111, 111, 0.5);
+  }
+
+.btn-secondary {
+    background: #6f6f6f;
+    border: none;
+    padding: 3px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size:150%;
+
+}
+
+.forgotPass {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 13px;
+    text-align: center;
+    color: #4f4f4f;
+    margin-top:50px;
+    margin-bottom:30px;
+}
+
+.forgotPass a{
+    color: #4f4f4f;
+    text-decoration: none;
+}
+
+.forgotPass a:hover{
+    color: #4f4f4f;
+    text-decoration: underline;
+}
+
+.footer{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 15px;
+    text-align: center;
+    color: #4F4F4F;
+    margin-top:30px;
+}
+
+.footer a {
+    color: #4f4f4f;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #4f4f4f;
+    text-decoration: underline;
+}
+
+.footer p{
+    margin:0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 13px;
+    text-align: center;
+    color: #4f4f4f;
+    margin-top:12px;
+}
+.small-logo {
+    width: 52px;
+    object-fit: contain;
+    height: 100%;
+}
+
+.logo{
+    width: 49px;
+    height: 31px;
+    margin: auto;
+    margin-bottom:5%;
+}
+
+.title{
+    margin-bottom:10%;
+}
+
+.title p{
+    margin:0;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 17px;
+    color: #6F6F6F;
+    
+}
