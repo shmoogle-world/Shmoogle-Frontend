@@ -12,7 +12,7 @@ export class SingleBoardComponent implements OnInit {
   constructor() { }
   board: Board = {
     id: 1,
-    title: "test",
+    title: "Board Name",
     public: true,
     created_at: new Date(),
     updated_at: new Date(),
