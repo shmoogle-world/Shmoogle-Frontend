@@ -1,10 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~bootstrap/scss/bootstrap.scss";
+$text-color: #3F3F3F;
+
 html,body{
     font-family: Arial, sans-serif;
     padding: 0;
     margin: 0;
+}
+h1, h2, h3, h4, h5 p {
+   color: $text-color;
 }
 
 .dialog{
