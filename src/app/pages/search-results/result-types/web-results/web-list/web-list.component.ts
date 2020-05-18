@@ -9,6 +9,7 @@ import { WebResult } from '../../../models/web-result.model';
 export class WebListComponent implements OnInit {
 
     @Input() data: WebResult[];
+    @Input() isShuffled: boolean;
 
     constructor() { }
 

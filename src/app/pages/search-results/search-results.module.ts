@@ -14,6 +14,8 @@ import { WebResultsComponent } from './result-types/web-results/web-results.comp
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchResultComponent } from './search-result.component';
 import { SearchResultService } from './search-result.service';
+import { AddToBoardsComponent } from '../../shared/components/branding/addToBoards/addToBoards.component'
+import { MatSelectModule } from '@angular/material/select';
 
 const featureRoutes: Routes = [
   {
@@ -37,6 +39,7 @@ const featureRoutes: Routes = [
     SearchBarComponent,
     ResultCounterComponent,
     LoaderComponent,
+    AddToBoardsComponent
   ],
   imports: [
     CommonModule,
@@ -44,6 +47,7 @@ const featureRoutes: Routes = [
     FormsModule,
     MatSlideToggleModule,
     MatIconModule,
+    MatSelectModule,
     RouterModule.forChild(featureRoutes),
   ],
   providers: [

@@ -3,12 +3,11 @@
     <div class="container-fluid px-3 px-md-5 max-width">
         <div class="row">
             <ng-container *ngIf="results.shuffled.length > 0; else noResults">
-                
                 <div class="col-md" *ngIf="showShuffled">
-                    <app-web-list [data]="results.shuffled"></app-web-list>
+                    <app-web-list [data]="results.shuffled" [isShuffled]="true"></app-web-list>
                 </div>
                 <div class="col-md" *ngIf="!(isMobile && showShuffled)">   
-                    <app-web-list [data]="results.unshuffled"></app-web-list>
+                    <app-web-list [data]="results.unshuffled" [isShuffled]="false"></app-web-list>
                 </div>
             </ng-container>
             <ng-template #noResults>
