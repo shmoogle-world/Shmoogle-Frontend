@@ -1,14 +1,21 @@
-.huge-title {
-  font-family: Asap;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 80px;
-  line-height: 92px;
+h1, p {
+  font-family: 'Open Sans';
+  padding: 0;
+  margin: 0;
 }
-.info-text {
-  font-family: Asap;
+hr {
+  max-width: 196px;
+  text-align: left;
+}
+.huge-title {
   font-style: normal;
   font-weight: normal;
-  font-size: 26px;
-  line-height: 30px;
+  font-size: 56px;
+  line-height: 76px;
+}
+.info-text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
 }

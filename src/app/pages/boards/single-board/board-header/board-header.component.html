@@ -1,34 +1,17 @@
-<div class="header-backdrop px-3 py-2">
-  <div class="d-flex justify-content-between">
-    <p>{{ board.public ? 'Public' : 'Private' }}</p>
-    <mat-icon>more_vert</mat-icon>
+<div class="header-backdrop px-5 pt-4">
+    <div class="d-flex justify-content-start">
+      <div class="d-flex justify-content-between"></div>
+      <p class="px-1">{{ board.public ? 'Public' : 'Private' }}</p>
+      <mat-icon class="px-1">create</mat-icon>
   </div>
-  <div class="d-flex justify-content-center">
-    <h1 class="huge-title text-center">
-      {{ board.title }}
-    </h1>
-  </div>
-  <div class="px-5 mx-5 pt-4">
-    <div class="px-5 mx-5">
-      <div class="d-flex justify-content-between px-5 mx-5">
-        <h2 class="text-center info-text">
-          {{ board.items.length }}
-          <br> Items
-        </h2>
-        <h2 class="text-center info-text">
-          {{ board.views }}
-          <br> Views
-        </h2>
-        <h2 class="text-center info-text">
-          {{ board.saves }}
-          <br> Saves
-        </h2>
-      </div>
-    </div>
-  </div>
-  <div class="d-flex justify-content-end">
-    <p>
-      {{ board.created_at | date:'dd/MM/yyyy' }}
-    </p>
-  </div>
+  <h1 class="huge-title">
+    {{ board.title }}
+  </h1>
+  <p>
+    {{ board.description ? board.description : 'No description..' }}
+  </p>
+    <hr align="left">
+  <p>
+    {{ board.items.length }} Items | {{ board.views }} Views
+  </p>
 </div>
