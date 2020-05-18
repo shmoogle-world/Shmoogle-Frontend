@@ -37,6 +37,14 @@
   max-height: 25px;
 }
 ::ng-deep .my-select-panel {
-  margin-top: 40px;
-  margin-left: 15px;
+  position: absolute;
+  top: 4vh;
+}
+
+::ng-deep .cdk-overlay-container {
+  left: 6vw;
+}
+::ng-deep .cdk-overlay-pane {
+  left: 0 !important;
+  transform: none !important;
 }
