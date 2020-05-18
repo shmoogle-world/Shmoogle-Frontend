@@ -23,14 +23,17 @@ export class SingleBoardComponent implements OnInit {
         url: "https://www.veggieprezi.com/",
         snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis enim non egestas luctus. Pellentesque metus magna, auctor eu euismod a, pulvinar id purus. Ut sit amet ante sit amet elit vehicula pulvinar in sed nulla. Suspendisse vestibulum lobortis neque ac porta. Curabitur eu tortor sit amet est porttitor auctor at sed ex.',
         preview_image: "https://www.veggieprezi.com/wp-content/uploads/2017/09/20170731_214129.jpg",
+        list_index: 0,
         dateLastCrawled: new Date(),
+        created_at: new Date()
       },
       {
         id: 2,
         title: "not potato",
         url: "https://www.veggieprezi.com/",
-        preview_image: "https://www.veggieprezi.com/wp-content/uploads/2017/09/20170731_214129.jpg",
+        list_index: 1,
         dateLastCrawled: new Date(),
+        created_at: new Date()
       },
     ],
   }

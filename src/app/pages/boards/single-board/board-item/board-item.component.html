@@ -1,3 +1,30 @@
-<div class="w-100">
-  
-</div>
+<div>
+  <mat-card class="w-100 my-3 p-0 card">
+    <a class="d-flex card-link" [href]="item.url">
+      <div>
+        <div class="card-image">
+          <img [src]="item.preview_image ? item.preview_image : '/assets/board-item-placeholder.png' " alt="Board item image">
+        </div>
+      </div>
+      <div class="px-3">
+        <h2 class="m-0">
+          {{ item.title }}
+        </h2>
+        <a 
+          class="url m-0 py-2" 
+          [href]="item.url"
+          >
+          {{ item.url }}
+        </a>
+        <p class="m-0">
+          {{ item.snippet }}
+        </p>
+        <div class="d-flex justify-content-end">
+          <small>
+            Added at {{ item.created_at | date:'mediumDate' }}
+          </small>
+        </div>
+      </div>
+    </a>
+  </mat-card>
+</div>  

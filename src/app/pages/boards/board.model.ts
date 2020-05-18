@@ -16,6 +16,7 @@ export interface BoardItem {
   url: string;
   snippet?: string;
   preview_image?: string;
+  list_index: number;
   dateLastCrawled?: number | Date;
-
+  created_at: number | Date;
 }
