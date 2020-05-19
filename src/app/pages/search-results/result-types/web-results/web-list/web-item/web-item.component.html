@@ -1,11 +1,11 @@
-<div class="result-div">
+<div class="result-div" >
   <div class="original-position">
     Position: {{ data.originalResultIndex + 1 }}
   </div>
   <a href="{{ data.url }}" class="title">{{ data.name }}</a>
   <a href="{{ data.url }}" class="url">{{ data.url }}</a>
   <div class="content">{{ data.snippet }}</div>
-  <div (mouseover)="hoverBoards=true" class="dropDownList" *ngIf="isShuffled">
+  <div (mouseenter)="hoverBoards=true" class="dropDownList" *ngIf="isShuffled">
     <app-addToBoards ></app-addToBoards>
       <mat-form-field floatLabel="never" *ngIf="hoverBoards==true">
         <mat-label>Select a Board</mat-label>
