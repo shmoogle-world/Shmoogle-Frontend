@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
-  { path: 'search', loadChildren: () => import('./pages/search-results/search-results.module').then(m => m.SearchResultsModule)},
-  { path: 'signup', loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupModule)},
+  { path: 'search', loadChildren: () => import('./pages/search-results/search-results.module').then(m => m.SearchResultsModule) },
+  { path: 'signup', loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupModule) },
+  { path: 'library', loadChildren: () => import('../app/shared/components/boards-library/boards-library.module').then(m => m.BoardsLibraryModule) },
   { path: '**', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule), pathMatch: 'full' },
 ];
 
@@ -13,12 +14,12 @@ const appRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(
-        appRoutes,
-        // { enableTracing: true}//, useHash: true  }
-        // <-- debugging purposes only
-      ),
+      appRoutes,
+      // { enableTracing: true}//, useHash: true  }
+      // <-- debugging purposes only
+    ),
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
 
 

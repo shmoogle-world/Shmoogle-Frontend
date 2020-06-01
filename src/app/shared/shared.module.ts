@@ -13,7 +13,6 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { AnimatedInputComponent } from './components/animated-input/animated-input.component';
 
-
 @NgModule({
   declarations: [
     IconComponent,
@@ -21,7 +20,7 @@ import { AnimatedInputComponent } from './components/animated-input/animated-inp
     UserInfoComponent,
     LoginComponent,
     SearchInputComponent,
-    AnimatedInputComponent
+    AnimatedInputComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +30,7 @@ import { AnimatedInputComponent } from './components/animated-input/animated-inp
     MatDialogModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
 
   exports: [

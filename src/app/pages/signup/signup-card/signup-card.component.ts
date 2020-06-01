@@ -1,7 +1,6 @@
 import { AuthService } from '../../../shared/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup-card',
