@@ -12,7 +12,6 @@ import { LoginComponent } from './components/user-info/login-modal/login-modal.c
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { AnimatedInputComponent } from './components/animated-input/animated-input.component';
-
 @NgModule({
   declarations: [
     IconComponent,

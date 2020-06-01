@@ -4,6 +4,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BoardsLibraryComponent } from './boards-library.component'
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
+
 const routes: Routes = [
     { path: '', component: BoardsLibraryComponent }
 ]
@@ -16,6 +20,8 @@ const routes: Routes = [
         CommonModule,
         SharedModule,
         MatGridListModule,
+        MatCardModule,
+        ScrollingModule,
         RouterModule.forChild(
             routes,
         ),

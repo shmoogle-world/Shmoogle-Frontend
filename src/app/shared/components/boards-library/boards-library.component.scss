@@ -1,0 +1,53 @@
+.userData {
+  width: 90%;
+  height: 25vh;
+  background-color: greenyellow;
+  margin-right: 5vw;
+  margin-left: 5vw;
+}
+
+.userName {
+  font-size: 200%;
+}
+
+.userNameContainer {
+  margin-left: 20vw;
+  justify-content: space-between;
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.userNameContainer p {
+  display: inline;
+}
+
+.userDataContainer {
+  margin-left: 20vw;
+  display: flex;
+  width: 30vw;
+  justify-content: space-between;
+}
+
+.editContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin:5vw auto;
+  width:70%;
+}
+
+.example-card {
+  max-width: 300px;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
