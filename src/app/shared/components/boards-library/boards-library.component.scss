@@ -1,7 +1,7 @@
 .userData {
   width: 90%;
   height: 25vh;
-  background-color: greenyellow;
+  background-color: burlywood;
   margin-right: 5vw;
   margin-left: 5vw;
 }
@@ -11,7 +11,7 @@
 }
 
 .userNameContainer {
-  margin-left: 20vw;
+  margin-left: 10vw;
   justify-content: space-between;
   width: 300px;
   display: flex;
@@ -23,7 +23,7 @@
 }
 
 .userDataContainer {
-  margin-left: 20vw;
+  margin-left: 10vw;
   display: flex;
   width: 30vw;
   justify-content: space-between;
@@ -38,12 +38,31 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin:5vw auto;
-  width:70%;
+  margin: 5vw auto;
+  width: 70%;
 }
 
-.example-card {
-  max-width: 300px;
+.card-container {
+  max-width: 25vw;
+  margin-bottom: 10vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.cardInfo {
+  background-color: gray;
+  padding-left:5%;
+  padding-top:3%;
+  border-radius: 20px;
+}
+
+.cardInfo h3 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .example-header-image {
@@ -51,3 +70,18 @@
   background-size: cover;
 }
 
+.cardData {
+  flex-direction: column;
+  padding-top:1vh;
+}
+
+.cardData p {
+  display: inline;
+}
+
+.row{
+    justify-content: space-between;
+    display: flex;
+    padding-right:1.5vw;
+    padding-left:1.5vw;
+}
