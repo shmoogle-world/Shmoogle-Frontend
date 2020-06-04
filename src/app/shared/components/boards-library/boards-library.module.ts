@@ -6,7 +6,7 @@ import { BoardsLibraryComponent } from './boards-library.component'
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-
+import { SearchResultsModule } from '../../../pages/search-results/search-results.module'
 
 const routes: Routes = [
     { path: '', component: BoardsLibraryComponent }
@@ -22,6 +22,7 @@ const routes: Routes = [
         MatGridListModule,
         MatCardModule,
         ScrollingModule,
+        SearchResultsModule,
         RouterModule.forChild(
             routes,
         ),
