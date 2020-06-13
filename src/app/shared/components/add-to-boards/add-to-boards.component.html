@@ -1,0 +1,12 @@
+<div class="dropDownList" *ngIf="user">
+  <app-atb-icon></app-atb-icon>
+    <mat-form-field floatLabel="never" *ngIf="!isHovered">
+      <mat-label>Select a Board</mat-label>
+      <mat-select panelClass="my-select-panel">
+        <mat-option>None</mat-option>
+        <mat-option value="option1">Option 1</mat-option>
+        <mat-option value="option2">Option 2</mat-option>
+        <mat-option value="option3">Option 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
