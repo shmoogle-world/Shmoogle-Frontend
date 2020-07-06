@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Board } from '../../board.model';
+import { SingleBoardService } from '../single-board.service';
 
 @Component({
   selector: 'app-board-header',
@@ -8,10 +9,11 @@ import { Board } from '../../board.model';
 })
 export class BoardHeaderComponent implements OnInit {
   
-  @Input() board: Board;
-  constructor() { }
+
+  constructor(public sbService: SingleBoardService) { }
 
   ngOnInit(): void {
+  
   }
 
 }

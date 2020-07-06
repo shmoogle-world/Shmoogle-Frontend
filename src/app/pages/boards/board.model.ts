@@ -5,7 +5,7 @@ export interface Board {
   view_count: number;
   public: boolean;
   created_at: number | Date;
-  
+  user_id: number;
   // Relation not always loaded.
   items?: BoardItem[]; 
 }

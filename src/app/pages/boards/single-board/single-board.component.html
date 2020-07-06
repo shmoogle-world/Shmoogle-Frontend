@@ -1,5 +1,11 @@
 <app-search-bar></app-search-bar>
-<app-board-header [board]="board"></app-board-header>
-<div class="mx-2">
-  <app-board-item *ngFor="let item of board.items" [item]="item"></app-board-item>
+<div *ngIf="sbService.board; else spinner">
+  <app-board-header [board]="sbService.board"></app-board-header>
+  <div class="mx-2" >
+    <app-board-item *ngFor="let item of sbService.board.items" [item]="item"></app-board-item>
+  </div>
 </div>
+
+<ng-template #spinner>
+  <app-loader></app-loader>
+</ng-template>

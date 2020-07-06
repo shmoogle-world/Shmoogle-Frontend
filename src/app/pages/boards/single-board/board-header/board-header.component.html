@@ -1,16 +1,16 @@
 <div class="header-backdrop px-5 pt-4">
     <div class="d-flex justify-content-between">
-        <p class="px-1">{{ board.public ? '' : 'Private' }}</p>
-        <mat-icon class="px-1">create</mat-icon>
+        <p class="px-1">{{ sbService.board.public ? '' : 'Private' }}</p>
+        <mat-icon ng class="px-1">create</mat-icon>
     </div>
    
   <h1 class="huge-title">
-    {{ board.title }}
+    {{ sbService.board.title }}
   </h1>
   <p class="description">
-    {{ board.description ? board.description : 'No description..' }}
+    {{ sbService.board.description ? sbService.board.description : 'No description..' }}
   </p>
   <p class="info-text pt-3">
-    {{ board.items.length }} Items | {{ board.view_count }} Views
+    {{ sbService.board.items.length }} Items | {{ sbService.board.view_count }} Views
   </p>
 </div>

@@ -1,5 +1,5 @@
 import { SearchBarComponent } from './pages/search-results/search-bar/search-bar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,6 +9,7 @@ import { RouteModule } from './route.module';
 import { AnalyticsService } from './shared/services/analytics/analytics-service';
 import { AuthService } from './shared/services/auth/auth.service';
 import { SharedModule } from './shared/shared.module';
+import { AuthInterceptorService } from './shared/services/auth/auth-interceptor.service';
 
 
 @NgModule({
@@ -26,6 +27,11 @@ import { SharedModule } from './shared/shared.module';
     AnalyticsService,
     CookieService,
     AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })

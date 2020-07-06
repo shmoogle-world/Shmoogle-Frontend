@@ -15,6 +15,7 @@ import { LogoComponent } from './components/branding/logo/logo.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { LoginComponent } from './components/user-info/login-modal/login-modal.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { LoaderComponent } from './components/loader/loader.component';
 @NgModule({
   declarations: [
     IconComponent,
@@ -24,6 +25,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     SearchInputComponent,
     AnimatedInputComponent,
     SearchBarComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     SearchBarComponent,
     LoginComponent,
     SearchInputComponent,
-    AnimatedInputComponent
+    AnimatedInputComponent,
+    LoaderComponent,
   ],
   providers: [
     SearchResultService,
