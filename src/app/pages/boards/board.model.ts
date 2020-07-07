@@ -7,7 +7,7 @@ export interface Board {
   created_at: number | Date;
   user_id: number;
   // Relation not always loaded.
-  items?: BoardItem[]; 
+  items?: BoardItem[];
 }
 
 export interface BoardItem {
