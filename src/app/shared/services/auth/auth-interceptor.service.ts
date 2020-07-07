@@ -3,10 +3,12 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpHandler,
-  HttpParams
+  HttpParams,
+  HttpResponse
 } from '@angular/common/http';
-import { take, exhaustMap } from 'rxjs/operators';
+import { take, exhaustMap, map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { constants } from 'buffer';
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
@@ -27,8 +29,17 @@ export class AuthInterceptorService implements HttpInterceptor {
             'Authorization': `Bearer ${user.token}`,
           },
         });
-        return next.handle(modifiedReq);
+        return next.handle(modifiedReq).pipe(map(this.afterRequest));
       })
     );
+  }
+
+  private afterRequest(event) {
+    if (event instanceof HttpResponse && event.body && event.body['jwt']) {
+      // TODO: Handle this jwt token for.
+      const jwt = event.body["jwt"];
+      delete event.body['jwt'];
+    }
+    return event;
   }
 }

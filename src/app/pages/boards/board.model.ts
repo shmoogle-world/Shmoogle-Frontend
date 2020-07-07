@@ -8,6 +8,7 @@ export interface Board {
   user_id: number;
   // Relation not always loaded.
   items?: BoardItem[];
+  item_count?: number;
 }
 
 export interface BoardItem {
