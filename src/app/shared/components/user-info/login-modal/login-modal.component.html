@@ -15,12 +15,9 @@
     </div>
     <button type="submit" class="btn btn-secondary" [disabled]="!userForm.valid">Log in</button>
     <div class="forgotPass">
-      <p>
-        or
-        <a href="#" (click)="onForgotPassword($event)">
-          <b>Forgot password?</b>
-        </a>
-      </p>
+      <a href="#" (click)="onForgotPassword($event)">
+        <b>Forgot password?</b>
+      </a>
     </div>
   </form>
   <div class="footer">
