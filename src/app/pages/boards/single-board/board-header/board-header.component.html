@@ -1,0 +1,16 @@
+<div class="header-backdrop px-5 pt-4">
+    <div class="d-flex justify-content-between">
+        <p class="px-1">{{ sbService.board.public ? '' : 'Private' }}</p>
+        <mat-icon *ngIf="isOwner" ng class="px-1">create</mat-icon>
+    </div>
+   
+  <h1 class="huge-title">
+    {{ sbService.board.title }}
+  </h1>
+  <p class="description">
+    {{ sbService.board.description ? sbService.board.description : 'No description..' }}
+  </p>
+  <p class="info-text pt-3">
+    {{ sbService.board.items.length }} Items | {{ sbService.board.view_count }} Views
+  </p>
+</div>

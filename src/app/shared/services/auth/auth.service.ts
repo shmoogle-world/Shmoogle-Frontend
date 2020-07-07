@@ -10,6 +10,7 @@ import { environment } from '../../../../environments/environment';
 export interface AuthResponseData {
   email: string;
   displayName: string;
+  id: number;
   jwt: string;
 }
 
@@ -59,7 +60,7 @@ export class AuthService {
 
   private handleLogin(res: AuthResponseData) {
     const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
-    const user = new User(res.email, res.displayName, res.jwt, expirationDate);
+    const user = new User(res.email, res.displayName, res.id, res.jwt, expirationDate);
     this.user.next(user);
     this.autoLogout(86400 * 1000);
     localStorage.setItem('auth-user', JSON.stringify(user));
@@ -96,6 +97,7 @@ export class AuthService {
     const userData: {
       email: string;
       displayName: string;
+      id: number;
       _token: string;
       _tokenExpirationDate: string;
     } = JSON.parse(localStorage.getItem('auth-user'));
@@ -106,6 +108,7 @@ export class AuthService {
     const loadedUser = new User(
       userData.email,
       userData.displayName,
+      userData.id,
       userData._token,
       new Date(userData._tokenExpirationDate)
     );

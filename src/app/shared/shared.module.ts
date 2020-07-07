@@ -5,15 +5,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
+import { SearchBarComponent } from '../pages/search-results/search-bar/search-bar.component';
+import { SearchResultService } from '../pages/search-results/search-result.service';
+import { AnimatedInputComponent } from './components/animated-input/animated-input.component';
 import { IconComponent } from './components/branding/icon/icon.component';
 import { LogoComponent } from './components/branding/logo/logo.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 import { LoginComponent } from './components/user-info/login-modal/login-modal.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
-import { SearchInputComponent } from './components/search-input/search-input.component';
-import { AnimatedInputComponent } from './components/animated-input/animated-input.component';
-
-
+import { LoaderComponent } from './components/loader/loader.component';
 @NgModule({
   declarations: [
     IconComponent,
@@ -21,7 +23,9 @@ import { AnimatedInputComponent } from './components/animated-input/animated-inp
     UserInfoComponent,
     LoginComponent,
     SearchInputComponent,
-    AnimatedInputComponent
+    AnimatedInputComponent,
+    SearchBarComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +33,7 @@ import { AnimatedInputComponent } from './components/animated-input/animated-inp
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    MatSlideToggleModule,
     RouterModule,
     ReactiveFormsModule,
     FormsModule
@@ -38,9 +43,14 @@ import { AnimatedInputComponent } from './components/animated-input/animated-inp
     IconComponent,
     LogoComponent,
     UserInfoComponent,
+    SearchBarComponent,
     LoginComponent,
     SearchInputComponent,
-    AnimatedInputComponent
+    AnimatedInputComponent,
+    LoaderComponent,
+  ],
+  providers: [
+    SearchResultService,
   ]
 })
 export class SharedModule { }

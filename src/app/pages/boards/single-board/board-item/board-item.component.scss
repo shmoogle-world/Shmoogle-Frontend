@@ -1,0 +1,31 @@
+.card-image {
+  // height: 150px;
+  // width: 150px;
+  height: 100%;
+  // overflow: hidden;
+
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card-link:hover {
+  text-decoration: none;
+}
+
+.url {
+  font-size: 14px;
+  color: rgb(0, 102, 33);
+  line-height: 16px;
+  margin-top: -2px;
+  display: block;
+  word-break: break-all;
+}
