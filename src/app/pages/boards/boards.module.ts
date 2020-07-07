@@ -9,9 +9,8 @@ import { SingleBoardComponent } from './single-board/single-board.component';
 import { SingleBoardModule } from './single-board/single-board.module';
 
 const routes: Routes = [
-  { path: ':board_id/view', component: SingleBoardComponent }
+  { path: ':boardid/view', component: SingleBoardComponent }
 ]
-
 
 @NgModule({
   imports: [

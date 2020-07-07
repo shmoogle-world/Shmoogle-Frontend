@@ -1,7 +1,7 @@
 <div class="header-backdrop px-5 pt-4">
     <div class="d-flex justify-content-between">
         <p class="px-1">{{ sbService.board.public ? '' : 'Private' }}</p>
-        <mat-icon ng class="px-1">create</mat-icon>
+        <mat-icon *ngIf="isOwner" ng class="px-1">create</mat-icon>
     </div>
    
   <h1 class="huge-title">

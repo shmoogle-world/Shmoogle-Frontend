@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 
 const appRoutes: Routes = [
   { path: 'search', loadChildren: () => import('./pages/search-results/search-results.module').then(m => m.SearchResultsModule)},
@@ -9,12 +9,17 @@ const appRoutes: Routes = [
   { path: '**', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule), pathMatch: 'full' },
 ];
 
+export const routingConfiguration: ExtraOptions = {
+  paramsInheritanceStrategy: 'always'
+};
+
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     RouterModule.forRoot(
         appRoutes,
+        routingConfiguration
         // { enableTracing: true}//, useHash: true  }
         // <-- debugging purposes only
       ),

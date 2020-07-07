@@ -1,6 +1,6 @@
 <app-search-bar></app-search-bar>
 <div *ngIf="sbService.board; else spinner">
-  <app-board-header [board]="sbService.board"></app-board-header>
+  <app-board-header></app-board-header>
   <div class="mx-2" >
     <app-board-item *ngFor="let item of sbService.board.items" [item]="item"></app-board-item>
   </div>
