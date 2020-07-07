@@ -29,17 +29,8 @@ export class AuthInterceptorService implements HttpInterceptor {
             'Authorization': `Bearer ${user.token}`,
           },
         });
-        return next.handle(modifiedReq).pipe(map(this.afterRequest));
+        return next.handle(modifiedReq);
       })
     );
-  }
-
-  private afterRequest(event) {
-    if (event instanceof HttpResponse && event.body && event.body['jwt']) {
-      // TODO: Handle this jwt token for.
-      const jwt = event.body["jwt"];
-      delete event.body['jwt'];
-    }
-    return event;
   }
 }

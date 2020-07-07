@@ -135,9 +135,9 @@ export class AuthService {
 
   private fetchUsersBoards(user: User) {
     this.http
-      .get<{data: Board[]}>(`${environment.apiEndpoint}boards/${user.id}`)
+      .get<Board[]>(`${environment.apiEndpoint}boards/${user.id}`)
       .subscribe((boards) => {
-        this.userBoards.next(boards.data);
+        this.userBoards.next(boards);
         
       })
   }

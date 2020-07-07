@@ -3,6 +3,7 @@ import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Board } from '../../../pages/boards/board.model';
 import { Subscription } from 'rxjs';
+import { constants } from 'buffer';
 
 @Component({
   selector: 'app-add-to-boards',
@@ -15,6 +16,8 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
   boards: Board[];
   userSub: Subscription;
   boardSub: Subscription;
+
+  value: string;
   constructor(private authservice: AuthService) { }
   ngOnDestroy(): void {
     if(this.userSub) {
