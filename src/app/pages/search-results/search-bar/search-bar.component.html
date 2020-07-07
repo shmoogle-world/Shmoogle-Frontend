@@ -1,40 +1,43 @@
-<div class="d-flex justify-content-between pl-1 pr-3">
-    <div class="d-flex align-items-center flex-md-wrap">
-        
-        <div class="logo-link pointer mx-3" [routerLink]="['/']">
-            <app-icon class="small-logo"></app-icon>
-        </div>
-        <span class="d-flex align-items-center flex-wrap pl-1">
-            <app-search-input
-                class="search-input"
-                [(inputModel)]="searchText" 
-                (search)="search()" 
-                [animationActive]="requestPending">
-                
-            </app-search-input>
-            <div class="order-md-first links flex-grow-1">
-                <a
-                    class="mx-1"
-                    [routerLinkActiveOptions]="{exact: true}"
-                    [routerLink]="['/search/']"
-                    queryParamsHandling="merge"
-                    routerLinkActive="active"
-                    >Web</a>
-                <a 
-                    class="mx-1"
-                    [routerLink]="['/search/images']"
-                    queryParamsHandling="merge"
-                    routerLinkActive="active"
-                    >Images</a>
-            </div>
-            <mat-slide-toggle 
-                *ngIf="showShuffleSlider"
-                [checked]="true"
-                (change)="onShuffleToggled($event)" 
-                class="slider mr-3" 
-                ></mat-slide-toggle>
-        </span>
-    </div>
-    <app-user-info></app-user-info>
+<div class="search-navbar">
 
+  <div class="d-flex justify-content-between pl-1 pr-3">
+      <div class="d-flex align-items-center flex-md-wrap">
+          
+          <div class="logo-link pointer mx-3" [routerLink]="['/']">
+              <app-icon class="small-logo"></app-icon>
+          </div>
+          <span class="d-flex align-items-center flex-wrap pl-1">
+              <app-search-input
+                  class="search-input"
+                  [(inputModel)]="searchText" 
+                  (search)="search()" 
+                  [animationActive]="requestPending">
+                  
+              </app-search-input>
+              <div class="order-md-first links flex-grow-1">
+                  <a
+                      class="mx-1"
+                      [routerLinkActiveOptions]="{exact: true}"
+                      [routerLink]="['/search/']"
+                      queryParamsHandling="merge"
+                      routerLinkActive="active"
+                      >Web</a>
+                  <a 
+                      class="mx-1"
+                      [routerLink]="['/search/images']"
+                      queryParamsHandling="merge"
+                      routerLinkActive="active"
+                      >Images</a>
+              </div>
+              <mat-slide-toggle 
+                  *ngIf="showShuffleSlider"
+                  [checked]="true"
+                  (change)="onShuffleToggled($event)" 
+                  class="slider mr-3" 
+                  ></mat-slide-toggle>
+          </span>
+      </div>
+      <app-user-info></app-user-info>
+  
+  </div>
 </div>

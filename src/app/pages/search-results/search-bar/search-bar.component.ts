@@ -37,7 +37,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
             this.sRService.searchQuery = query;
             this.searchText = query;
             if (query == undefined) {
-                this.router.navigateByUrl("/");
+                //this.router.navigateByUrl("/");
             }
         });
 
