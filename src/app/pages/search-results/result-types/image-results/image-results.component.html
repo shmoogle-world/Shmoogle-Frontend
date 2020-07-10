@@ -6,11 +6,13 @@
                 <a target="_blank" [href]="res.contentUrl">
                     <img class="card-img-top" [src]="res.contentUrl" [alt]="res.name">
                 </a>
+
                 <div class="card-body d-flex flex-column justify-content-end">
+                    <app-add-to-boards class="pl-3 py-2" [data]="res"></app-add-to-boards>
                     <h6 class="card-title">{{ res.name }}</h6>
                     <div>
                         <a target="_blank" [href]="res.hostPageUrl"
-                            class="title">{{ res.hostPageDomainFriendlyName ? res.hostPageDomainFriendlyName : res.hostPageDisplayUrl.slice(0,34)+'...' }}</a>
+                        class="title">{{ res.hostPageDomainFriendlyName ? res.hostPageDomainFriendlyName : res.hostPageDisplayUrl.slice(0,34)+'...' }}</a>
                         <p class="mb-0" > {{ res.width }} x {{ res.height }} </p>
                     </div>
                 </div>
