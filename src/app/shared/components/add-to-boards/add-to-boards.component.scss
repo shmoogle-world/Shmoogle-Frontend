@@ -1,0 +1,20 @@
+.inputField {
+    background: #F0F0F0;
+    padding: 1px;
+    padding-right: 7px;
+    border-radius: 25px;
+    transition: width 0.5s;
+    width: 31px;
+    overflow: hidden;
+    white-space: nowrap;
+    
+}
+.inputField:hover, .inputField:focus-within {
+    width: 218px;
+}
+.saved {
+    color: #00B8B2;
+}
+::ng-deep .mat-form-field-wrapper{
+    margin-bottom: -1.25em;
+ }

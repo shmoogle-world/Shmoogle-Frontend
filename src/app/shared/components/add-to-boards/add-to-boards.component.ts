@@ -3,7 +3,8 @@ import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Board } from '../../../pages/boards/board.model';
 import { Subscription } from 'rxjs';
-import { constants } from 'buffer';
+import { MatSelect } from '@angular/material/select';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-to-boards',
@@ -11,13 +12,14 @@ import { constants } from 'buffer';
   styleUrls: ['./add-to-boards.component.scss']
 })
 export class AddToBoardsComponent implements OnInit, OnDestroy {
-  isHovered = false;
+  isHovered = true;
   user: null | User;
   boards: Board[];
   userSub: Subscription;
   boardSub: Subscription;
 
-  value: string;
+  addedToBoard: boolean = false;
+  sForm: FormGroup;
   constructor(private authservice: AuthService) { }
   ngOnDestroy(): void {
     if(this.userSub) {
@@ -35,6 +37,24 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
     this.boardSub = this.authservice.userBoards.subscribe(boards => {
       this.boards = boards;
     })
+  }
+
+  onChange(e: {source: MatSelect, value: number | string} | any) {
+    
+    switch(e.value) {
+    
+      case 'new':  {
+        e.source.writeValue(null);
+        alert("This Function has yet to be completed");
+        break;
+      }
+      case '': {
+        break;
+      }
+      default: {
+        this.addedToBoard = true;
+      }
+    }
   }
 
 }
