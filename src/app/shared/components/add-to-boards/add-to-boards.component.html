@@ -1,19 +1,16 @@
 <div class="dropDownList" *ngIf="user">
   <div class="inputField d-flex" *ngIf="!addedToBoard; else addDone">
     <app-atb-icon></app-atb-icon>
-      <mat-form-field floatLabel="never" *ngIf="isHovered">
-        <mat-label>Save to a Board</mat-label>
-        <mat-select
-          panelClass="my-select-panel" 
-          (selectionChange)="onChange($event)">
-          
-          <ng-container *ngFor="let item of boards">
-            <mat-option [value]="item.id">{{ item.title }}</mat-option>
-          </ng-container>
-          <mat-option value="new">Add to new board</mat-option>
-        </mat-select>
-      </mat-form-field>
-
+    <mat-form-field floatLabel="never">
+      <mat-label>Save to a Board</mat-label>
+      <mat-select 
+        (selectionChange)="onChange($event)">
+        <ng-container *ngFor="let item of boards">
+          <mat-option [value]="item.id">{{ item.title }}</mat-option>
+        </ng-container>
+        <mat-option value="new">Add to new board</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
   <ng-template #addDone>

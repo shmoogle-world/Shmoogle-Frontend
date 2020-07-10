@@ -12,7 +12,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./add-to-boards.component.scss']
 })
 export class AddToBoardsComponent implements OnInit, OnDestroy {
-  isHovered = true;
+  
   user: null | User;
   boards: Board[];
   userSub: Subscription;
