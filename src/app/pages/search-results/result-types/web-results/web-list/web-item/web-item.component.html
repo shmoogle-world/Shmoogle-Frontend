@@ -5,5 +5,5 @@
   <a href="{{ data.url }}" class="title">{{ data.name }}</a>
   <a href="{{ data.url }}" class="url">{{ data.url }}</a>
   <div class="content">{{ data.snippet }}</div>
-  <app-add-to-boards *ngIf="isShuffled"></app-add-to-boards>
+  <app-add-to-boards *ngIf="isShuffled" [data]="data"></app-add-to-boards>
 </div>
