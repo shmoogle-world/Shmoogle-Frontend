@@ -76,7 +76,6 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
             last_crawled: new Date()
           }
         }
-        console.log("this happens")
         this.http.post(`${environment.apiEndpoint}board/${e.value}/search`, payload)
           .subscribe(() => {
 
