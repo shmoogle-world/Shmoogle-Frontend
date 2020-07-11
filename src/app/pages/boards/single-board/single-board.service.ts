@@ -30,7 +30,7 @@ export class SingleBoardService implements OnDestroy {
 
     this.http.get<any>(`${environment.apiEndpoint}board/${this.id}`).subscribe(
       (res) => {
-        this.board = res.data;
+        this.board = res;
         this.isBoardOwner.next(this.user.id == this.board.user_id);
       }
     );

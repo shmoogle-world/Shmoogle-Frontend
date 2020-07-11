@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy,Input  } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SearchResults } from '../../search-results.model';
 import { SearchResultService } from '../../search-result.service';
@@ -18,6 +18,8 @@ export class WebResultsComponent implements OnInit, OnDestroy {
     public showShuffled: boolean = true;
     private showShuffledSubscription: Subscription;
     private subscription: Subscription;
+
+    @Input() isShuffled: boolean;
 
     constructor(private sRService: SearchResultService) { }
 

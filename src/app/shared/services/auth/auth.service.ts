@@ -6,6 +6,7 @@ import { catchError, tap } from 'rxjs/operators';
 
 import { User } from './user.model';
 import { environment } from '../../../../environments/environment';
+import { Board } from '../../../pages/boards/board.model';
 
 export interface AuthResponseData {
   email: string;
@@ -19,6 +20,8 @@ export interface AuthResponseData {
 })
 export class AuthService {
   public user = new BehaviorSubject<User>(null);
+  public userBoards = new BehaviorSubject<Board[]>(null);
+
   private tokenExpirationTimer: any;
   private logoutRedirectRoute = '/';
 
@@ -62,6 +65,7 @@ export class AuthService {
     const expirationDate = new Date(new Date().getTime() + 86400 * 1000);
     const user = new User(res.email, res.displayName, res.id, res.jwt, expirationDate);
     this.user.next(user);
+    this.fetchUsersBoards(user);
     this.autoLogout(86400 * 1000);
     localStorage.setItem('auth-user', JSON.stringify(user));
   }
@@ -115,6 +119,7 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
+      this.fetchUsersBoards(loadedUser);
       const expirationDuration =
         new Date(userData._tokenExpirationDate).getTime() -
         new Date().getTime();
@@ -126,5 +131,14 @@ export class AuthService {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
+  }
+
+  private fetchUsersBoards(user: User) {
+    this.http
+      .get<Board[]>(`${environment.apiEndpoint}boards/${user.id}`)
+      .subscribe((boards) => {
+        this.userBoards.next(boards);
+        
+      })
   }
 }

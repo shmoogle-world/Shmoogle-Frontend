@@ -1,4 +1,4 @@
-export interface WebResult {
+export type WebResult = {
 
     id: string;
     name: string;

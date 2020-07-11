@@ -3,10 +3,12 @@ import {
   HttpInterceptor,
   HttpRequest,
   HttpHandler,
-  HttpParams
+  HttpParams,
+  HttpResponse
 } from '@angular/common/http';
-import { take, exhaustMap } from 'rxjs/operators';
+import { take, exhaustMap, map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { constants } from 'buffer';
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {

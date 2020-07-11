@@ -10,6 +10,7 @@ import { WebItemComponent } from './result-types/web-results/web-list/web-item/w
 import { WebListComponent } from './result-types/web-results/web-list/web-list.component';
 import { WebResultsComponent } from './result-types/web-results/web-results.component';
 import { SearchResultComponent } from './search-result.component';
+import { MatSelectModule } from '@angular/material/select';
 
 const featureRoutes: Routes = [
   {
@@ -37,6 +38,7 @@ const featureRoutes: Routes = [
     SharedModule,
     FormsModule,
     MatIconModule,
+    MatSelectModule,
     RouterModule.forChild(featureRoutes),
   ],
   
