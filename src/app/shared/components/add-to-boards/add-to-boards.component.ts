@@ -71,7 +71,8 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
           this.data = <ImageResult>this.data;
           payload = {
             title: this.data.name,
-            url: this.data.contentUrl,
+            url: this.data.hostPageUrl,
+            preview_image: this.data.contentUrl,
             last_crawled: new Date()
           }
         }
