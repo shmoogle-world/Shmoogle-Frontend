@@ -1,5 +1,5 @@
 
-export class ImageResult {
+export type ImageResult = {
     
     webSearchUrl: string;
     name: string;

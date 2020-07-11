@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { WebResult } from '../../../../models/web-result.model';
 
+
 @Component({
   selector: 'app-web-row',
   templateUrl: './web-item.component.html',
@@ -8,11 +9,12 @@ import { WebResult } from '../../../../models/web-result.model';
 })
 export class WebItemComponent implements OnInit {
 
-    @Input() data: WebResult;
+  @Input() data: WebResult;
+  @Input() isShuffled: boolean;
+  hoverBoards:boolean = false;
+  constructor() { }
 
-    constructor() { }
-
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 
 }
