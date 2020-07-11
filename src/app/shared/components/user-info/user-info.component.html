@@ -17,6 +17,7 @@
     </button>
   </div>
   <mat-menu #appMenu="matMenu">
+    <button mat-menu-item [routerLink]="['boards/library']">Library</button>
     <button mat-menu-item (click)="logout()">Logout</button>
   </mat-menu>
 </ng-template>

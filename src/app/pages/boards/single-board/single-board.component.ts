@@ -16,7 +16,4 @@ export class SingleBoardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-  
-
 }

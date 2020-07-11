@@ -1,4 +1,4 @@
-import { SharedModule } from '../../shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,10 +7,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SearchResultsModule } from '../../../pages/search-results/search-results.module'
-
-const routes: Routes = [
-    { path: '', component: BoardsLibraryComponent }
-]
 
 @NgModule({
     declarations: [
@@ -23,9 +19,7 @@ const routes: Routes = [
         MatCardModule,
         ScrollingModule,
         SearchResultsModule,
-        RouterModule.forChild(
-            routes,
-        ),
     ]
 })
+  
 export class BoardsLibraryModule { }
