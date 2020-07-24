@@ -1,8 +1,49 @@
+@import "variables";
+
 .loginBtn{
   margin-right: 15px;
 }
 
-.display-name {
-  margin-top: -6px !important;
-  color: #00B8B2;
+$ani-speed: 0.5s;
+$ani-rotate: 180deg;
+.icon {
+  height: 40px;
+  transition: transform $ani-speed;
+}
+.icon-wrapper {
+  padding: 1px;
+  transition: transform $ani-speed;
+  background: 
+    linear-gradient(
+    -45deg,
+    $shmoogle-yellow,
+    $shmoogle-yellow 25%,
+    $shmoogle-green 25%, 
+    $shmoogle-green 60%,
+    $shmoogle-red 60%,
+    $shmoogle-red 75%);
+
+  &:hover {
+    transform: rotate($ani-rotate);
+    .icon {
+      transform: rotate(-$ani-rotate);
+    }
+  }
+  
+}
+
+::ng-deep .mat-menu-content {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.mat-menu-item{
+  line-height:35px;
+  height:35px;
+}
+
+.dropdown-icon {
+  height: 50px;
+}
+.dropdown {
+  width: 200px;
 }

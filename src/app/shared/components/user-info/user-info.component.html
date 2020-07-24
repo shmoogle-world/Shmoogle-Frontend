@@ -6,17 +6,39 @@
 </ng-container>
 
 <ng-template #loggedIn> 
-  <div class="d-flex" [matMenuTriggerFor]="appMenu">
-
-    <div>
-      <p class="m-0">Logged in as</p>
-      <p class="m-0 text-right display-name">{{ user.displayName }}</p>
+  <div [matMenuTriggerFor]="userLoginMenu">
+    <div class="icon-wrapper rounded-circle">
+        <img class="rounded-circle icon" src="/assets/account_circle.png" alt="user icon">
     </div>
-    <button mat-icon-button>
-      <mat-icon>keyboard_arrow_down</mat-icon>
-    </button>
+   
   </div>
-  <mat-menu #appMenu="matMenu">
-    <button mat-menu-item (click)="logout()">Logout</button>
+  <mat-menu #userLoginMenu="matMenu" yPosition="below" xPosition="before" [overlapTrigger]="true">
+    <div class="dropdown d-flex px-2 py-1">
+      <img class="pl-2 pr-2 rounded-circle dropdown-icon" src="/assets/account_circle.png" alt="user icon">
+      <span class="pt-3">{{ user.displayName }}</span>
+    </div>
+
+    <mat-divider></mat-divider>
+    
+    <button mat-menu-item disabled (click)="notYetImplemented()"> 
+      <span>Boards</span>
+    </button>
+    <mat-divider></mat-divider>
+    
+    <button mat-menu-item disabled (click)="notYetImplemented()">
+      <mat-icon>lock</mat-icon>
+      <span>Privacy</span>
+    </button>
+    
+    <button mat-menu-item disabled (click)="notYetImplemented()">
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+    
+    
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
   </mat-menu>
 </ng-template>
