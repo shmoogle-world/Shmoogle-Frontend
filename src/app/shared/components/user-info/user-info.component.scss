@@ -4,12 +4,15 @@
   margin-right: 15px;
 }
 
+$ani-speed: 0.5s;
+$ani-rotate: 180deg;
 .icon {
-  height: 40px;  
+  height: 40px;
+  transition: transform $ani-speed;
 }
 .icon-wrapper {
   padding: 1px;
-  
+  transition: transform $ani-speed;
   background: 
     linear-gradient(
     -45deg,
@@ -19,7 +22,16 @@
     $shmoogle-green 60%,
     $shmoogle-red 60%,
     $shmoogle-red 75%);
+
+  &:hover {
+    transform: rotate($ani-rotate);
+    .icon {
+      transform: rotate(-$ani-rotate);
+    }
+  }
+  
 }
+
 ::ng-deep .mat-menu-content {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
