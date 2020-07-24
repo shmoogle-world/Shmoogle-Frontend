@@ -47,4 +47,8 @@ export class UserInfoComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout();
   }
+  
+  notYetImplemented() {
+    alert("This button has yet to be implemented, but thank you for clicking it!")
+  }
 }

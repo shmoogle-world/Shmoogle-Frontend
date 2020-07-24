@@ -2,6 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~bootstrap/scss/bootstrap.scss";
 $text-color: #3F3F3F;
+$placeholder-color: #4c4c4c;
 
 html,body{
     font-family: 'Noto Sans', sans-serif;
@@ -34,7 +35,7 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
   /* Chrome/Opera/Safari */
   height: 18px;
   width: 206px;
-  color: #4c4c4c; 
+  color: $placeholder-color; 
   font-size: 18px;
   font-weight: 300;
   line-height: 0;
@@ -46,7 +47,7 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
   /* Firefox 19+ */
   height: 18px;
   width: 206px;
-  color: #4c4c4c;
+  color: $placeholder-color;
   font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;
@@ -58,7 +59,7 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
   /* IE 10+ */
   height: 18px;
   width: 206px;
-  color: #4c4c4c;
+  color: $placeholder-color;
   font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;
@@ -71,7 +72,7 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
   /* Firefox 18- */
   height: 18px;
   width: 206px;
-  color: #4c4c4c;
+  color: $placeholder-color;
   font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;
@@ -82,7 +83,7 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
 ::-webkit-input-placeholder {
   height: 18px;
   width: 206px;
-  color: #4c4c4c;
+  color: $placeholder-color;
   font-family: "Open Sans";
   font-size: 25px;
   font-weight: 300;

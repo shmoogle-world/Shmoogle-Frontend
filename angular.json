@@ -23,12 +23,14 @@
             ],
             "styles": [
               "node_modules/animate.css/animate.css",
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "src/styles.scss"
+              
+              "src/styles/styles.scss",
+              "src/styles/variables.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "../node_modules/bootstrap/scss"
+                "../node_modules/bootstrap/scss",
+                "src/styles"
               ]
             },
             "scripts": [
