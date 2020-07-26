@@ -1,3 +1,4 @@
+import { NewBoardModalComponent } from './new-board-modal/new-board-modal.component';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
@@ -9,6 +10,7 @@ import { ImageResult } from '../../../pages/search-results/models/image-result.m
 import { WebResult } from '../../../pages/search-results/models/web-result.model';
 import { AuthService } from './../../services/auth/auth.service';
 import { User } from './../../services/auth/user.model';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-to-boards',
@@ -26,7 +28,8 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
 
   addedToBoard: boolean = false;
   constructor(private authservice: AuthService,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private dialog: MatDialog) { }
   ngOnDestroy(): void {
     if (this.userSub) {
       this.userSub.unsubscribe();
@@ -50,39 +53,47 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
     switch (e.value) {
 
       case 'new': {
+        
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.maxHeight = "100%";
+        dialogConfig.maxWidth = "40%";
+        dialogConfig.panelClass = "loginModal";
+        this.dialog.open(NewBoardModalComponent, dialogConfig);
         e.source.writeValue(null);
-        alert("This Function has yet to be completed");
         break;
       }
       case '': {
         break;
       }
       default: {
-        let payload;
-        if ((this.data as WebResult).url) {
-          this.data = <WebResult>this.data;
-          payload = {
-            title: this.data.name,
-            url: this.data.url,
-            snippet: this.data.snippet,
-            last_crawled: new Date()
-          };
-        } else {
-          this.data = <ImageResult>this.data;
-          payload = {
-            title: this.data.name,
-            url: this.data.hostPageUrl,
-            preview_image: this.data.contentUrl,
-            last_crawled: new Date()
-          }
-        }
-        this.http.post(`${environment.apiEndpoint}board/${e.value}/search`, payload)
-          .subscribe(() => {
-
-            this.addedToBoard = true;
-          })
+        this.addToBoard(e);
       }
     }
   }
 
+  private addToBoard(e: { source: MatSelect, value: number | string } | any) {
+    let payload;
+    if ((this.data as WebResult).url) {
+      this.data = <WebResult>this.data;
+      payload = {
+        title: this.data.name,
+        url: this.data.url,
+        snippet: this.data.snippet,
+        last_crawled: new Date()
+      };
+    } else {
+      this.data = <ImageResult>this.data;
+      payload = {
+        title: this.data.name,
+        url: this.data.hostPageUrl,
+        preview_image: this.data.contentUrl,
+        last_crawled: new Date()
+      }
+    }
+    this.http.post(`${environment.apiEndpoint}board/${e.value}/search`, payload)
+      .subscribe(() => {
+
+        this.addedToBoard = true;
+      })
+  }
 }

@@ -4,6 +4,10 @@
 $text-color: #3F3F3F;
 $placeholder-color: #4c4c4c;
 
+textarea {
+  resize: none;
+  overflow-x: hidden;
+}
 html,body{
     font-family: 'Noto Sans', sans-serif;
     padding: 0;
