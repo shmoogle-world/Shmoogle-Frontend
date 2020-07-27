@@ -57,7 +57,8 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
 
         const dialogRef = this.dialog.open(NewBoardModalComponent, {
           maxHeight: "100%",
-          maxWidth: "40%",
+          maxWidth: "300px",
+          width: "90%",
           panelClass: "loginModal",
           data: this.data
         });

@@ -39,7 +39,8 @@ export class UserInfoComponent implements OnInit, OnDestroy {
   public openLoginDialog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.maxHeight = "100%";
-    dialogConfig.maxWidth = "40%";
+    dialogConfig.maxWidth = "482px";
+    dialogConfig.width = "90%";
     dialogConfig.panelClass = "loginModal";
     this.dialog.open(LoginComponent, dialogConfig);
   }
