@@ -12,7 +12,7 @@ import { ImageResult } from '../../../../pages/search-results/models/image-resul
 export class NewBoardModalComponent implements OnInit {
   
   boardForm = new FormGroup({
-    title: new FormControl(null, [Validators.required]),
+    title: new FormControl(null, [Validators.required, Validators.minLength(6)]),
     description: new FormControl(null, [Validators.minLength(6)]),
     public: new FormControl(true, [Validators.required])
   });
