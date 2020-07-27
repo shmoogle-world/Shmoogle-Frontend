@@ -5,7 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { Board } from '../../../pages/boards/board.model';
+import { Board, BoardItem } from '../../../pages/boards/board.model';
 import { ImageResult } from '../../../pages/search-results/models/image-result.model';
 import { WebResult } from '../../../pages/search-results/models/web-result.model';
 import { AuthService } from './../../services/auth/auth.service';
@@ -60,7 +60,8 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
           maxWidth: "300px",
           width: "90%",
           panelClass: "loginModal",
-          data: this.data
+          
+          data: this.parseSearchResult(),
         });
         dialogRef.afterClosed().subscribe((result: Boolean) => {
           if(result) {
@@ -79,12 +80,10 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
       }
     }
   }
-
-  private addToBoard(e: { source: MatSelect, value: number | string } | any) {
-    let payload;
+  private parseSearchResult(): BoardItem {
     if ((this.data as WebResult).url) {
       this.data = <WebResult>this.data;
-      payload = {
+      return {
         title: this.data.name,
         url: this.data.url,
         snippet: this.data.snippet,
@@ -92,14 +91,17 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
       };
     } else {
       this.data = <ImageResult>this.data;
-      payload = {
+      return {
         title: this.data.name,
         url: this.data.hostPageUrl,
         preview_image: this.data.contentUrl,
         last_crawled: new Date()
       }
     }
-    this.http.post(`${environment.apiEndpoint}board/${e.value}/search`, payload)
+  }
+  private addToBoard(e: { source: MatSelect, value: number | string } | any) {
+    
+    this.http.post(`${environment.apiEndpoint}board/${e.value}/search`, this.parseSearchResult())
       .subscribe(() => {
 
         this.addedToBoard = true;
