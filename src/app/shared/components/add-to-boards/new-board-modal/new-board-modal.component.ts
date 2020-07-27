@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { WebResult } from '../../../../pages/search-results/models/web-result.model';
+import { ImageResult } from '../../../../pages/search-results/models/image-result.model';
 
 @Component({
   selector: 'app-new-board-modal',
@@ -7,22 +10,26 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./new-board-modal.component.scss']
 })
 export class NewBoardModalComponent implements OnInit {
+  
   boardForm = new FormGroup({
     title: new FormControl(null, [Validators.required]),
     description: new FormControl(null, [Validators.minLength(6)]),
     public: new FormControl(true, [Validators.required])
   });
-  constructor() { }
+  
+  pending = true;
+
+  constructor(
+    public dialogRef: MatDialogRef<NewBoardModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public searchResult: WebResult | ImageResult
+    ) { }
 
   ngOnInit(): void {
   }
   
-  get public(): boolean {
-    return this.boardForm.get('public').value;
-  }
-
   onSubmit() {
-
+    this.dialogRef.close(true);
   }
 
 }
+  

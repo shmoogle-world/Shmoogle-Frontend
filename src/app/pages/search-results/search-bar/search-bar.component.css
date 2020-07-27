@@ -80,5 +80,6 @@ input:focus {
 @media (max-width: 768px) {
     .links {
         flex-basis: 30%;
+        margin-left: 15px;
     }
 }    

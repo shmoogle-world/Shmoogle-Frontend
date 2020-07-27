@@ -1,5 +1,5 @@
 <div class="mx-5 py-3">
-  <h1>New Board</h1>
+  <h1 class="pb-2">New Board</h1>
   <form [formGroup]="boardForm" (ngSubmit)="onSubmit()">
     <div>
       <mat-form-field class="form-group">
@@ -19,10 +19,10 @@
           matInput
           type="description"
           formControlName="description" 
-          class="form-control input"
+          class="input text-area"
           placeholder="Swedish snacks!"
           rows="4"
-          cols="50"
+          cols="1"
           maxlength="255"
           ></textarea>
       </mat-form-field>
@@ -35,11 +35,16 @@
     </mat-slide-toggle>
     <mat-dialog-actions align="end" class="mb-1">
       <button mat-button mat-dialog-close>Cancel</button>
-      <button 
-        mat-button 
-        type="submit" 
-        [mat-dialog-close]="true" 
-        [disabled]="!boardForm.valid">Create</button>
+      <div>
+        <app-loader class="loader-small" *ngIf="pending; else button"></app-loader>
+        <ng-template #button>
+          <button 
+            mat-button 
+            type="submit" 
+            
+            [disabled]="!boardForm.valid">Create</button>
+          </ng-template>
+        </div>
     </mat-dialog-actions>
   </form>
 </div>

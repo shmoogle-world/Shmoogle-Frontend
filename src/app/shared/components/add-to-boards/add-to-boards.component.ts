@@ -10,7 +10,7 @@ import { ImageResult } from '../../../pages/search-results/models/image-result.m
 import { WebResult } from '../../../pages/search-results/models/web-result.model';
 import { AuthService } from './../../services/auth/auth.service';
 import { User } from './../../services/auth/user.model';
-import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-to-boards',
@@ -25,11 +25,12 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
   boards: Board[];
   userSub: Subscription;
   boardSub: Subscription;
-
   addedToBoard: boolean = false;
+
   constructor(private authservice: AuthService,
     private http: HttpClient,
     private dialog: MatDialog) { }
+  
   ngOnDestroy(): void {
     if (this.userSub) {
       this.userSub.unsubscribe();
@@ -53,12 +54,19 @@ export class AddToBoardsComponent implements OnInit, OnDestroy {
     switch (e.value) {
 
       case 'new': {
+
+        const dialogRef = this.dialog.open(NewBoardModalComponent, {
+          maxHeight: "100%",
+          maxWidth: "40%",
+          panelClass: "loginModal",
+          data: this.data
+        });
+        dialogRef.afterClosed().subscribe((result: Boolean) => {
+          if(result) {
+            this.addedToBoard = true;
+          }
+        });
         
-        const dialogConfig = new MatDialogConfig();
-        dialogConfig.maxHeight = "100%";
-        dialogConfig.maxWidth = "40%";
-        dialogConfig.panelClass = "loginModal";
-        this.dialog.open(NewBoardModalComponent, dialogConfig);
         e.source.writeValue(null);
         break;
       }
