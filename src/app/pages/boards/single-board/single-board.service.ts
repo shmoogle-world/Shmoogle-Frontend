@@ -13,11 +13,12 @@ import { Board } from '../board.model';
 export class SingleBoardService implements OnDestroy {
 
   board: Board;
+  private backupBoard: Board;
   private id: number;
   isBoardOwner = new BehaviorSubject<boolean>(false);
   user: User;
   authSub: Subscription;
-
+  editMode: boolean = false;
 
   constructor(private router: Router,
     private http: HttpClient,
@@ -40,4 +41,8 @@ export class SingleBoardService implements OnDestroy {
     this.authSub.unsubscribe();
   }
 
+  startEditMode() {
+    this.editMode = true;
+    this.backupBoard = this.board;
+  }
 }

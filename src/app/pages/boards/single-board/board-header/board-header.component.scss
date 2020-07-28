@@ -21,3 +21,13 @@ hr {
   font-size: 15px;
   line-height: 20px;
 }
+
+.text-area {
+  resize: none;
+  height: auto;
+}
+.text-area-size {
+  // min-width: 90%;
+  max-width: 600px;
+  width: 90%;
+}
