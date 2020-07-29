@@ -1,6 +1,6 @@
 <div>
   <mat-card class="w-100 my-3 p-0 card">
-    <a class="d-flex card-link" [href]="item.url">
+    <a class="d-flex card-link" [href]="item.url" (click)="linkPressed($event)">
       <div>
         <div class="card-image">
           <img [src]="item.preview_image ? item.preview_image : '/assets/board-item-placeholder.png' "

@@ -9,10 +9,15 @@ import { BoardItem } from '../../board.model';
 export class BoardItemComponent implements OnInit {
   
   @Input() item: BoardItem;
+  @Input() editable: boolean = false;
   
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  linkPressed(e: any) {
+    if(this.editable) {
+      e.preventDefault();
+    }
+  }
 }
