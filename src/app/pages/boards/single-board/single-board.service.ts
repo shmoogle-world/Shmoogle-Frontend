@@ -6,6 +6,7 @@ import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../../shared/services/auth/auth.service';
 import { User } from '../../../shared/services/auth/user.model';
 import { Board } from '../board.model';
+import { CdkDragSortEvent } from '@angular/cdk/drag-drop';
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +42,27 @@ export class SingleBoardService implements OnDestroy {
     this.authSub.unsubscribe();
   }
 
-  startEditMode() {
+  startEdit() {
     this.editMode = true;
-    this.backupBoard = this.board;
+    this.backupBoard = Object.assign({}, this.board);
+  }
+
+  cancelEdit() {
+    if(confirm("Are you sure that you wish to cancel? The changes will not be saved.")) {
+      console.log(this.board.items);
+      this.board = Object.assign({}, this.backupBoard);
+      console.log("after",this.board.items);
+      this.editMode = false;
+      this.backupBoard = null;
+    }
+  }
+
+  endEdit() {
+
+  }
+  reorderItems(e: CdkDragSortEvent) {
+    const tmp = this.board.items[e.previousIndex];
+    this.board.items[e.previousIndex] = this.board.items[e.currentIndex];
+    this.board.items[e.currentIndex] = tmp;
   }
 }

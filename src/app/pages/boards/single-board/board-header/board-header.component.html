@@ -5,7 +5,7 @@
           <button 
           *ngIf="isOwner && sbService.editMode === false; else editModeHeader" 
           class="px-1" 
-          (click)="sbService.startEditMode()"
+          (click)="sbService.startEdit()"
           mat-button>
             <mat-icon
               >create</mat-icon>
@@ -13,7 +13,7 @@
           <ng-template #editModeHeader>
             <div>
 
-              <button mat-button>Cancel</button>
+              <button mat-button (click)="sbService.cancelEdit()">Cancel</button>
               <button mat-button>Save</button>
             </div>
           </ng-template>
