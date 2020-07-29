@@ -2,7 +2,17 @@
 <div *ngIf="sbService.board; else spinner">
   <app-board-header></app-board-header>
   <div class="mx-2" >
-    <app-board-item *ngFor="let item of sbService.board.items" [item]="item"></app-board-item>
+    <ng-template *ngIf="true; else editList" >
+      <app-board-item 
+        
+        *ngFor="let item of sbService.board.items" 
+        [item]="item"></app-board-item>
+    </ng-template>
+    <ng-template #editList>
+      <div cdkDropList (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of sbService.board.items" cdkDrag>{{item.title}}</div>
+      </div>
+    </ng-template>
   </div>
 </div>
 

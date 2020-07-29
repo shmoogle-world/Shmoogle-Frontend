@@ -12,7 +12,9 @@ export class SingleBoardComponent implements OnInit {
 
   
   constructor(public sbService: SingleBoardService) { }
-  
+  drop() {
+    
+  }
   ngOnInit(): void {
   }
 
