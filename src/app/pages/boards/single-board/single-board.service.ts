@@ -7,7 +7,7 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 import { User } from '../../../shared/services/auth/user.model';
 import { Board } from '../board.model';
 import { CdkDragSortEvent } from '@angular/cdk/drag-drop';
-
+import { cloneDeep } from 'lodash';
 @Injectable({
   providedIn: 'root'
 })
@@ -44,14 +44,12 @@ export class SingleBoardService implements OnDestroy {
 
   startEdit() {
     this.editMode = true;
-    this.backupBoard = Object.assign({}, this.board);
+    this.backupBoard = cloneDeep(this.board);
   }
 
   cancelEdit() {
     if(confirm("Are you sure that you wish to cancel? The changes will not be saved.")) {
-      console.log(this.board.items);
-      this.board = Object.assign({}, this.backupBoard);
-      console.log("after",this.board.items);
+      this.board = cloneDeep(this.backupBoard);
       this.editMode = false;
       this.backupBoard = null;
     }
