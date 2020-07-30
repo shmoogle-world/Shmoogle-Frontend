@@ -14,7 +14,7 @@
             <div>
 
               <button mat-button (click)="sbService.cancelEdit()">Cancel</button>
-              <button mat-button>Save</button>
+              <button mat-button (click)="sbService.endEdit()">Save</button>
             </div>
           </ng-template>
         </div>
@@ -30,7 +30,7 @@
   <ng-template #editMode>
     <mat-form-field>
       <mat-label>Title</mat-label>
-      <input matInput [(value)]="sbService.board.title">
+      <input matInput [(ngModel)]="sbService.board.title">
     </mat-form-field>
 
     <div class="pt-3">
@@ -44,7 +44,7 @@
           cdkAutosizeMinRows="4"
           cdkAutosizeMaxRows="10"
           maxlength="256"
-          [(value)]="sbService.board.description"
+          [(ngModel)]="sbService.board.description"
           ></textarea>
           <mat-hint align="end">{{description.value.length}} / 256</mat-hint>
       </mat-form-field>
