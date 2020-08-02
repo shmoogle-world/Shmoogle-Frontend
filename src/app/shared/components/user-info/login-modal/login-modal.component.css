@@ -44,7 +44,6 @@
 .forgotPass {
     font-style: normal;
     font-weight: normal;
-    font-size: 26px;
     line-height: 13px;
     text-align: center;
     color: #4f4f4f;
@@ -65,7 +64,6 @@
 .footer{
     font-style: normal;
     font-weight: normal;
-    font-size: 26px;
     line-height: 15px;
     text-align: center;
     color: #4F4F4F;
@@ -86,7 +84,6 @@
     margin:0;
     font-style: normal;
     font-weight: normal;
-    font-size: 26px;
     line-height: 13px;
     text-align: center;
     color: #4f4f4f;
@@ -113,7 +110,6 @@
     margin:0;
     font-style: normal;
     font-weight: bold;
-    font-size: 26px;
     line-height: 17px;
     color: #6F6F6F;
     

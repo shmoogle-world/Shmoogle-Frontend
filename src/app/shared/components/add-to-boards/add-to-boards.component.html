@@ -3,7 +3,7 @@
     <app-atb-icon></app-atb-icon>
     <mat-form-field floatLabel="never">
       <mat-label>Save to a Board</mat-label>
-      <mat-select 
+      <mat-select class="asd" [panelClass]="asd"
         (selectionChange)="onChange($event)">
         <ng-container *ngFor="let item of boards">
           <mat-option [value]="item.id">{{ item.title }}</mat-option>

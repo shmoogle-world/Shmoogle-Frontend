@@ -9,7 +9,8 @@ form {
 .containerStyle {
   margin: 0;
   background-color: #f0f0f0;
-  width: 33%;
+  max-width: 633px;
+  width: 90%;
   border-radius: 15px;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   margin: 7% auto 0;
@@ -19,7 +20,6 @@ form {
 
 .logo {
   width: 49px;
-  height: 31px;
   margin: auto;
   margin-bottom:5px;
 }
@@ -39,7 +39,6 @@ form {
   
   font-style: normal;
   font-weight: bold;
-  font-size: 26px;
   line-height: 17px;
   color: #6f6f6f;
   margin-bottom: 13px;
@@ -49,18 +48,9 @@ form {
   margin-bottom:1.2rem;
 }
 
-::placeholder {
-  
-  font-style: normal;
-  font-weight: normal;
-  font-size: 100%;
-  color: rgba(111, 111, 111, 0.5);
-}
-
 
 
 .btn-secondary {
-  font-size:150%;
   background: #6f6f6f;
   border: none;
   padding: 3px;
@@ -72,7 +62,7 @@ form {
 .privacy-policy {
   font-style: normal;
   font-weight: normal;
-  font-size: 100%;
+
   line-height: 100%;
   text-align: center;
   color: rgba(111, 111, 111, 0.75);
@@ -96,8 +86,6 @@ form {
 .footer {
   font-style: normal;
   font-weight: normal;
-  
-  font-size: 100%;
   line-height: 100%;
   text-align: center;
   color: #4f4f4f;

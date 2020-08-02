@@ -3,16 +3,21 @@
 @import "~bootstrap/scss/bootstrap.scss";
 $text-color: #3F3F3F;
 $placeholder-color: #4c4c4c;
-
+$placeholder-font: 1rem;
 html,body{
     font-family: 'Noto Sans', sans-serif;
     padding: 0;
     margin: 0;
 }
 h1, h2, h3, h4, h5 p, small, a, a:hover {
-   color: $text-color;
+  color: $text-color;
 }
-
+h1 {
+  font-size: calc(1em + 1vmin);
+}
+b {
+  font-size: calc(0.65em + 1vmin);
+}
 .dialog {
   background: lightgrey;
   border-radius: 10px;
@@ -27,19 +32,19 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
   border-radius: 15px;
 }
 
-.input.ng-touched.ng-dirty.ng-invalid {
-  border: 1px solid red;
-}
+// .input.ng-touched.ng-dirty.ng-invalid {
+//   border: 1px solid red;
+// }
 
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   height: 18px;
   width: 206px;
   color: $placeholder-color; 
-  font-size: 18px;
+  font-size: $placeholder-font;
   font-weight: 300;
   line-height: 0;
-  padding-top: 10px;
+  padding-top:  10px;
   letter-spacing: 2px;
   padding-left: 5px;
 }
@@ -49,7 +54,7 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
   width: 206px;
   color: $placeholder-color;
   font-family: "Open Sans";
-  font-size: 25px;
+  font-size: $placeholder-font;
   font-weight: 300;
   padding-top: 10px;
   letter-spacing: 2px;
@@ -61,7 +66,7 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
   width: 206px;
   color: $placeholder-color;
   font-family: "Open Sans";
-  font-size: 25px;
+  font-size: $placeholder-font;
   font-weight: 300;
   line-height: 0;
   padding-top: 10px;
@@ -74,7 +79,7 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
   width: 206px;
   color: $placeholder-color;
   font-family: "Open Sans";
-  font-size: 25px;
+  font-size: $placeholder-font;
   font-weight: 300;
   padding-top: 10px;
   letter-spacing: 2px;
@@ -85,14 +90,14 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
   width: 206px;
   color: $placeholder-color;
   font-family: "Open Sans";
-  font-size: 25px;
+  font-size: $placeholder-font;
   font-weight: 300;
   letter-spacing: 2px;
   padding-left: 5px;
 }
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  font-size: 16px !important;
+  font-size: $placeholder-font !important;
 }
 
 .mat-form-field-infix {
@@ -106,5 +111,20 @@ h1, h2, h3, h4, h5 p, small, a, a:hover {
 .mat-form-field-appearance-legacy .mat-form-field-infix {
   padding: 0.3em 0 0.4375em 0;
 }
+.form-field .mat-form-field-infix {
+  padding-bottom: 0.1em !important;
+}
+.loader-small > svg {
+  width: 48px !important;
+  height: auto;
+}
+.loader-big > svg {
+  width: 90vw !important;
+}
 
-
+// .cdk-overlay-container {
+//   left: 0 !important;
+// }
+.asd {
+  left: 0 !important;
+}

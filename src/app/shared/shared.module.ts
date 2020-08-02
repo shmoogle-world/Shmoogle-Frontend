@@ -22,6 +22,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { LoginComponent } from './components/user-info/login-modal/login-modal.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { NewBoardModalComponent } from './components/add-to-boards/new-board-modal/new-board-modal.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     AddToBoardsIconComponent,
     SearchBarComponent,
     LoaderComponent,
+    NewBoardModalComponent,
   ],
   imports: [
     CommonModule,
