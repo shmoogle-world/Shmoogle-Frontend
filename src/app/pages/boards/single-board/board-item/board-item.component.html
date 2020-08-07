@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!(item.marked_for_delete) && !item.marked_for_delete">
   <mat-card class="w-100 my-3 p-0 card">
     <a class="d-flex card-link" [href]="item.url" (click)="linkPressed($event)">
       <div>

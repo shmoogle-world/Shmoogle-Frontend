@@ -15,11 +15,13 @@ export class BoardItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   linkPressed(e: any) {
     if(this.editable) {
       e.preventDefault();
     }
   }
+  
   markForDelete(e: any) {
     if(this.editable) {
       e.preventDefault();

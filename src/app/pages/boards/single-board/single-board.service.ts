@@ -69,7 +69,6 @@ export class SingleBoardService implements OnDestroy {
       description: this.board.description,
       public: this.board.public,
       items: this.difference(this.backupBoard.items, this.board.items),
-      deletedItems: this.itemsToBeDeleted,
     }).subscribe(
       (res) => {
         this.clearEditMode();
@@ -79,10 +78,10 @@ export class SingleBoardService implements OnDestroy {
   }
 
   deleteItem(itemIndex: number) {
-    
-    const item = this.board.items[itemIndex];
-    this.board.items.splice(itemIndex, 1);
-    this.itemsToBeDeleted.push(item);
+    if(confirm("This item will be deleted, are you sure?")) {
+
+      const item = this.board.items[itemIndex].marked_for_delete = true;
+    }
   }
   
   reorderItems(e: CdkDragSortEvent) {
