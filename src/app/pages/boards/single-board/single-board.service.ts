@@ -34,6 +34,9 @@ export class SingleBoardService implements OnDestroy {
 
     this.http.get<Board>(`${environment.apiEndpoint}board/${this.id}`).subscribe(
       (res) => {
+        res.items.forEach(element => {
+          element.marked_for_delete = false;
+        });
         this.board = res;
         this.isBoardOwner.next(this.user.id == this.board.user_id);
       }
@@ -80,21 +83,27 @@ export class SingleBoardService implements OnDestroy {
   deleteItem(itemIndex: number) {
     if(confirm("This item will be deleted, are you sure?")) {
 
-      const item = this.board.items[itemIndex].marked_for_delete = true;
+      this.board.items[itemIndex].marked_for_delete = true;
     }
   }
   
   reorderItems(e: CdkDragSortEvent) {
     const tmp = this.board.items[e.previousIndex];
     this.board.items[e.previousIndex] = this.board.items[e.currentIndex];
+    const currentListIndex = this.board.items[e.previousIndex].list_index;
+    this.board.items[e.previousIndex].list_index = tmp.list_index;
     this.board.items[e.currentIndex] = tmp;
+    this.board.items[e.currentIndex].list_index = currentListIndex;
   }
 
   difference(object, base) {
     function changes(object, base) {
       return transform(object, function(result, value, key) {
         if (!isEqual(value, base[key])) {
-          result[key] = (isObject(value) && isObject(base[key])) ? changes(value, base[key]) : value;
+          if((isObject(value) && isObject(base[key]))) {
+
+            result[key] =  base[key];
+          }
         }
       });
     }

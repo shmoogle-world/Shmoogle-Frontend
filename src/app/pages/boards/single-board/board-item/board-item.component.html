@@ -13,11 +13,11 @@
             <h2 class="m-0">
               {{ item.title }}
             </h2>
-            <button class="mt-1" mat-button (click)="markForDelete($event)">
+            <button *ngIf="editable 
+            && editable == true" class="mt-1" mat-button (click)="markForDelete($event)">
               <mat-icon 
                 
-                *ngIf="editable 
-                && editable == true"
+                
                 >delete</mat-icon>
 
             </button>
