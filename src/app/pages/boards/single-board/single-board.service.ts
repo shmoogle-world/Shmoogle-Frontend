@@ -1,3 +1,4 @@
+import { BoardItem } from './../board.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
@@ -20,6 +21,7 @@ export class SingleBoardService implements OnDestroy {
   user: User;
   authSub: Subscription;
   editMode: boolean = false;
+  itemsToBeDeleted: BoardItem[] = [];
 
   constructor(private router: Router,
     private http: HttpClient,
@@ -47,11 +49,16 @@ export class SingleBoardService implements OnDestroy {
     this.backupBoard = cloneDeep(this.board);
   }
 
+  clearEditMode() {
+    this.backupBoard = null;
+    this.itemsToBeDeleted = [];
+  }
+
   cancelEdit() {
     if(confirm("Are you sure that you wish to cancel? The changes will not be saved.")) {
       this.board = cloneDeep(this.backupBoard);
       this.editMode = false;
-      this.backupBoard = null;
+      this.clearEditMode();
     }
   }
 
@@ -62,14 +69,22 @@ export class SingleBoardService implements OnDestroy {
       description: this.board.description,
       public: this.board.public,
       items: this.difference(this.backupBoard.items, this.board.items),
+      deletedItems: this.itemsToBeDeleted,
     }).subscribe(
       (res) => {
-        this.backupBoard = null;
+        this.clearEditMode();
         console.log(res);
       }
     );
   }
 
+  deleteItem(itemIndex: number) {
+    
+    const item = this.board.items[itemIndex];
+    this.board.items.splice(itemIndex, 1);
+    this.itemsToBeDeleted.push(item);
+  }
+  
   reorderItems(e: CdkDragSortEvent) {
     const tmp = this.board.items[e.previousIndex];
     this.board.items[e.previousIndex] = this.board.items[e.currentIndex];

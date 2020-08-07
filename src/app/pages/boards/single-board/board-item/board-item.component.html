@@ -9,9 +9,19 @@
       </div>
       <div class="px-3 flex-grow-1 d-flex flex-column justify-content-between">
         <div>
-          <h2 class="m-0">
-            {{ item.title }}
-          </h2>
+          <div class="d-flex justify-content-between">
+            <h2 class="m-0">
+              {{ item.title }}
+            </h2>
+            <button class="mt-1" mat-button (click)="markForDelete($event)">
+              <mat-icon 
+                
+                *ngIf="editable 
+                && editable == true"
+                >delete</mat-icon>
+
+            </button>
+          </div>
           <a class="url m-0 py-2" [href]="item.url">
             {{ item.url }}
           </a>

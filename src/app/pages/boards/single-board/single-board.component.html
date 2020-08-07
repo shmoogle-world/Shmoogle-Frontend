@@ -12,8 +12,9 @@
       <div cdkDropList (cdkDropListDropped)="sbService.reorderItems($event)">
         <app-board-item 
         cdkDrag
-        *ngFor="let item of sbService.board.items"
+        *ngFor="let item of sbService.board.items; let i = index"
         [editable]="true"
+        (delete)="sbService.deleteItem(i)"
         [item]="item"></app-board-item>
       </div>
     </ng-template>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BoardItem } from '../../board.model';
 
 @Component({
@@ -10,7 +10,7 @@ export class BoardItemComponent implements OnInit {
   
   @Input() item: BoardItem;
   @Input() editable: boolean = false;
-  
+  @Output() delete = new EventEmitter<null>();
   constructor() { }
 
   ngOnInit(): void {
@@ -18,6 +18,12 @@ export class BoardItemComponent implements OnInit {
   linkPressed(e: any) {
     if(this.editable) {
       e.preventDefault();
+    }
+  }
+  markForDelete(e: any) {
+    if(this.editable) {
+      e.preventDefault();
+      this.delete.emit();
     }
   }
 }
