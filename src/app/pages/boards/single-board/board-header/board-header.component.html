@@ -1,15 +1,57 @@
 <div class="header-backdrop px-5 pt-4">
     <div class="d-flex justify-content-between">
         <p class="px-1">{{ sbService.board.public ? '' : 'Private' }}</p>
-        <mat-icon *ngIf="isOwner" ng class="px-1">create</mat-icon>
+        <div>
+          <button 
+          *ngIf="isOwner && sbService.editMode === false; else editModeHeader" 
+          class="px-1" 
+          (click)="sbService.startEdit()"
+          mat-button>
+            <mat-icon
+              >create</mat-icon>
+          </button>
+          <ng-template #editModeHeader>
+            <div>
+
+              <button mat-button (click)="sbService.cancelEdit()">Cancel</button>
+              <button mat-button (click)="sbService.endEdit()">Save</button>
+            </div>
+          </ng-template>
+        </div>
     </div>
-   
-  <h1 class="huge-title">
-    {{ sbService.board.title }}
-  </h1>
-  <p class="description">
-    {{ sbService.board.description ? sbService.board.description : 'No description..' }}
-  </p>
+    <div *ngIf="sbService.editMode === false; else editMode">
+      <h1 class="huge-title">
+        {{ sbService.board.title }}
+      </h1>
+      <p class="description">
+        {{ sbService.board.description ? sbService.board.description : 'No description..' }}
+      </p>
+    </div>
+  <ng-template #editMode>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="sbService.board.title">
+    </mat-form-field>
+
+    <div class="pt-3">
+      <mat-form-field class="text-area-size">
+        <mat-label>Description</mat-label>
+        <textarea
+          #description
+          class="text-area"
+          matInput 
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="4"
+          cdkAutosizeMaxRows="10"
+          maxlength="256"
+          [(ngModel)]="sbService.board.description"
+          ></textarea>
+          <mat-hint align="end">{{description.value.length}} / 256</mat-hint>
+      </mat-form-field>
+    </div>
+  
+  </ng-template>
+
   <p class="info-text pt-3">
     {{ sbService.board.items.length }} Items | {{ sbService.board.view_count }} Views
   </p>
