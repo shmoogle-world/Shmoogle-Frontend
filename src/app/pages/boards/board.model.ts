@@ -20,4 +20,5 @@ export interface BoardItem {
   list_index: number;
   dateLastCrawled?: number | Date;
   created_at: number | Date;
+  marked_for_delete?: boolean; // This param will never be sent from the backend and is purely for the single board edit. 
 }
